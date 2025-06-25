@@ -1,4 +1,4 @@
-import Experience from "./src/components/models/hero-experience/Experience.tsx";
+import Experience from "./components/models/hero-experience/Experience.tsx";
 function App() {
   return (
     <>
