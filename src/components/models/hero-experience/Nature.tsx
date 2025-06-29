@@ -1,5 +1,6 @@
 import { useGLTF, useTexture } from '@react-three/drei'
-import type { NatureTypes } from './types/nature-types.ts'
+
+import type { NatureTypes } from './types/types.ts'
 
 function Nature() {
 

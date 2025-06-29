@@ -1,8 +1,9 @@
-import Experience from "./components/models/hero-experience/Experience.tsx";
+import Hero from "./sections/Hero.tsx";
+
 function App() {
   return (
     <>
-      <Experience />
+      <Hero />
     </>
   )
 }

@@ -33,3 +33,8 @@ export type NatureTypes = {
         baked7: Mesh;
     };
 }
+
+export type CameraSettingsType = {
+    fov: number;
+    position: [number, number, number];
+};
