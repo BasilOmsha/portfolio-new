@@ -24,10 +24,11 @@ function Hero() {
 
     return (
         <>
-            <div className={styles.hero_layout}>
+            <div id="#hero" className={styles.hero_layout}>
                 <div ref={heroTextRef} id={styles.chars} className={styles.hero_text}>
+                    <h1>From</h1>
                     <h1>
-                        From curious
+                        curious
                         <span className={styles.slide}>
                             <span className={styles.wrapper}>
                                 {words.map((word, index) => (

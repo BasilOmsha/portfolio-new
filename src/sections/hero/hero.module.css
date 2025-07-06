@@ -1,6 +1,6 @@
 .hero_layout {
   z-index: 10;
-  margin-top: 5rem;
+  /* margin-top: 5rem; */
   position: relative;
   display: flex;
   flex-direction: row;
@@ -17,6 +17,7 @@
 
 .hero_text,
 .hero_text_right {
+  margin-top: 2rem;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -30,7 +31,6 @@
   font-weight: 600;
   z-index: 10;
   pointer-events: none;
-  font-size: 30px;
 }
 
 .hero_text img {
@@ -97,6 +97,9 @@
   display: inline-block;
   flex-direction: column;
   transition: all cubic-bezier(0.71, 0.03, 0.34, 1);
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 21.5rem;
+  border-radius: 5px;
 }
 
 .wrapper {
