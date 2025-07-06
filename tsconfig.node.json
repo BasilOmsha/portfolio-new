@@ -21,5 +21,8 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
+  "files": [
+    "node_modules/gsap/types/index.d.ts"
+  ],
   "include": ["vite.config.ts"]
 }

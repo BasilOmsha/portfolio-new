@@ -1,26 +1,5 @@
-/* html,
-body,
-#root {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: rgb(0, 0, 0);
-} */
-
-/* .label > div {
-  font-family: Helvetica, Arial;
-  position: absolute;
-  background: #00000088;
-  color: white;
-  padding: 15px;
-  white-space: nowrap;
-  overflow: hidden;
-  border-radius: 30px;
-  user-select: none;
-} */
+@import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
+@import "tailwindcss";
 
 :root {
   --gradient: radial-gradient(circle, #e5e5e5 0%, #fff 100%);
@@ -35,37 +14,8 @@ body {
   color: white;
   scroll-behavior: smooth;
   font-family: "Mona Sans", sans-serif;
-}
 
-.hero_section{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  background: var(--gradient);
 }
+ 
 
-.hero_text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 40%;
-  height: 100%;
-  text-align: center;
-  background-color: #000;
-  overflow: visible;
-}
 
-.hero_model_section{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 60%;
-  height: 100vh;
-  background: #000;
-  overflow: visible;
-}
