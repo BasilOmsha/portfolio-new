@@ -34,7 +34,7 @@ function Hero() {
                                     <span key={index} className={styles.word_item}>
                                         <img
                                             src={word.imgPath || '/placeholder.svg'}
-                                            alt="person"
+                                            alt={word.text || 'decorative icon'}
                                             className={styles.word_img}
                                         />
                                         <span>{word.text}</span>
@@ -43,7 +43,9 @@ function Hero() {
                             </span>
                         </span>
                     </h1>
-                    <h1> to boss-level bugs, I build projects and level up with every line </h1>
+                    <h1> to boss-level bugs,</h1>
+                    <h1> I build projects and level</h1>
+                    <h1> up with every line.</h1>
                     <p className={styles.hero_text_p}>
                         Hi, I'm Basil, a developer based in Finland with a passion for code.
                     </p>
