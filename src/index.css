@@ -26,3 +26,23 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+
+/* Custom cursor styles */
+.cursor { 
+  position: fixed;
+  border-radius: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  pointer-events: none;
+  left: -100px;
+  top: 50%;
+  mix-blend-mode: difference;
+  background-color: #fff;
+  z-index: 10000;
+  border: 2px solid white;
+  height: 140px;
+  width: 140px;
+  transition: all 150ms ease-out;
+  /* transition: all 0.8s ease; */
+  pointer-events: none;
+}

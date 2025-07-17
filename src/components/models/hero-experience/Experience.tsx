@@ -3,6 +3,7 @@ import { useMemo } from 'react'
 import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 
+import ExperienceButton from './ExperienceButton.tsx'
 import Nature from './Nature.tsx'
 import type { CameraSettingsType } from './types/types.ts'
 
@@ -23,6 +24,7 @@ function Experience() {
                 {/*Scene*/}
                 <Nature />
             </Canvas>
+            <ExperienceButton />
         </>
     )
 }
