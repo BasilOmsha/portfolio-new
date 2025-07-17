@@ -24,12 +24,29 @@
   position: relative;
   flex-direction: column;
   align-items: start;
-  padding: 0rem 2.5rem 0rem 2.55rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem; 
   justify-content: center;
   min-width: 40%;
   height: 100%;
   min-height: fit-content;
+  gap: 1rem;
   /* background-color:aqua; */
+}
+
+.hero_text h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.hero_text p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  margin-top: 1.5rem;
 }
 
 .hero_model_section{
@@ -129,14 +146,97 @@
   will-change: "transform";
 }
 
+/* Hero text slider starts */
+.slide {
+  position: absolute; 
+  padding-left: 0.5rem;
+  padding-right: 0.5rem; 
+  padding-top: 0; 
+  --transform-translate-y: 0; 
+  height: 40px;
+  /* background-color: antiquewhite; */
+  overflow-y: hidden;
+  z-index: 9999999999999999999999999999999999999999;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  animation: wordSlider 21s infinite cubic-bezier(0.9, 0.01, 0.3, 0.99);
+}
+
+.slide-span {
+  display: flex; 
+  /* padding-bottom: 0.5rem;  */
+  gap: 0.25rem; 
+  align-items: center; 
+}
+.slide-span img {
+  /* padding: 0.25rem;  */
+  border-radius: 9999px; 
+  fill: #fff;
+}
+
+@keyframes wordSlider {
+  0% {
+    transform: translateY(0.5%);
+  }
+  12.5% {
+    transform: translateY(-12.5%);
+  }
+  25% {
+    transform: translateY(-25%);
+  }
+  37.5% {
+    transform: translateY(-37.5%);
+  }
+  50% {
+    transform: translateY(-50%);
+  }
+  62.5% {
+    transform: translateY(-62.5%);
+  }
+  75% {
+    transform: translateY(-75%);
+  }
+  87.5% {
+    transform: translateY(-87.5%);
+  }
+}
+
+@media (min-width: 768px) { 
+
+  .slide {
+    /* padding-left: 1.25rem;
+    padding-right: 1.25rem;  */
+    /* --transform-translate-y: 0.25rem;  */
+    /* height: 78px; */
+  }
+  .slide span {
+    /* gap: 0.75rem;  */
+  }
+  .slide span img {
+    /* padding: 0.5rem;  */
+  }
+ }
+
 @media screen and (max-width: 800px) {
   .hero_section {
     flex-direction: column;
     width: 100%;
   }
   .hero_text {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-top: 2rem;
     width: 100%;
     height: 50vh;
+  }
+  .hero_text h1 {
+    font-size: 1rem;
+  }
+  .hero_text p {
+    font-size: 1rem;
   }
   .hero_model_section {
     width: 100%;
@@ -172,5 +272,31 @@
     width: 20px;
     height: 20px;
     background-size: 20px 40px;
+  }
+  .slide {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem; 
+    --transform-translate-y: 0; 
+    height: 25px;
+  }
+}
+
+@media  screen and (max-width: 500px) {
+  .hero_text {
+    margin-top: 10rem;
+    gap: 0.5rem;
+  }
+  .hero_text h1 {
+    font-size: 1rem;
+  }
+  .hero_text p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  .slide-span img{
+    width: 20px;
+    height: 20px;
+    padding: 0.125rem;
+    
   }
 }
