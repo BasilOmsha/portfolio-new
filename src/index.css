@@ -1,21 +1,28 @@
-@import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
-@import "tailwindcss";
-
 :root {
   --gradient: radial-gradient(circle, #e5e5e5 0%, #fff 100%);
 }
-
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 html,
 body {
-  width: 100dvw;
-  height: 100%;
   overflow-x: hidden;
   background-color: black;
   color: white;
   scroll-behavior: smooth;
   font-family: "Mona Sans", sans-serif;
-
 }
- 
 
-
+/* modern scroll */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

@@ -1,11 +1,9 @@
-import Hero from './sections/hero/Hero.tsx'
-import Main from './sections/Main.tsx'
-import NavBar from './sections/nav-bar/NavBar.tsx'
+import Hero from './sections/hero/Hero'
+import Main from './sections/Main'
 
 function App() {
     return (
         <>
-            <NavBar />
             <Hero />
             <Main />
         </>

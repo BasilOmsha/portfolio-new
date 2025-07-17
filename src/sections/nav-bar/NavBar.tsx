@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import styles from './navbar.module.css'
 
 function NavBar() {
-    const [scrolled, setScrolled] = useState(null)
+    const [scrolled, setScrolled] = useState(false)
 
     useEffect(() => {
         const handleScroll = () => {
