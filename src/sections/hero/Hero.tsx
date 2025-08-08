@@ -9,6 +9,16 @@ import './hero.css'
 function Hero() {
     useGSAP(() => {
         gsap.fromTo(
+            '.square_small_profile_img',
+            { x: -50, opacity: 0 },
+            { x: 0, opacity: 1, duration: 1, ease: 'power2.inOut' }
+        )
+        gsap.fromTo(
+            '.profile-img-container span',
+            { y: -50, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1, ease: 'power2.inOut' }
+        )
+        gsap.fromTo(
             '.hero_text h1',
             { y: 50, opacity: 0 },
             { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: 'power2.inOut' }

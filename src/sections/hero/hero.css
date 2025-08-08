@@ -365,14 +365,17 @@
     
   }
   .hero_text h1 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   .hero_text p {
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
   }
+  .slide{
+    height: 20px;
+  }
   .f-hero-h1 {
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: flex-start;
   }
   .slide-span img{
