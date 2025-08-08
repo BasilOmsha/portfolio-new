@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
@@ -13,6 +13,7 @@ import type { CameraSettingsType } from './types/types.ts'
 
 function Experience() {
     const [isOrbitEnabled, setIsOrbitEnabled] = useState(false)
+    const [isMouseDown, setIsMouseDown] = useState(false)
 
     const cameraSettings: CameraSettingsType = useMemo(
         () => ({
@@ -21,6 +22,33 @@ function Experience() {
         }),
         []
     )
+
+    // Set cursor style based on orbit state
+    useEffect(() => {
+        const canvas = document.querySelector('canvas')
+        const heroSection = document.querySelector('.hero_model_section') as HTMLElement
+        const targetElement = heroSection || canvas
+
+        if (targetElement && isOrbitEnabled) {
+            // Set grab cursor when orbit is enabled
+            targetElement.style.cursor = isMouseDown ? 'grabbing' : 'grab'
+
+            const handleMouseDown = () => setIsMouseDown(true)
+            const handleMouseUp = () => setIsMouseDown(false)
+
+            targetElement.addEventListener('mousedown', handleMouseDown)
+            document.addEventListener('mouseup', handleMouseUp)
+
+            return () => {
+                targetElement.removeEventListener('mousedown', handleMouseDown)
+                document.removeEventListener('mouseup', handleMouseUp)
+                targetElement.style.cursor = 'default' // Reset cursor
+            }
+        } else if (targetElement) {
+            // Reset cursor when orbit is disabled
+            targetElement.style.cursor = 'default'
+        }
+    }, [isOrbitEnabled, isMouseDown])
 
     const handleButtonToggle = (enabled: boolean) => {
         setIsOrbitEnabled(enabled)
