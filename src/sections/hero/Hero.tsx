@@ -42,7 +42,15 @@ function Hero() {
                             <img src="/images/hero/personal_pic.jpg" alt="Profile" />
                         </div>
                         <span style={{ fontFamily: 'cursive' }}>
-                            by <strong>Basil Omsha</strong>
+                            by{' '}
+                            <a
+                                href="https://portfolio-lemon-sigma-13.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="author-link"
+                            >
+                                <strong>Basil Omsha</strong>
+                            </a>
                         </span>
                     </div>
                     <h1>
