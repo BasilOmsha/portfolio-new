@@ -10,8 +10,8 @@ import type { CameraSettingsType } from './types/types.ts'
 function Experience() {
     const cameraSettings: CameraSettingsType = useMemo(
         () => ({
-            fov: 30,
-            position: [50, 40, 40]
+            fov: 22,
+            position: [45, 40, 35]
         }),
         []
     )
@@ -19,7 +19,12 @@ function Experience() {
         <>
             <Canvas camera={cameraSettings}>
                 {/* Orbit Controls */}
-                <OrbitControls enablePan={false} />
+                <OrbitControls
+                    enablePan={false}
+                    minDistance={5} // Closest zoom
+                    maxDistance={100} // Farthest zoom
+                    enableZoom={true} // Allow mouse wheel zoom
+                />
 
                 {/*Scene*/}
                 <Nature />

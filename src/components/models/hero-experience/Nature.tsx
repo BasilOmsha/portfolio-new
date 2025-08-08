@@ -22,7 +22,7 @@ function Nature() {
                     map={bakedTexture}
                     transparent={true}
                     opacity={1}
-                    toneMapped={true}
+                    toneMapped={false}
                     wireframe={false}
                 />
             </mesh>
