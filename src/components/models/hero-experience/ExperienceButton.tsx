@@ -1,7 +1,10 @@
-import gsap from 'gsap'
 import { useEffect, useRef, useState } from 'react'
 
-export default function ExperienceButton() {
+import gsap from 'gsap'
+
+import type { ExperienceButtonProps } from './types/types.ts'
+
+export default function ExperienceButton({ onButtonToggle }: ExperienceButtonProps) {
     const [isActive, setIsActive] = useState(false)
     const clickRef = useRef<HTMLButtonElement>(null)
     const handRef = useRef<HTMLDivElement>(null)
@@ -78,9 +81,11 @@ export default function ExperienceButton() {
 
     const handleHandClick = () => {
         setIsActive(true)
+        onButtonToggle(true)
     }
 
     const handleXClick = () => {
+        onButtonToggle(false)
         setTimeout(() => {
             setIsActive(false)
         }, 1500)

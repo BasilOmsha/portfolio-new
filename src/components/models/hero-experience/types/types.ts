@@ -78,3 +78,7 @@ export type FireShaderMaterial = ShaderMaterial & {
         uIntensity: { value: number }
     }
 }
+
+export type ExperienceButtonProps = {
+    onButtonToggle: (enabled: boolean) => void
+}

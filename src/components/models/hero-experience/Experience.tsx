@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 
 import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
@@ -11,22 +11,36 @@ import Nature from './Nature.tsx'
 import type { CameraSettingsType } from './types/types.ts'
 
 function Experience() {
+    const [isOrbitEnabled, setIsOrbitEnabled] = useState(false)
+
+    // const cameraSettings: CameraSettingsType = useMemo(
+    //     () => ({
+    //         fov: 22,
+    //         position: [45, 40, 35]
+    //     }),
+    //     []
+    // )
+
     const cameraSettings: CameraSettingsType = useMemo(
         () => ({
-            fov: 22,
-            position: [45, 40, 35]
+            fov: 25,
+            position: [50, 40, 35]
         }),
         []
     )
+
+    const handleButtonToggle = (enabled: boolean) => {
+        setIsOrbitEnabled(enabled)
+    }
     return (
         <>
             <Canvas camera={cameraSettings}>
-                {/* Orbit Controls */}
                 <OrbitControls
-                    enablePan={false}
-                    minDistance={5} // Closest zoom
-                    maxDistance={100} // Farthest zoom
-                    enableZoom={true} // Allow mouse wheel zoom
+                    enablePan={false} // Panning is for moving the camera around the scene
+                    minDistance={5}
+                    maxDistance={100}
+                    enableZoom={isOrbitEnabled}
+                    enableRotate={isOrbitEnabled}
                 />
 
                 {/*Scene*/}
@@ -42,7 +56,7 @@ function Experience() {
                     <ToneMapping blendFunction={BlendFunction.DARKEN} />
                 </EffectComposer>
             </Canvas>
-            <ExperienceButton />
+            <ExperienceButton onButtonToggle={handleButtonToggle} />
         </>
     )
 }
