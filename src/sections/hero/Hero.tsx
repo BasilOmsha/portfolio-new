@@ -61,7 +61,7 @@ function Hero() {
                     </div>
 
                     <h1 className="f-hero-h1">
-                        <h1 style={{ marginRight: '0.5rem' }}> From curious</h1>
+                        <span style={{ marginRight: '0.5rem' }}> From curious</span>
                         <span className="slide">
                             <span className="wrapper">
                                 {words.map((word, index) => (
