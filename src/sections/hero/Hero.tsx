@@ -76,7 +76,8 @@ function Hero() {
                             </span>
                         </span>
                     </h1>
-                    <h1>to boss-level bugs, I build projects and level up with every line</h1>
+                    <h1>to boss-level bugs, </h1>
+                    <h1> I build projects and level up with every line</h1>
 
                     <p>
                         {' '}
