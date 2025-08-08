@@ -59,26 +59,24 @@ function Hero() {
                             </a>
                         </span>
                     </div>
-                    <h1>
-                        From
-                        <h1 className="f-hero-h1">
-                            <h1 style={{ marginRight: '0.5rem' }}>curious</h1>
-                            <span className="slide">
-                                <span className="wrapper">
-                                    {words.map((word, index) => (
-                                        <span key={index} className="slide-span">
-                                            <img
-                                                src={word.imgPath || '/placeholder.svg'}
-                                                alt="person"
-                                            />
-                                            <span>{word.text}</span>
-                                        </span>
-                                    ))}
-                                </span>
+
+                    <h1 className="f-hero-h1">
+                        <h1 style={{ marginRight: '0.5rem' }}> From curious</h1>
+                        <span className="slide">
+                            <span className="wrapper">
+                                {words.map((word, index) => (
+                                    <span key={index} className="slide-span">
+                                        <img
+                                            src={word.imgPath || '/placeholder.svg'}
+                                            alt="person"
+                                        />
+                                        <span>{word.text}</span>
+                                    </span>
+                                ))}
                             </span>
-                        </h1>
-                        to boss-level bugs, I build projects and level up with every line
+                        </span>
                     </h1>
+                    <h1>to boss-level bugs, I build projects and level up with every line</h1>
 
                     <p>
                         {' '}
