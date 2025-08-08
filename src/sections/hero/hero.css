@@ -196,15 +196,15 @@
 }
 
 .slide {
-  margin-top: 5px;
+  margin-top: 8px;
   --transform-translate-y: 0; 
-  height: 60px;
+  height: 50px;
   overflow-y: hidden;
 }
 
 .wrapper {
   display: flex;
-  padding-bottom: 0.2rem;
+  padding-bottom: 0.8rem;
   flex-direction: column;
   animation: wordSlider 21s infinite cubic-bezier(0.9, 0.01, 0.3, 0.99);
 }
@@ -365,6 +365,10 @@
   }
   .slide{
     height: 20px;
+    margin-top: 2px;
+  }
+  .wrapper {
+    padding-bottom: 0.2rem;
   }
   .f-hero-h1 {
     align-items: flex-start;
