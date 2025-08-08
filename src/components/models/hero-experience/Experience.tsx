@@ -3,9 +3,10 @@ import { useEffect, useMemo, useState } from 'react'
 import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { Bloom, EffectComposer, ToneMapping } from '@react-three/postprocessing'
+import { Leva } from 'leva'
 import { BlendFunction } from 'postprocessing'
 
-import CameraAnimator from '@/gsap/heroAnimation.ts'
+import { CameraAnimator } from '@/gsap/heroAnimation.ts'
 import Fire from './boneFire/Fire.tsx'
 import ExperienceButton from './ExperienceButton.tsx'
 import Nature from './Nature.tsx'
@@ -55,6 +56,7 @@ function Experience() {
     }
     return (
         <>
+            <Leva hidden={!isOrbitEnabled} collapsed />
             <Canvas camera={cameraSettings}>
                 <CameraAnimator isOrbitEnabled={isOrbitEnabled} />
                 <OrbitControls
@@ -67,7 +69,7 @@ function Experience() {
 
                 {/*Scene*/}
                 <Fire />
-                <Nature />
+                <Nature orbitControl={isOrbitEnabled} />
                 <EffectComposer>
                     <Bloom
                         mipmapBlur

@@ -1,15 +1,18 @@
 import { useRef } from 'react'
 
+import { useGSAP } from '@gsap/react'
 import { useGLTF, useTexture } from '@react-three/drei'
 import { extend, useFrame } from '@react-three/fiber'
+import { button, useControls } from 'leva'
 import * as THREE from 'three'
 
+import { animateToOriginalValues } from '@/gsap/heroAnimation.ts'
 import { PoleLightMaterial, PortalMaterial, TextMaterial } from './materials/materials.tsx'
 import type { MaterialType, NatureTypes } from './types/types.ts'
 
 extend({ PortalMaterial, PoleLightMaterial, TextMaterial })
 
-function Nature() {
+function Nature({ orbitControl }: { orbitControl: boolean }) {
     /* Load the model*/
     const { nodes } = useGLTF('/models/nature.glb') as unknown as NatureTypes
 
@@ -34,13 +37,78 @@ function Nature() {
     const poleLightRotation = nodes.poleLightEmission?.rotation || new THREE.Euler(0, 0, 0)
     const poleLightScale = nodes.poleLightEmission?.scale || new THREE.Vector3(1, 1, 1)
 
+    const bakedMeshPosition = nodes.baked7?.position || new THREE.Vector3(0, 0, 0)
+    const bakedMeshRotation = nodes.baked7?.rotation || new THREE.Euler(0, 0, 0)
+
+    const originalValues = {
+        x: bakedMeshPosition.x,
+        y: bakedMeshPosition.y,
+        z: bakedMeshPosition.z,
+        rotationX: bakedMeshRotation.x,
+        rotationY: bakedMeshRotation.y,
+        rotationZ: bakedMeshRotation.z
+    }
+
+    const [levaValues, setLevaValues] = useControls('Mesh Debug Controls', () => ({
+        x: {
+            value: originalValues.x,
+            min: -10,
+            max: 10,
+            step: 0.01
+        },
+        y: {
+            value: originalValues.y,
+            min: -10,
+            max: 10,
+            step: 0.01
+        },
+        z: {
+            value: originalValues.z,
+            min: -10,
+            max: 10,
+            step: 0.01
+        },
+        rotationx: {
+            value: originalValues.rotationX,
+            min: -Math.PI,
+            max: Math.PI,
+            step: 0.01
+        },
+        rotationy: {
+            value: originalValues.rotationY,
+            min: -Math.PI,
+            max: Math.PI,
+            step: 0.01
+        },
+        rotationz: {
+            value: originalValues.rotationZ,
+            min: -Math.PI,
+            max: Math.PI,
+            step: 0.01
+        },
+        wireframe: {
+            value: false
+        },
+        'Reset All': button(() => {
+            animateToOriginalValues(levaValues, setLevaValues, originalValues, 1.5)
+        })
+    }))
+
+    useGSAP(() => {
+        if (!orbitControl) {
+            animateToOriginalValues(levaValues, setLevaValues, originalValues, 1.5)
+        }
+    }, [orbitControl])
+
     return (
         <>
             {nodes.baked7 && nodes.baked7.geometry && (
                 <mesh
                     geometry={nodes.baked7.geometry}
-                    position={nodes.baked7.position}
-                    rotation={nodes.baked7.rotation}
+                    // position={nodes.baked7.position}
+                    // rotation={nodes.baked7.rotation}
+                    position={[levaValues.x, levaValues.y, levaValues.z]}
+                    rotation={[levaValues.rotationx, levaValues.rotationy, levaValues.rotationz]}
                     scale={nodes.baked7.scale}
                 >
                     <meshBasicMaterial
@@ -48,7 +116,7 @@ function Nature() {
                         transparent={true}
                         opacity={1}
                         toneMapped={false}
-                        wireframe={false}
+                        wireframe={levaValues.wireframe}
                     />
                 </mesh>
             )}

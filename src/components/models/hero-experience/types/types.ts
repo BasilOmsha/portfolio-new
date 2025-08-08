@@ -82,3 +82,24 @@ export type FireShaderMaterial = ShaderMaterial & {
 export type ExperienceButtonProps = {
     onButtonToggle: (enabled: boolean) => void
 }
+
+export interface LevaValues {
+    x: number
+    y: number
+    z: number
+    rotationx: number
+    rotationy: number
+    rotationz: number
+    wireframe: boolean
+}
+
+export interface OriginalValues {
+    x: number
+    y: number
+    z: number
+    rotationX: number
+    rotationY: number
+    rotationZ: number
+}
+
+export type SetLevaValues = (values: LevaValues) => void

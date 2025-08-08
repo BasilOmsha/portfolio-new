@@ -3,7 +3,13 @@ import { useThree } from '@react-three/fiber'
 import gsap from 'gsap'
 import { PerspectiveCamera } from 'three'
 
-export default function CameraAnimator({ isOrbitEnabled }: { isOrbitEnabled: boolean }) {
+import type {
+    LevaValues,
+    OriginalValues,
+    SetLevaValues
+} from '@/components/models/hero-experience/types/types.ts'
+
+export function CameraAnimator({ isOrbitEnabled }: { isOrbitEnabled: boolean }) {
     const { camera } = useThree()
 
     useGSAP(() => {
@@ -44,4 +50,32 @@ export default function CameraAnimator({ isOrbitEnabled }: { isOrbitEnabled: boo
     }, [camera, isOrbitEnabled])
 
     return null
+}
+export function animateToOriginalValues(
+    levaValues: LevaValues,
+    setLevaValues: SetLevaValues,
+    originalValues: OriginalValues,
+    duration: number
+): void {
+    gsap.to(levaValues, {
+        x: originalValues.x,
+        y: originalValues.y,
+        z: originalValues.z,
+        rotationx: originalValues.rotationX,
+        rotationy: originalValues.rotationY,
+        rotationz: originalValues.rotationZ,
+        duration,
+        ease: 'power2.inOut',
+        onUpdate: () => {
+            setLevaValues({
+                x: levaValues.x,
+                y: levaValues.y,
+                z: levaValues.z,
+                rotationx: levaValues.rotationx,
+                rotationy: levaValues.rotationy,
+                rotationz: levaValues.rotationz,
+                wireframe: false
+            })
+        }
+    })
 }
