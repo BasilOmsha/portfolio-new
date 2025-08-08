@@ -1,4 +1,4 @@
-import type { Euler, Mesh, Vector3 } from 'three'
+import type { Color, Euler, Mesh, ShaderMaterial, Vector3 } from 'three'
 
 type Nodes = {
     geometry: Mesh['geometry']
@@ -19,6 +19,7 @@ export type NatureTypes = {
         RuneEmission1: Nodes
         RuneEmission2: Nodes
         baked7: Nodes
+        [key: string]: Nodes | string
     }
     meshes: {
         portalLight: Mesh
@@ -37,4 +38,43 @@ export type NatureTypes = {
 export type CameraSettingsType = {
     fov: number
     position: [number, number, number]
+}
+
+export type MaterialType = ShaderMaterial & {
+    uniforms: {
+        uTime: { value: number }
+        uColorStart: { value: Color }
+        uColorEnd: { value: Color }
+    }
+    uTime: number
+    uColorStart: Color
+    uColorEnd: Color
+}
+
+export type FireConfig = {
+    size: number
+    scale: [number, number, number]
+    offsets: [number, number, number][]
+    color: string
+}
+
+export type FireProps = {
+    particlesCount: number
+    config: FireConfig
+}
+
+export type MaterialProps = {
+    size: number
+    color: string
+}
+
+export type FireShaderMaterial = ShaderMaterial & {
+    uniforms: {
+        uTime: { value: number }
+        uResolution: { value: THREE.Vector2 }
+        uSize: { value: number }
+        uSpeed: { value: number }
+        uColor: { value: Color }
+        uIntensity: { value: number }
+    }
 }
