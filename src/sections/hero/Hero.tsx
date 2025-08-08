@@ -29,6 +29,12 @@ function Hero() {
             { y: 50, opacity: 0 },
             { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: 'power2.inOut', delay: 0.5 }
         )
+
+        gsap.fromTo(
+            '.hero_model_section',
+            { x: 100, opacity: 0 },
+            { x: 0, opacity: 1, duration: 1, ease: 'power2.inOut', delay: 0.5 }
+        )
     })
 
     return (
