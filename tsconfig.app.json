@@ -28,7 +28,8 @@
     }
   },
   "files": [
-    "node_modules/gsap/types/index.d.ts"
+    "node_modules/gsap/types/index.d.ts",
+    "src/types.d.ts"
   ],
   "include": ["src"]
 }
