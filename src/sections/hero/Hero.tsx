@@ -66,7 +66,11 @@ function Hero() {
                         to boss-level bugs, I build projects and level up with every line
                     </h1>
 
-                    <p> Hi, I'm Basil, a developer based in Finland with a passion for code.</p>
+                    <p>
+                        {' '}
+                        Hi, I am a developer based in Finland with a focus on creating clean,
+                        efficient, and maintainable code.
+                    </p>
                 </div>
                 {/* model section */}
                 <div className="hero_model_section">
