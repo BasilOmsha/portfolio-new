@@ -32,10 +32,6 @@
     padding-left: 5rem;
     padding-right: 5rem;
   }
-
-  .navbar.not-scrolled {
-    /* top: 2.5rem; */
-  }
 }
 
 .navbar .inner {
