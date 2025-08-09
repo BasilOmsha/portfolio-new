@@ -1,0 +1,98 @@
+.animated-counter {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  margin-top: 8rem;
+}
+
+@media (min-width: 768px) {
+  .animated-counter {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .animated-counter {
+    margin-top: 1.25rem;
+  }
+}
+
+.counter-grid {
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .counter-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .counter-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.counter-card {
+  background-color: #18181b;
+  border-radius: 0.5rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.counter-number {
+  color: #d9ecff;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.counter-label {
+  color: #d9ecff;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .counter-card {
+    padding: 1.5rem;
+  }
+  
+  .counter-number {
+    font-size: 2.5rem;
+  }
+  
+  .counter-label {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .animated-counter {
+    margin-top: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .counter-grid {
+    gap: 1rem;
+  }
+  
+  .counter-card {
+    padding: 1rem;
+  }
+  
+  .counter-number {
+    font-size: 2rem;
+  }
+}

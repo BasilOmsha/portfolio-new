@@ -3,6 +3,7 @@ import gsap from 'gsap'
 
 import Experience from '@/components/models/hero-experience/Experience.tsx'
 
+import { AnimatedCounter } from '@/components/counter/AnimatedCounter'
 import { words } from '@/constants'
 import './hero.css'
 
@@ -90,6 +91,7 @@ function Hero() {
                     <Experience />
                 </div>
             </section>
+            <AnimatedCounter />
         </>
     )
 }
