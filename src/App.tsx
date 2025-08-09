@@ -3,6 +3,7 @@ import { useMediaQuery } from 'react-responsive'
 
 import Hero from './sections/hero/Hero.tsx'
 import Main from './sections/Main.tsx'
+import NavBar from './sections/nav-bar/NavBar.tsx'
 
 function App() {
     const isDesktop = useMediaQuery({ query: '(min-width: 1025px)' })
@@ -30,6 +31,7 @@ function App() {
     return (
         <>
             {isDesktop && <div className="cursor" id="cursor"></div>}
+            <NavBar />
             <Hero />
             <Main />
         </>

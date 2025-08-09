@@ -1,14 +1,13 @@
 import { navLinks } from '@/constants'
 import { useEffect, useState } from 'react'
-import styles from './navbar.module.css'
+import './navbar.css'
 
 function NavBar() {
-    const [scrolled, setScrolled] = useState(false)
+    const [scrolled, setScrolled] = useState<boolean>(false)
 
     useEffect(() => {
         const handleScroll = () => {
             const isScrolled = window.scrollY > 10
-            console.log('Scrolled:', isScrolled)
             setScrolled(isScrolled)
         }
 
@@ -17,27 +16,27 @@ function NavBar() {
     }, [])
 
     return (
-        <header className={`${styles.navbar} ${scrolled ? styles.scrolled : styles.notScrolled}`}>
-            <div className={styles.inner}>
-                <a className={styles.logo} href="#hero">
-                    Basil Omsha | Dev Profile
+        <header className={`navbar ${scrolled ? 'scrolled' : 'not-scrolled'}`}>
+            <div className="inner">
+                <a className="logo" href="#hero">
+                    Developer Profile
                 </a>
-                <nav className={styles.desktop}>
+                <nav className="desktop">
                     <ul>
                         {navLinks.map(({ link, name }) => (
-                            <li key={name} className={styles.navItem}>
+                            <li key={name} className="group">
                                 <a href={link}>
-                                    <span className={styles.navText}>{name}</span>
-                                    <span className={styles.underline} />
+                                    <span>{name}</span>
+                                    <span className="underline" />
                                 </a>
                             </li>
                         ))}
                     </ul>
                 </nav>
 
-                <a className={styles.contactBtn} href="#contact">
-                    <div className={styles.contactInner}>
-                        <span className={styles.contactText}>Contact me</span>
+                <a className="contact-btn group" href="#contact">
+                    <div className="inner">
+                        <span>Contact me</span>
                     </div>
                 </a>
             </div>
