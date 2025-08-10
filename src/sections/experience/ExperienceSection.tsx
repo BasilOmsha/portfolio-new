@@ -92,7 +92,8 @@ function ExperienceSection() {
     return (
         <section id="experience" className="experience-section">
             <div className="experience-container">
-                <TitleHeader title="My Work Experience" sub="💼 Career Overview" />
+                {/* <TitleHeader title="My Work Experience" sub="💼 Career Overview" /> */}
+                <TitleHeader title="My Work Experience" />
                 <div className="experience-content">
                     <div className="experience-cards-container">
                         {/* {expCards.map((card, index) => ( */}
