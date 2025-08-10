@@ -5,6 +5,7 @@ import ExperienceSection from './sections/experience/ExperienceSection.tsx'
 import Hero from './sections/hero/Hero.tsx'
 import Main from './sections/Main.tsx'
 import NavBar from './sections/nav-bar/NavBar.tsx'
+import TechStack from './sections/tech-stack/TechStack.tsx'
 
 function App() {
     const isDesktop = useMediaQuery({ query: '(min-width: 1025px)' })
@@ -46,6 +47,7 @@ function App() {
             <NavBar />
             <Hero />
             <ExperienceSection />
+            <TechStack />
             <Main />
         </>
     )

@@ -97,7 +97,7 @@ function ExperienceSection() {
                     <div className="experience-cards-container">
                         {/* {expCards.map((card, index) => ( */}
                         {expCards.map((card) => (
-                            <div key={card.title} className="exp-card-wrapper">
+                            <div key={`${card.title}-${card.date}`} className="exp-card-wrapper">
                                 <div className="card-section">
                                     {/* <GlowCard card={card} index={index}>
                                         <div>

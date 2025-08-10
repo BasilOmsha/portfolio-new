@@ -1,0 +1,164 @@
+.tech-stack-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  margin-top: 5rem;
+}
+
+@media (min-width: 768px) {
+  .tech-stack-container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    margin-top: 10rem;
+  }
+}
+
+.tech-stack-wrapper {
+  width: 100%;
+  height: 100%;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .tech-stack-wrapper {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 4rem;
+}
+
+@media (min-width: 768px) {
+  .tech-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .tech-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 4rem;
+  }
+}
+
+.tech-card {
+  border: 1px solid #1c1c21;
+  background-color: #0e0e10;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+@media (min-width: 1280px) {
+  .tech-card {
+    border-radius: 9999px;
+  }
+}
+
+.tech-card:hover .tech-card-animated-bg {
+  bottom: 0;
+}
+
+.tech-card:hover .tech-card-content {
+  cursor: grab;
+}
+
+.tech-card-animated-bg {
+  position: absolute;
+  left: 0;
+  bottom: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #2D3240;
+  transition: all 0.7s;
+}
+
+.tech-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 768px) {
+  .tech-card-content {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1280px) {
+  .tech-card-content {
+    gap: 1.25rem;
+    height: 50vh;
+  }
+}
+
+.tech-card-content p {
+  font-size: 1.125rem;
+  padding-bottom: 1.25rem;
+  font-weight: 600;
+  color: #d9ecff;
+  text-align: center;
+}
+
+@media (min-width: 1536px) {
+  .tech-card-content p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .tech-card-content p {
+    padding-bottom: 0;
+  }
+}
+
+.tech-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 13rem;
+  height: 15rem;
+  position: relative;
+}
+
+.tech-padding-x {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .tech-padding-x {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+.tech-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tech-w-full {
+  width: 100%;
+}
+
+.tech-h-full {
+  height: 100%;
+}
+
+.tech-overflow-hidden {
+  overflow: hidden;
+}

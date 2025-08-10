@@ -67,6 +67,46 @@ export const counterItems: CounterIntems[] = [
     }
 ]
 
+export type TechStackIcon = {
+    name: string
+    modelPath: string
+    scale?: number | [number, number, number]
+    rotation?: [number, number, number]
+}
+
+export const techStackIcons: TechStackIcon[] = [
+    {
+        name: 'Frontend - React',
+        modelPath: '/models/react_logo-transformed.glb',
+        scale: 1,
+        rotation: [0, 0, 0]
+    },
+    {
+        name: 'C#',
+        modelPath: '/models/cSharp-transformed.glb',
+        scale: 0.08,
+        rotation: [0, 0, 0]
+    },
+    // {
+    //     name: "Backend Developer",
+    //     modelPath: "/models/node-transformed.glb",
+    //     scale: 5,
+    //     rotation: [0, -Math.PI / 2, 0]
+    // },
+    {
+        name: 'Interactive - Three.js',
+        modelPath: '/models/threejs-transformed.glb',
+        scale: 0.05,
+        rotation: [0, 0, 0]
+    },
+    {
+        name: 'Project Manager - Git',
+        modelPath: '/models/git-svg-transformed.glb',
+        scale: 0.05,
+        rotation: [0, -Math.PI / 4, 0]
+    }
+]
+
 type ExperienceCard = {
     review: string
     company: string
