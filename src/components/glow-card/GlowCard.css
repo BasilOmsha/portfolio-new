@@ -1,0 +1,92 @@
+.card-border {
+  border: 1px solid var(--color-black-50, #1c1c21);
+  background: var(--color-black-100, #0e0e10); 
+}
+
+.card {
+  --start: 0;
+  position: relative;
+  z-index: 40;
+  overflow: hidden;
+  transition: border-color 1s ease-in-out;
+  /* will-change: auto; */
+}
+
+.card::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background: var(--gradient);
+  background-attachment: fixed;
+  mask: linear-gradient(#0000, #0000),
+    conic-gradient(
+      from calc(var(--start, 0) * 1deg),
+      #ffffff1f,
+      white 15deg,
+      #ffffff1f 30deg,
+      transparent 45deg
+    );
+  mask-composite: intersect;
+  -webkit-mask-composite: intersect;
+  mask-clip: padding-box, border-box;
+  opacity: 0;
+  transition: 0.3s ease;
+  /* will-change: opacity; */
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.glow {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(10px) saturate(200%);
+  /* will-change: filter; */
+}
+
+.timeline-card {
+  position: relative;
+}
+
+.glow-card {
+  border-radius: 12px; 
+  padding: 40px; 
+  margin-bottom: 20px; 
+  break-inside: avoid;
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.star-image {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.review-container {
+  margin-bottom: 20px;
+}
+
+.review-text {
+  color: var(--color-white-50, #d9ecff);
+  font-size: 18px;
+  line-height: 1.75;
+  margin: 0;
+}

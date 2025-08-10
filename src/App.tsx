@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
+import ExperienceSection from './sections/experience/ExperienceSection.tsx'
 import Hero from './sections/hero/Hero.tsx'
 import Main from './sections/Main.tsx'
 import NavBar from './sections/nav-bar/NavBar.tsx'
@@ -14,16 +15,27 @@ function App() {
             const cursor = document.getElementById('cursor')
 
             if (cursor) {
+                let animationId: number
+
                 const handleMouseMove = (e: MouseEvent) => {
-                    cursor.style.left = e.clientX + 'px'
-                    cursor.style.top = e.clientY + 'px'
+                    if (animationId) {
+                        cancelAnimationFrame(animationId)
+                    }
+
+                    animationId = requestAnimationFrame(() => {
+                        cursor.style.left = e.clientX + 'px'
+                        cursor.style.top = e.clientY + 'px'
+                    })
                 }
 
-                document.body.addEventListener('mousemove', handleMouseMove)
+                document.body.addEventListener('mousemove', handleMouseMove, { passive: true })
 
                 // Clean up the event listener when component unmounts
                 return () => {
                     document.body.removeEventListener('mousemove', handleMouseMove)
+                    if (animationId) {
+                        cancelAnimationFrame(animationId)
+                    }
                 }
             }
         }
@@ -33,6 +45,7 @@ function App() {
             {isDesktop && <div className="cursor" id="cursor"></div>}
             <NavBar />
             <Hero />
+            <ExperienceSection />
             <Main />
         </>
     )

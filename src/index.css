@@ -1,13 +1,22 @@
 :root {
   --gradient: radial-gradient(circle, #e5e5e5 0%, #fff 100%);
+  --color-white-50: #d9ecff;
+  --color-black-50: #1c1c21;
+  --color-black-100: #0e0e10;
+  --color-black-200: #282732;
+  --color-blue-50: #839cb5;
+  --color-blue-100: #2d2d38;
 }
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 html,
 body {
+  width: 100dvw;
   overflow-x: hidden;
   background-color: black;
   color: white;
@@ -42,7 +51,10 @@ body {
   border: 2px solid white;
   height: 140px;
   width: 140px;
-  transition: all 150ms ease-out;
-  /* transition: all 0.8s ease; */
+  transition: all 300ms ease-out;
   pointer-events: none;
+}
+
+section {
+  width: 100dvw;
 }
