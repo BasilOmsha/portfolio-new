@@ -2,8 +2,8 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 
 import ASPDotNETCore from '@/components/tech-icons/ASPDotNETCore'
-import TechIconCardExperience from '@/components/tech-icons/TechIconCardExperience.js'
-import TitleHeader from '@/components/title-header/TitleHeader.js'
+import TechIconCardExperience from '@/components/tech-icons/TechIconCardExperience.tsx'
+import TitleHeader from '@/components/title-header/TitleHeader.tsx'
 import { techStackIcons } from '@/constants'
 
 import './TechStack.css'
@@ -33,7 +33,8 @@ function TechStack() {
     return (
         <div id="skills" className="tech-stack-container">
             <div className="tech-stack-wrapper">
-                <TitleHeader title="My Go To Tech Stack" sub="🤝 What Do I Bring to the Table" />
+                {/* <TitleHeader title="My Go To Tech Stack" sub="🤝 What Do I Bring to the Table" /> */}
+                <TitleHeader title="My Go To Tech Stack" />
                 <div className="tech-grid">
                     {/* Backend skill card */}
                     <div className="tech-card">

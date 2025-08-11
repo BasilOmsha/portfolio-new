@@ -1,9 +1,42 @@
+import { useEffect, useRef } from 'react'
+
 import { Center, Environment, Float, OrbitControls, Text3D } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 
 function ASPDotNETCore() {
+    const canvasRef = useRef<HTMLCanvasElement>(null)
+    useEffect(() => {
+        const canvas = canvasRef.current
+        if (!canvas) return
+
+        const handleMouseDown = () => {
+            canvas.style.cursor = 'grabbing'
+        }
+        const handleMouseUp = () => {
+            canvas.style.cursor = 'grab'
+        }
+        const handleMouseLeave = () => {
+            canvas.style.cursor = 'grab'
+        }
+
+        canvas.style.cursor = 'grab'
+
+        canvas.addEventListener('mousedown', handleMouseDown)
+        canvas.addEventListener('mouseup', handleMouseUp)
+        canvas.addEventListener('mouseleave', handleMouseLeave)
+
+        return () => {
+            if (canvas) {
+                canvas.style.cursor = 'default'
+                canvas.removeEventListener('mousedown', handleMouseDown)
+                canvas.removeEventListener('mouseup', handleMouseUp)
+                canvas.removeEventListener('mouseleave', handleMouseLeave)
+            }
+        }
+    }, [])
+
     return (
-        <Canvas>
+        <Canvas ref={canvasRef}>
             <ambientLight intensity={0.3} />
             <directionalLight position={[5, 5, 5]} intensity={1} />
             <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} intensity={2} />
