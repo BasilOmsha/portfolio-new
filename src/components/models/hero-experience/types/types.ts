@@ -83,7 +83,7 @@ export type ExperienceButtonProps = {
     onButtonToggle: (enabled: boolean) => void
 }
 
-export interface LevaValues {
+export type LevaValues = {
     x: number
     y: number
     z: number
@@ -93,7 +93,7 @@ export interface LevaValues {
     wireframe: boolean
 }
 
-export interface OriginalValues {
+export type OriginalValues = {
     x: number
     y: number
     z: number

@@ -6,7 +6,7 @@ import * as THREE from 'three'
 
 import type { TechStackIcon } from '@/constants'
 
-interface TechIconCardExperienceProps {
+type TechIconCardExperienceProps = {
     model: TechStackIcon
 }
 

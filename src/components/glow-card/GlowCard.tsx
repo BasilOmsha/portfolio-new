@@ -2,11 +2,11 @@ import type { MouseEvent, ReactNode } from 'react'
 import { useRef } from 'react'
 import './GlowCard.css'
 
-interface Card {
+type Card = {
     review: string
 }
 
-interface GlowCardProps {
+type GlowCardProps = {
     card: Card
     children: ReactNode
     index: number
