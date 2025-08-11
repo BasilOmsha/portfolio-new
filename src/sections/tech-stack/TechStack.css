@@ -68,7 +68,7 @@
 }
 
 .tech-card:hover .tech-card-content {
-  cursor: grab;
+  /* cursor: grab; */
 }
 
 .tech-card-animated-bg {
