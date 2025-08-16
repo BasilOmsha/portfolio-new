@@ -138,7 +138,7 @@ function Experience() {
                 <Nature orbitControl={isOrbitEnabled} />
                 <EffectComposer>
                     <Bloom
-                        // mipmapBlur
+                        mipmapBlur
                         luminanceThreshold={0.8}
                         luminanceSmoothing={0.5}
                         intensity={0.5}
