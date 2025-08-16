@@ -1,17 +1,41 @@
+import { useEffect, useRef, useState } from 'react'
+
 import emailjs from '@emailjs/browser'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
 import { BeatLoader } from 'react-spinners'
 
-import ContactExperience from '../../components/contact/ContactExperience.tsx'
+import ContactExperience from '../../components/models/contact/ContactExperience.tsx'
 import TitleHeader from '../../components/title-header/TitleHeader.tsx'
 import { contactFormSchema, type ContactFormData } from '../../schemas/contactForm.ts'
 import './Contact.css'
 
 function Contact() {
     const formRef = useRef<HTMLFormElement>(null)
+    const [isMouseDown, setIsMouseDown] = useState<boolean>(false)
+
+    useEffect(() => {
+        const canvas = document.querySelector('canvas')
+        const contactSection = document.querySelector('.contact-3d-wrapper') as HTMLElement
+        const targetElement = contactSection || canvas
+
+        if (targetElement) {
+            targetElement.style.cursor = isMouseDown ? 'grabbing' : 'grab'
+
+            const handleMouseDown = () => setIsMouseDown(true)
+            const handleMouseUp = () => setIsMouseDown(false)
+
+            targetElement.addEventListener('mousedown', handleMouseDown)
+            document.addEventListener('mouseup', handleMouseUp)
+
+            return () => {
+                targetElement.removeEventListener('mousedown', handleMouseDown)
+                document.removeEventListener('mouseup', handleMouseUp)
+                targetElement.style.cursor = 'default' // Reset cursor
+            }
+        }
+    }, [isMouseDown])
 
     const {
         register,
@@ -41,6 +65,7 @@ function Contact() {
                 toast.success('Message sent successfully!')
             }
         } catch (error) {
+            console.error('EmailJS error:', error)
             toast.error('Failed to send message. Please try again.')
         }
     }

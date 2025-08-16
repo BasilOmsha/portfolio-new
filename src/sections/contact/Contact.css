@@ -285,17 +285,12 @@
   width: 100%;
   height: 100%;
   min-height: 384px;
-  cursor: grab;
   border-radius: 12px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-}
-
-.contact-3d-wrapper:hover {
-  cursor: grabbing;
 }
 
 .cta-button .text {
