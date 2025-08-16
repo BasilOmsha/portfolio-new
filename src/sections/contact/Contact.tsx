@@ -62,7 +62,7 @@ function Contact() {
                     import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
                 )
                 reset()
-                toast.success('Message sent successfully!')
+                toast.success('I received your message. Get back to you soon!')
             }
         } catch (error) {
             console.error('EmailJS error:', error)
