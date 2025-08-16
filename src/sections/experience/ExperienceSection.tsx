@@ -2,6 +2,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+import GlowCard from '@/components/glow-card/GlowCard'
 import TitleHeader from '@/components/title-header/TitleHeader.js'
 import { expCards } from '@/constants'
 import './ExperienceSection.css'
@@ -93,18 +94,20 @@ function ExperienceSection() {
         <section id="experience" className="experience-section">
             <div className="experience-container">
                 {/* <TitleHeader title="My Work Experience" sub="💼 Career Overview" /> */}
-                <TitleHeader title="My Work Experience" />
+                <TitleHeader title="My Tech Journey" />
                 <div className="experience-content">
                     <div className="experience-cards-container">
                         {/* {expCards.map((card, index) => ( */}
-                        {expCards.map((card) => (
+                        {expCards.map((card, index) => (
                             <div key={`${card.title}-${card.date}`} className="exp-card-wrapper">
                                 <div className="card-section">
-                                    {/* <GlowCard card={card} index={index}>
-                                        <div>
-                                            <img src={card.imgPath} alt="exp-img" />
-                                        </div>
-                                    </GlowCard> */}
+                                    {card.showGlowCard ? (
+                                        <GlowCard card={card} index={index}>
+                                            <div>
+                                                {/* <img src={card.imgPath} alt="exp-img" /> */}
+                                            </div>
+                                        </GlowCard>
+                                    ) : null}
                                 </div>
                                 <div className="content-section">
                                     <div className="content-wrapper">

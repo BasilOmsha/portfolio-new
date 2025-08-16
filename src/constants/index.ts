@@ -15,11 +15,11 @@ export const navLinks: NavLink[] = [
     {
         name: 'Skills',
         link: '#skills'
-    },
-    {
-        name: 'Testimonials',
-        link: '#testimonials'
     }
+    // {
+    //     name: 'Testimonials',
+    //     link: '#testimonials'
+    // }
 ]
 
 type WordItem = {
@@ -107,6 +107,25 @@ export const techStackIcons: TechStackIcon[] = [
     }
 ]
 
+type Certification = {
+    title: string
+    issuer: string
+    date: string
+    credentialId?: string
+    credentialUrl?: string
+    logoPath?: string
+}
+
+type Education = {
+    degree: string
+    institution: string
+    location: string
+    languageOfInstruction: string
+    gpa: string | null
+    gradingScale: string | null
+    period: string
+}
+
 type ExperienceCard = {
     review: string
     company: string
@@ -116,6 +135,9 @@ type ExperienceCard = {
     date: string
     date2?: string
     responsibilities: string[]
+    showGlowCard?: boolean
+    education?: Education
+    certifications?: Certification[]
 }
 
 export const expCards: ExperienceCard[] = [
@@ -126,6 +148,16 @@ export const expCards: ExperienceCard[] = [
         logoPath: '/images/logos/calevalaLogo.png',
         title: 'Frontend Developer',
         date: 'June 2025 - Present',
+        showGlowCard: true,
+        education: {
+            degree: 'Full Stack Development Bootcamp',
+            institution: 'Integrify Academy',
+            location: 'Helsinki, Finland',
+            languageOfInstruction: 'English',
+            gpa: '',
+            gradingScale: '',
+            period: 'October 2024 - January 2025'
+        },
         responsibilities: [
             'Optimized codebase by identifying unnecessary use of useEffect across the project.',
             'Enhanced code readability by separating UI from business logic.',
@@ -143,6 +175,16 @@ export const expCards: ExperienceCard[] = [
         logoPath: '/images/logos/HY__LD02_LogoFV_EN_B3____BW.png',
         title: 'IT Support Gig',
         date: 'May 2025',
+        showGlowCard: true,
+        certifications: [
+            {
+                title: 'Three.js Journey Completion',
+                issuer: 'Three.js Journey',
+                date: 'October 2024',
+                credentialId: '41612',
+                credentialUrl: 'https://threejs-journey.com/certificate/view/41612'
+            }
+        ],
         responsibilities: [
             'Set up and tested Zoom conferencing for a PhD defense, including camera and microphone configuration.',
             'Prepared the auditorium by connecting the laptop to the projector and ensuring all adapters and chargers were available.',
@@ -161,6 +203,16 @@ export const expCards: ExperienceCard[] = [
         logoPath: '/images/logos/calevalaLogo.png',
         title: 'Application Developer Intern',
         date: 'October 2023 - January 2024',
+        showGlowCard: true,
+        education: {
+            degree: 'BBA in Business Information Technology (tietojenkäsittely tradenomi)',
+            institution: 'Häme University of Applied Sciences (HAMK)',
+            location: 'Hämeenlinna, Finland',
+            languageOfInstruction: 'Finnish',
+            gpa: '4.78',
+            gradingScale: '0-5',
+            period: 'January 2022 - May 2024'
+        },
         responsibilities: [
             'Researched and evaluated auditing tools for client use.',
             'Prototyped and developed APIs (WHOIS, Backlinks) for actionable insights.',
@@ -174,6 +226,17 @@ export const expCards: ExperienceCard[] = [
         logoPath: '/images/logos/hamkLogo.jpg',
         title: 'Student Intern',
         date: 'May 2023 - August 2023',
+        showGlowCard: true,
+        certifications: [
+            {
+                title: 'Google Cloud Fundamentals: Core Infrastructure',
+                issuer: 'Google',
+                date: 'September 2023',
+                credentialId: '5206625',
+                credentialUrl:
+                    'https://www.cloudskillsboost.google/public_profiles/d9b634a8-2d78-472a-8a70-d650b8dfe45d/badges/5206625?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share'
+            }
+        ],
         responsibilities: [
             'Defined application requirements and user stories with supervisor.',
             'Designed UI concepts in Figma for usability and clarity.',
@@ -187,6 +250,7 @@ export const expCards: ExperienceCard[] = [
         logoPath: '/images/logos/fshky_logo.jpeg',
         title: 'ICT Specialist',
         date: 'May 2022 - August 2022',
+
         responsibilities: [
             'Handled high-priority IT ticket requests for timely resolution.',
             'Managed employee accounts and permissions in AD and LifeCare.',
@@ -204,6 +268,16 @@ export const expCards: ExperienceCard[] = [
         title: 'Information Services Specialist',
         date: 'December 2021',
         date2: 'October 2021',
+        showGlowCard: true,
+        education: {
+            degree: 'Vocational Qualification in Information and Communication Technology (datanomi)',
+            institution: 'Forssa Vocational Institute (FAI)',
+            location: 'Forssa, Finland',
+            languageOfInstruction: 'Finnish',
+            gpa: '4.82',
+            gradingScale: '0-5',
+            period: 'August 2019 - December 2021'
+        },
         responsibilities: [
             'Installed and managed mobile devices.',
             'Managed IDs (creation and password changes).',

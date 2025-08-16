@@ -138,10 +138,12 @@ function Experience() {
                 <Nature orbitControl={isOrbitEnabled} />
                 <EffectComposer>
                     <Bloom
-                        mipmapBlur
-                        luminanceThreshold={1}
-                        luminanceSmoothing={1}
-                        intensity={1.5}
+                        // mipmapBlur
+                        luminanceThreshold={0.8}
+                        luminanceSmoothing={0.5}
+                        intensity={0.5}
+                        width={256}
+                        height={256}
                     />
                     <ToneMapping blendFunction={BlendFunction.DARKEN} />
                 </EffectComposer>

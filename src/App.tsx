@@ -23,9 +23,12 @@ function App() {
                         cancelAnimationFrame(animationId)
                     }
 
+                    // animationId = requestAnimationFrame(() => {
+                    //     cursor.style.left = e.clientX + 'px'
+                    //     cursor.style.top = e.clientY + 'px'
+                    // })
                     animationId = requestAnimationFrame(() => {
-                        cursor.style.left = e.clientX + 'px'
-                        cursor.style.top = e.clientY + 'px'
+                        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`
                     })
                 }
 

@@ -42,17 +42,17 @@ body {
 .cursor { 
   position: fixed;
   border-radius: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  pointer-events: none;
-  left: -100px;
-  top: 50%;
+  /* transform: translateX(-50%) translateY(-50%); */
+  left: -70px;
+  top:-7%;
   mix-blend-mode: difference;
-  background-color: #fff;
+  background-color: #ffffff;
   z-index: 10000;
-  border: 2px solid white;
+  border: 2px solid rgb(6, 114, 2);
   height: 140px;
   width: 140px;
-  transition: all 300ms ease-out;
+  /* transition: all 300ms ease-out; */
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
   pointer-events: none;
 }
 
