@@ -5,11 +5,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import GlowCard from '@/components/glow-card/GlowCard'
 import TitleHeader from '@/components/title-header/TitleHeader.js'
 import { expCards } from '@/constants'
-import './ExperienceSection.css'
+import './Experience.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-function ExperienceSection() {
+function Experience() {
     useGSAP(() => {
         // Loop through each timeline card and animate them in
         // as the user scrolls to each card
@@ -154,4 +154,4 @@ function ExperienceSection() {
     )
 }
 
-export default ExperienceSection
+export default Experience

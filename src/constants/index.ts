@@ -341,3 +341,28 @@ export const expCards: ExperienceCard[] = [
     },
     */
 ]
+
+type ContactInfo = {
+    email: string
+    socials: {
+        name: string
+        url: string
+        icon: string
+    }[]
+}
+
+export const contactInfo: ContactInfo = {
+    email: 'basil.omsha@gmail.com', // Replace with your actual email
+    socials: [
+        {
+            name: 'GitHub',
+            url: 'https://github.com/BasilOmsha', // Replace with your GitHub URL
+            icon: '/images/socials/github.png' // Changed to PNG
+        },
+        {
+            name: 'LinkedIn',
+            url: 'https://linkedin.com/in/basil-omsha', // Replace with your LinkedIn URL
+            icon: '/images/socials/linkedin.png' // Add your LinkedIn icon
+        }
+    ]
+}

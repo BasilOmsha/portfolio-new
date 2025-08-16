@@ -1,0 +1,142 @@
+/* Footer Styles - Converted from Tailwind */
+.footer {
+  /* @apply my-10 md:mt-20 mt-10 text-white-50 px-5 md:px-20 xl:px-20 flex items-center justify-center; */
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: var(--color-white-50);
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    margin-top: 80px;
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .footer {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+.footer-container {
+  /* @apply grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-0 w-full; */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+  }
+}
+
+.footer p {
+  /* @apply text-center md:text-start; */
+  text-align: center;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .footer p {
+    text-align: left;
+  }
+}
+
+/* Terms section - flex flex-col justify-center md:items-start items-center */
+.footer-terms {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .footer-terms {
+    align-items: flex-start;
+  }
+}
+
+/* Socials section - @apply flex items-center justify-center gap-5; */
+.footer-socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Icons - @apply border border-black-50 bg-black-100 flex justify-center items-center rounded-xl size-10 md:size-12 cursor-pointer transition-all duration-500 hover:bg-black-50; */
+.footer-icon {
+  border: 1px solid var(--color-black-50);
+  background-color: var(--color-black-100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+@media (min-width: 768px) {
+  .footer-icon {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.footer-icon:hover {
+  background-color: var(--color-black-50);
+}
+
+.footer-icon a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.footer-icon img {
+  /* @apply inline-block; */
+  display: block;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .footer-icon img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Copyright section - flex flex-col justify-center */
+.footer-copyright {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Copyright text - text-center md:text-end */
+.footer-copyright p {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .footer-copyright p {
+    text-align: right;
+  }
+}

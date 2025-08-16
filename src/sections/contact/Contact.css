@@ -1,0 +1,305 @@
+.contact-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px 0;
+  margin-top: 80px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 15px 5px 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .contact-section {
+    padding: 40px 40px 0;
+    margin-top: 160px;
+  }
+}
+
+.contact-container {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .contact-container {
+    padding: 0 5px;
+  }
+}
+
+@media (min-width: 768px) {
+  .contact-container {
+    padding: 0 40px;
+  }
+}
+
+.contact-subtitle {
+  text-align: center;
+  color: var(--color-blue-50);
+  font-size: 18px;
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .contact-subtitle {
+    font-size: 20px;
+  }
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-top: 64px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .contact-content {
+    gap: 20px;
+    margin-top: 40px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .contact-content {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 40px;
+  }
+}
+
+.contact-info-card {
+  grid-column: 1;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1280px) {
+  .contact-info-card {
+    grid-column: span 5;
+  }
+}
+
+.contact-card-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--color-black-50);
+  background-color: var(--color-black-100);
+  border-radius: 12px;
+  padding: 32px;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .contact-card-inner {
+    padding: 40px;
+  }
+}
+
+.contact-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-form label {
+  display: block;
+  color: var(--color-white-50);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  .contact-form label {
+    font-size: 16px;
+  }
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 16px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  background-color: var(--color-blue-100);
+  color: white;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  background-color: rgba(45, 45, 56, 0.8);
+  box-shadow: 0 0 0 2px rgba(217, 236, 255, 0.2);
+}
+
+.contact-form input.error,
+.contact-form textarea.error {
+  border: 1px solid #ef4444;
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+@media (min-width: 768px) {
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 16px;
+  }
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--color-blue-50);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: -4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+@media (min-width: 768px) {
+  .error-message {
+    font-size: 14px;
+  }
+}
+
+.cta-wrapper {
+  position: relative;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.cta-wrapper:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.cta-button {
+  padding: 16px;
+  border-radius: 8px;
+  background-color: var(--color-black-200);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  width: 100%;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.cta-button .bg-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--color-white-50);
+  transition: width 0.5s ease;
+  z-index: 1;
+}
+
+.cta-wrapper:hover:not(:disabled) .cta-button .bg-circle {
+  width: 100%;
+}
+
+.cta-button .text {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: white;
+  transition: color 0.5s ease;
+  font-weight: 500;
+  z-index: 10;
+  position: relative;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .cta-button .text {
+    font-size: 18px;
+  }
+}
+
+.cta-wrapper:hover:not(:disabled) .cta-button .text {
+  color: black;
+}
+
+.contact-visual {
+  grid-column: 1;
+  min-height: 384px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .contact-visual {
+    min-height: 384px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .contact-visual {
+    grid-column: span 7;
+  }
+}
+
+.contact-3d-wrapper {
+  background: #cd7c2e;
+  width: 100%;
+  height: 100%;
+  min-height: 384px;
+  cursor: grab;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.contact-3d-wrapper:hover {
+  cursor: grabbing;
+}
+
+.cta-button .text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

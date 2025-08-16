@@ -1,9 +1,10 @@
 import { useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
-import ExperienceSection from './sections/experience/ExperienceSection.tsx'
+import ContactSection from './sections/contact/Contact.tsx'
+import Experience from './sections/experience/Experience.tsx'
+import Footer from './sections/footer/Footer.tsx'
 import Hero from './sections/hero/Hero.tsx'
-import Main from './sections/Main.tsx'
 import NavBar from './sections/nav-bar/NavBar.tsx'
 import TechStack from './sections/tech-stack/TechStack.tsx'
 
@@ -49,9 +50,10 @@ function App() {
             {isDesktop && <div className="cursor" id="cursor"></div>}
             <NavBar />
             <Hero />
-            <ExperienceSection />
+            <Experience />
             <TechStack />
-            <Main />
+            <ContactSection />
+            <Footer />
         </>
     )
 }
