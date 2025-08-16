@@ -180,7 +180,8 @@ export const expCards: ExperienceCard[] = [
         imgPath: '',
         logoPath: '/images/logos/HY__LD02_LogoFV_EN_B3____BW.png',
         title: 'IT Support Gig',
-        date: 'May 2025',
+        date2: 'August 15th 2025',
+        date: 'May 15th 2025',
         showGlowCard: true,
         certifications: [
             {
