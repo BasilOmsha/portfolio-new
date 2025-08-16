@@ -250,6 +250,14 @@
   margin: 0;
 }
 
+.cta-button:hover {
+  background-color: var(--color-white-50);
+}
+
+.cta-button:hover .text {
+  color: black;
+} 
+
 @media (min-width: 768px) {
   .cta-button .text {
     font-size: 18px;

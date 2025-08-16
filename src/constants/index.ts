@@ -16,10 +16,6 @@ export const navLinks: NavLink[] = [
         name: 'Skills',
         link: '#skills'
     }
-    // {
-    //     name: 'Testimonials',
-    //     link: '#testimonials'
-    // }
 ]
 
 type WordItem = {
@@ -356,13 +352,13 @@ export const contactInfo: ContactInfo = {
     socials: [
         {
             name: 'GitHub',
-            url: 'https://github.com/BasilOmsha', // Replace with your GitHub URL
-            icon: '/images/socials/github.png' // Changed to PNG
+            url: 'https://github.com/BasilOmsha',
+            icon: '/images/socials/github.png'
         },
         {
             name: 'LinkedIn',
-            url: 'https://linkedin.com/in/basil-omsha', // Replace with your LinkedIn URL
-            icon: '/images/socials/linkedin.png' // Add your LinkedIn icon
+            url: 'https://linkedin.com/in/basil-omsha',
+            icon: '/images/socials/linkedin.png'
         }
     ]
 }

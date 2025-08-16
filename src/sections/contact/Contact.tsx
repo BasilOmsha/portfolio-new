@@ -117,7 +117,7 @@ function Contact() {
                                             type="text"
                                             id="name"
                                             {...register('name')}
-                                            placeholder="What's your good name?"
+                                            placeholder="John Doe"
                                             className={errors.name ? 'error' : ''}
                                             aria-invalid={errors.name ? 'true' : 'false'}
                                         />
@@ -134,7 +134,7 @@ function Contact() {
                                             type="email"
                                             id="email"
                                             {...register('email')}
-                                            placeholder="What's your email address?"
+                                            placeholder="john.doe@example.com"
                                             className={errors.email ? 'error' : ''}
                                             aria-invalid={errors.email ? 'true' : 'false'}
                                         />
