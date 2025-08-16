@@ -124,6 +124,12 @@ type Education = {
     gpa: string | null
     gradingScale: string | null
     period: string
+    thesis?: {
+        topic: string
+        description: string
+        publicationUrl?: string
+        grade?: string
+    }
 }
 
 type ExperienceCard = {
@@ -208,10 +214,17 @@ export const expCards: ExperienceCard[] = [
             degree: 'BBA in Business Information Technology (tietojenkäsittely tradenomi)',
             institution: 'Häme University of Applied Sciences (HAMK)',
             location: 'Hämeenlinna, Finland',
-            languageOfInstruction: 'Finnish',
+            languageOfInstruction: 'Finnish / English',
             gpa: '4.78',
             gradingScale: '0-5',
-            period: 'January 2022 - May 2024'
+            period: 'January 2022 - May 2024',
+            thesis: {
+                topic: 'A Comparative Study of .NET MAUI and Avalonia in Cross-Platform Mobile Application Development',
+                description:
+                    "A bachelor's thesis comparing two open-source .NET cross-platform application development frameworks. The comparison was done by creating a simple expense tracker application to help understand the development differences, documentation availability and quality, and third party tools available for integration into the apps.",
+                publicationUrl: 'https://www.theseus.fi/handle/10024/857200',
+                grade: '5/5'
+            }
         },
         responsibilities: [
             'Researched and evaluated auditing tools for client use.',

@@ -19,6 +19,12 @@ type Education = {
     gpa: string | null
     gradingScale: string | null
     period: string
+    thesis?: {
+        topic: string
+        description: string
+        publicationUrl?: string
+        grade?: string
+    }
 }
 
 type Card = {
@@ -99,6 +105,36 @@ function GlowCard({ card, children, index }: GlowCardProps) {
                                             ` (${card.education.gradingScale})`}
                                     </span>
                                 )}
+                                {card.education.thesis && (
+                                    <>
+                                        <span className="thesis-topic">
+                                            Thesis Topic: {card.education.thesis.topic}
+                                        </span>
+                                        <span className="thesis-description">
+                                            {card.education.thesis.description}
+                                        </span>
+                                        {card.education.thesis.grade && (
+                                            <span className="thesis-grade">
+                                                🎯 Grade: {card.education.thesis.grade}
+                                            </span>
+                                        )}
+                                        {card.education.thesis.publicationUrl && (
+                                            <a
+                                                href={card.education.thesis.publicationUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="author-link"
+                                                style={{
+                                                    color: '#0498bd',
+                                                    fontSize: '0.9rem',
+                                                    lineHeight: '1.8'
+                                                }}
+                                            >
+                                                View Publication
+                                            </a>
+                                        )}
+                                    </>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -123,7 +159,8 @@ function GlowCard({ card, children, index }: GlowCardProps) {
                                         className="author-link"
                                         style={{
                                             color: '#0498bd',
-                                            fontSize: '0.9rem'
+                                            fontSize: '0.9rem',
+                                            lineHeight: '1.7'
                                         }}
                                     >
                                         Show credential
