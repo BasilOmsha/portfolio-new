@@ -101,9 +101,7 @@ function Contact() {
             />
             <section id="contact" className="contact-section">
                 <div className="contact-container">
-                    <TitleHeader title="Get in Touch – Let's Connect" />
-                    <p className="contact-subtitle">💬 Have questions or ideas? Let's talk! 🚀</p>
-
+                    <TitleHeader title="💬 Get in Touch" />
                     <div className="contact-content">
                         <div className="contact-info-card">
                             <div className="contact-card-inner">
