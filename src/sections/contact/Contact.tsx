@@ -112,7 +112,7 @@ function Contact() {
                                     noValidate
                                 >
                                     <div className="form-field">
-                                        <label htmlFor="name">Your name</label>
+                                        <label htmlFor="name">Your name*</label>
                                         <input
                                             type="text"
                                             id="name"
@@ -129,7 +129,7 @@ function Contact() {
                                     </div>
 
                                     <div className="form-field">
-                                        <label htmlFor="email">Your Email</label>
+                                        <label htmlFor="email">Your Email*</label>
                                         <input
                                             type="email"
                                             id="email"
@@ -146,7 +146,7 @@ function Contact() {
                                     </div>
 
                                     <div className="form-field">
-                                        <label htmlFor="message">Your Message</label>
+                                        <label htmlFor="message">Your Message*</label>
                                         <textarea
                                             id="message"
                                             {...register('message')}
