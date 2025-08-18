@@ -6,6 +6,7 @@ import Experience from './sections/experience/Experience.tsx'
 import Footer from './sections/footer/Footer.tsx'
 import Hero from './sections/hero/Hero.tsx'
 import NavBar from './sections/nav-bar/NavBar.tsx'
+import Projects from './sections/projects/Projects.tsx'
 import TechStack from './sections/tech-stack/TechStack.tsx'
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
             {isDesktop && <div className="cursor" id="cursor"></div>}
             <NavBar />
             <Hero />
+            <Projects />
             <Experience />
             <TechStack />
             <ContactSection />

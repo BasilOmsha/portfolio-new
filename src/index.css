@@ -18,7 +18,7 @@ html,
 body {
   width: 100dvw;
   overflow-x: hidden;
-  background-color: black;
+  background-color: #0a0a0a;
   color: white;
   scroll-padding-top: 100px;
   scroll-behavior: smooth;
