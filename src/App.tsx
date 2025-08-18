@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 import ContactSection from './sections/contact/Contact.tsx'
@@ -11,40 +12,40 @@ import TechStack from './sections/tech-stack/TechStack.tsx'
 function App() {
     const isDesktop = useMediaQuery({ query: '(min-width: 1025px)' })
 
-    // useEffect(() => {
-    //     // Only apply cursor effect if on desktop
-    //     if (isDesktop) {
-    //         const cursor = document.getElementById('cursor')
+    useEffect(() => {
+        // Only apply cursor effect if on desktop
+        if (isDesktop) {
+            const cursor = document.getElementById('cursor')
 
-    //         if (cursor) {
-    //             let animationId: number
+            if (cursor) {
+                let animationId: number
 
-    //             const handleMouseMove = (e: MouseEvent) => {
-    //                 if (animationId) {
-    //                     cancelAnimationFrame(animationId)
-    //                 }
+                const handleMouseMove = (e: MouseEvent) => {
+                    if (animationId) {
+                        cancelAnimationFrame(animationId)
+                    }
 
-    //                 // animationId = requestAnimationFrame(() => {
-    //                 //     cursor.style.left = e.clientX + 'px'
-    //                 //     cursor.style.top = e.clientY + 'px'
-    //                 // })
-    //                 animationId = requestAnimationFrame(() => {
-    //                     cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`
-    //                 })
-    //             }
+                    // animationId = requestAnimationFrame(() => {
+                    //     cursor.style.left = e.clientX + 'px'
+                    //     cursor.style.top = e.clientY + 'px'
+                    // })
+                    animationId = requestAnimationFrame(() => {
+                        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`
+                    })
+                }
 
-    //             document.body.addEventListener('mousemove', handleMouseMove, { passive: true })
+                document.body.addEventListener('mousemove', handleMouseMove, { passive: true })
 
-    //             // Clean up the event listener when component unmounts
-    //             return () => {
-    //                 document.body.removeEventListener('mousemove', handleMouseMove)
-    //                 if (animationId) {
-    //                     cancelAnimationFrame(animationId)
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }, [isDesktop])
+                // Clean up the event listener when component unmounts
+                return () => {
+                    document.body.removeEventListener('mousemove', handleMouseMove)
+                    if (animationId) {
+                        cancelAnimationFrame(animationId)
+                    }
+                }
+            }
+        }
+    }, [isDesktop])
     return (
         <>
             {isDesktop && <div className="cursor" id="cursor"></div>}
