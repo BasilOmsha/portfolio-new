@@ -2,20 +2,16 @@ import { useEffect, useRef, useState } from 'react'
 
 import gsap from 'gsap'
 
+import ProjectChapter from '@/components/project-chapter/ProjectChapter.tsx'
 import TitleHeader from '@/components/title-header/TitleHeader.tsx'
+import { projectChapters } from '@/constants'
+
 import './Projects.css'
 
 function Projects() {
     const [activeProject, setActiveProject] = useState(0)
     const [isNavbarBottomCollidingWithContainerTop, setIsNavbarBottomCollidingWithContainerTop] =
         useState(false)
-    const [isNavbarTopCollidingWithContainerBottom, setIsNavbarTopCollidingWithContainerBottom] =
-        useState(false)
-    const [
-        isNavbarBottomCollidingWithContainerBottom,
-        setIsNavbarBottomCollidingWithContainerBottom
-    ] = useState(false)
-
     const [
         isLastChildBottomCollidingWithContainerBottom,
         setIsLastChildBottomCollidingWithContainerBottom
@@ -284,13 +280,10 @@ function Projects() {
         }
     }, [
         isNavbarBottomCollidingWithContainerTop,
-        isNavbarTopCollidingWithContainerBottom,
-        isNavbarBottomCollidingWithContainerBottom,
         isLastChildBottomCollidingWithContainerBottom,
         isFirstChildTopCollidingWithNavBottomScrollingUp
     ])
 
-    // Animation function using your commented code
     const handleNavigation = (t: number, i: React.MouseEvent) => {
         i.preventDefault()
         setActiveProject(t)
@@ -347,322 +340,9 @@ function Projects() {
                     </div>
                 </nav>
                 <div className="projects-chapters">
-                    <div className="projects-chapter-container">
-                        <div className="Illustration">
-                            <div className="radial-glow"></div>
-                            <img
-                                className="lazy is-loaded"
-                                src="images/chapter-01.webp"
-                                srcSet="images/chapter-01@2x.webp 2x"
-                                alt="Basics 3D illustration"
-                            />
-                        </div>
-                        <div className="project-chapter project-01" data-index="01">
-                            <h3 className="section-title element delay-1">Basics</h3>
-                            <div className="information element delay-3">
-                                <span className="format-icon">
-                                    <svg
-                                        width="18"
-                                        height="25"
-                                        viewBox="0 0 18 25"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M6 16.0469H13"
-                                            stroke="#ffffff"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                        ></path>
-                                        <path
-                                            d="M6 19.0469H13"
-                                            stroke="#ffffff"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                        ></path>
-                                        <path
-                                            d="M1 3.04687C1 4.15144 1.89543 5.04688 3 5.04688H17V1.12851C17 1.08342 16.9635 1.04687 16.9184 1.04687H3C1.89543 1.04687 1 1.94231 1 3.04687V3.04687Z"
-                                            stroke="#ffffff"
-                                            strokeWidth="2"
-                                        ></path>
-                                        <path
-                                            d="M11 10.9288L13 9.92884V6.04688H9V9.92884L11 10.9288Z"
-                                            stroke="#ffffff"
-                                            strokeWidth="2"
-                                        ></path>
-                                        <path
-                                            d="M1 3.04688V21.0469C1 22.1514 1.89543 23.0469 3 23.0469H16C16.5523 23.0469 17 22.5992 17 22.0469V3.04688"
-                                            stroke="#ffffff"
-                                            strokeWidth="2"
-                                        ></path>
-                                    </svg>
-                                </span>
-                                13 lessons — 10h 12m&nbsp;
-                                <span className="optional"> of tutorial</span>
-                            </div>
-                            <div className="description element delay-2">
-                                <p>
-                                    Create your first scene and understand fundamentals like{' '}
-                                    <strong>cameras</strong>, <strong>geometries</strong>,{' '}
-                                    <strong>materials</strong>, <strong>textures</strong>.
-                                    <br />
-                                    Add a <strong>debug panel</strong>, <strong>animate</strong>{' '}
-                                    everything and put your project online.
-                                </p>
-                            </div>
-                            <div className="projects">
-                                <a
-                                    className="project element delay-4"
-                                    href="https://threejs-journey.com/lessons/introduction"
-                                    data-router-disabled=""
-                                >
-                                    <div className="column project-number">01</div>
-                                    <div className="column project-title-badges">
-                                        <div className="title">Introduction</div>
-                                        <div className="badges">
-                                            <span className="badge is-free">free</span>
-                                        </div>
-                                    </div>
-                                    <div className="column project-duration">35m</div>
-                                </a>
-                                <a
-                                    className="project element delay-5"
-                                    href="https://threejs-journey.com/lessons/what-is-webgl-and-why-use-three-js"
-                                    data-router-disabled=""
-                                >
-                                    <div className="column project-number">02</div>
-                                    <div className="column project-title-badges">
-                                        <div className="title">
-                                            What is WebGL and why use Three.js
-                                        </div>
-                                        <div className="badges">
-                                            <span className="badge is-free">free</span>
-                                        </div>
-                                    </div>
-                                    <div className="column project-duration">23m</div>
-                                </a>
-                                <a
-                                    className="project element delay-6"
-                                    href="https://threejs-journey.com/lessons/first-threejs-project"
-                                    data-router-disabled=""
-                                >
-                                    <div className="column project-number">03</div>
-                                    <div className="column project-title-badges">
-                                        <div className="title">First Three.js Project</div>
-                                        <div className="badges">
-                                            <span className="badge is-free">free</span>
-                                        </div>
-                                    </div>
-                                    <div className="column project-duration">1h 19m</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="projects-chapter-container">
-                        <div className="Illustration">
-                            <div className="radial-glow"></div>
-                            <img
-                                className="lazy is-loaded"
-                                src="images/chapter-01.webp"
-                                srcSet="images/chapter-01@2x.webp 2x"
-                                alt="Basics 3D illustration"
-                            />
-                        </div>
-                        <div className="project-chapter project-02" data-index="02">
-                            <h3 className="section-title element delay-1">Advanced</h3>
-                            <div className="information element delay-3">
-                                <span className="format-icon">
-                                    <svg
-                                        width="18"
-                                        height="25"
-                                        viewBox="0 0 18 25"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M6 16.0469H13"
-                                            stroke="#ffffff"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                        ></path>
-                                        <path
-                                            d="M6 19.0469H13"
-                                            stroke="#ffffff"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                        ></path>
-                                        <path
-                                            d="M1 3.04687C1 4.15144 1.89543 5.04688 3 5.04688H17V1.12851C17 1.08342 16.9635 1.04687 16.9184 1.04687H3C1.89543 1.04687 1 1.94231 1 3.04687V3.04687Z"
-                                            stroke="#ffffff"
-                                            strokeWidth="2"
-                                        ></path>
-                                        <path
-                                            d="M11 10.9288L13 9.92884V6.04688H9V9.92884L11 10.9288Z"
-                                            stroke="#ffffff"
-                                            strokeWidth="2"
-                                        ></path>
-                                        <path
-                                            d="M1 3.04688V21.0469C1 22.1514 1.89543 23.0469 3 23.0469H16C16.5523 23.0469 17 22.5992 17 22.0469V3.04688"
-                                            stroke="#ffffff"
-                                            strokeWidth="2"
-                                        ></path>
-                                    </svg>
-                                </span>
-                                8 lessons — 6h 30m&nbsp;
-                                <span className="optional"> of tutorial</span>
-                            </div>
-                            <div className="description element delay-2">
-                                <p>
-                                    Learn advanced techniques with <strong>shaders</strong>,{' '}
-                                    <strong>physics</strong>, <strong>particles</strong>,{' '}
-                                    <strong>post-processing</strong>.
-                                    <br />
-                                    Create interactive experiences and optimize performance.
-                                </p>
-                            </div>
-                            <div className="projects">
-                                <a
-                                    className="project element delay-4"
-                                    href="#"
-                                    data-router-disabled=""
-                                >
-                                    <div className="column project-number">01</div>
-                                    <div className="column project-title-badges">
-                                        <div className="title">Shader Materials</div>
-                                        <div className="badges">
-                                            <span className="badge is-free">free</span>
-                                        </div>
-                                    </div>
-                                    <div className="column project-duration">45m</div>
-                                </a>
-                                <a
-                                    className="project element delay-5"
-                                    href="#"
-                                    data-router-disabled=""
-                                >
-                                    <div className="column project-number">02</div>
-                                    <div className="column project-title-badges">
-                                        <div className="title">Physics Integration</div>
-                                        <div className="badges">
-                                            <span className="badge is-free">free</span>
-                                        </div>
-                                    </div>
-                                    <div className="column project-duration">38m</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="projects-chapter-container">
-                        <div className="Illustration">
-                            <div className="radial-glow"></div>
-                            <img
-                                className="lazy is-loaded"
-                                src="images/chapter-01.webp"
-                                srcSet="images/chapter-01@2x.webp 2x"
-                                alt="Basics 3D illustration"
-                            />
-                        </div>
-                        <div className="project-chapter project-01" data-index="01">
-                            <h3 className="section-title element delay-1">Basics</h3>
-                            <div className="information element delay-3">
-                                <span className="format-icon">
-                                    <svg
-                                        width="18"
-                                        height="25"
-                                        viewBox="0 0 18 25"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M6 16.0469H13"
-                                            stroke="#ffffff"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                        ></path>
-                                        <path
-                                            d="M6 19.0469H13"
-                                            stroke="#ffffff"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                        ></path>
-                                        <path
-                                            d="M1 3.04687C1 4.15144 1.89543 5.04688 3 5.04688H17V1.12851C17 1.08342 16.9635 1.04687 16.9184 1.04687H3C1.89543 1.04687 1 1.94231 1 3.04687V3.04687Z"
-                                            stroke="#ffffff"
-                                            strokeWidth="2"
-                                        ></path>
-                                        <path
-                                            d="M11 10.9288L13 9.92884V6.04688H9V9.92884L11 10.9288Z"
-                                            stroke="#ffffff"
-                                            strokeWidth="2"
-                                        ></path>
-                                        <path
-                                            d="M1 3.04688V21.0469C1 22.1514 1.89543 23.0469 3 23.0469H16C16.5523 23.0469 17 22.5992 17 22.0469V3.04688"
-                                            stroke="#ffffff"
-                                            strokeWidth="2"
-                                        ></path>
-                                    </svg>
-                                </span>
-                                13 lessons — 10h 12m&nbsp;
-                                <span className="optional"> of tutorial</span>
-                            </div>
-                            <div className="description element delay-2">
-                                <p>
-                                    Create your first scene and understand fundamentals like{' '}
-                                    <strong>cameras</strong>, <strong>geometries</strong>,{' '}
-                                    <strong>materials</strong>, <strong>textures</strong>.
-                                    <br />
-                                    Add a <strong>debug panel</strong>, <strong>animate</strong>{' '}
-                                    everything and put your project online.
-                                </p>
-                            </div>
-                            <div className="projects">
-                                <a
-                                    className="project element delay-4"
-                                    href="https://threejs-journey.com/lessons/introduction"
-                                    data-router-disabled=""
-                                >
-                                    <div className="column project-number">01</div>
-                                    <div className="column project-title-badges">
-                                        <div className="title">Introduction</div>
-                                        <div className="badges">
-                                            <span className="badge is-free">free</span>
-                                        </div>
-                                    </div>
-                                    <div className="column project-duration">35m</div>
-                                </a>
-                                <a
-                                    className="project element delay-5"
-                                    href="https://threejs-journey.com/lessons/what-is-webgl-and-why-use-three-js"
-                                    data-router-disabled=""
-                                >
-                                    <div className="column project-number">02</div>
-                                    <div className="column project-title-badges">
-                                        <div className="title">
-                                            What is WebGL and why use Three.js
-                                        </div>
-                                        <div className="badges">
-                                            <span className="badge is-free">free</span>
-                                        </div>
-                                    </div>
-                                    <div className="column project-duration">23m</div>
-                                </a>
-                                <a
-                                    className="project element delay-6"
-                                    href="https://threejs-journey.com/lessons/first-threejs-project"
-                                    data-router-disabled=""
-                                >
-                                    <div className="column project-number">03</div>
-                                    <div className="column project-title-badges">
-                                        <div className="title">First Three.js Project</div>
-                                        <div className="badges">
-                                            <span className="badge is-free">free</span>
-                                        </div>
-                                    </div>
-                                    <div className="column project-duration">1h 19m</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    {projectChapters.map((chapter) => (
+                        <ProjectChapter key={chapter.index} {...chapter} />
+                    ))}
                 </div>
             </div>
         </section>

@@ -103,7 +103,7 @@ export const techStackIcons: TechStackIcon[] = [
     }
 ]
 
-type Certification = {
+export type Certification = {
     title: string
     issuer: string
     date: string
@@ -112,7 +112,7 @@ type Certification = {
     logoPath?: string
 }
 
-type Education = {
+export type Education = {
     degree: string
     institution: string
     location: string
@@ -362,3 +362,240 @@ export const contactInfo: ContactInfo = {
         }
     ]
 }
+
+type Tech = {
+    number: string
+    title: string
+    href: string
+    badges: string[]
+    component: string
+}
+
+export type ProjectChapterProps = {
+    index: string
+    title: string
+    className: string
+    imageSrc: string
+    imageAlt: string
+    techCount: string
+    totalDuration: string
+    description: string
+    technologies: Tech[]
+    githubUrl?: string
+    deployedUrl?: string
+}
+
+export const projectChapters: ProjectChapterProps[] = [
+    {
+        index: '01',
+        title: 'Portfolio (this)',
+        className: 'project-01',
+        imageSrc: 'images/chapter-01.webp',
+        imageAlt: 'Interactive Portfolio Website illustration',
+        techCount: '5+ technologies',
+        totalDuration: '~4 weeks time',
+        description:
+            'An immersive portfolio website featuring <strong>3D experiences</strong>, <strong>interactive elements</strong>, and <strong>modern animations</strong>.<br />Built with <strong>React</strong>, <strong>TypeScript</strong>, <strong>Three.js</strong>, <strong>WebGL</strong>, <strong>Blender</strong> and <strong>GSAP</strong> for smooth animation.',
+        githubUrl: '',
+        deployedUrl: '',
+        technologies: [
+            {
+                number: '01',
+                title: 'TSX',
+                href: '',
+                badges: [''],
+                component: 'Sections'
+            },
+            {
+                number: '02',
+                title: 'CSS',
+                href: '',
+                badges: [''],
+                component: 'Styling'
+            },
+            {
+                number: '03',
+                title: 'Blender',
+                href: '',
+                badges: ['Core'],
+                component: 'Hero 3D Model'
+            },
+            {
+                number: '04',
+                title: 'R3F & WebGL',
+                href: '#',
+                badges: ['Core'],
+                component: 'Shader Materials'
+            },
+            {
+                number: '05',
+                title: 'TS',
+                href: '#',
+                badges: [''],
+                component: 'Animation / Utilities'
+            },
+            {
+                number: '06',
+                title: 'GSAP',
+                href: '#',
+                badges: [''],
+                component: 'Animation'
+            }
+        ]
+    },
+    {
+        index: '02',
+        title: 'Kalibro.io',
+        className: 'project-02',
+        imageSrc: '/images/chapter-01.webp',
+        imageAlt: 'Website audit and optimization platform illustration',
+        techCount: '15+ technologies',
+        totalDuration: 'Late 2023 - Present (Ongoing)',
+        description:
+            'A comprehensive website audit and optimization platform that empowers businesses to enhance their online presence through <strong>deep technical insights</strong> and <strong>actionable diagnostics</strong>.<br />Features multi-dimensional audits across <strong>SEO</strong>, <strong>accessibility</strong>, <strong>performance</strong>, <strong>security</strong>, and more with integrated business dashboard.',
+        deployedUrl: 'https://www.kalibro.io',
+        technologies: [
+            {
+                number: '01',
+                title: 'JavaScript',
+                href: '#',
+                badges: [''],
+                component: 'Core Language'
+            },
+            {
+                number: '02',
+                title: 'Python',
+                href: '#',
+                badges: [''],
+                component: 'Backend Language'
+            },
+            {
+                number: '03',
+                title: 'Flask',
+                href: '#',
+                badges: [''],
+                component: 'Backend API'
+            },
+            {
+                number: '04',
+                title: 'React',
+                href: '#',
+                badges: [''],
+                component: 'Frontend Dashboard'
+            },
+            {
+                number: '05',
+                title: 'Redux',
+                href: '#',
+                badges: [''],
+                component: 'State Management'
+            },
+            {
+                number: '06',
+                title: 'AWS',
+                href: '#',
+                badges: [''],
+                component: 'Cloud Hosting'
+            },
+            {
+                number: '07',
+                title: 'OAuth & JWT',
+                href: '#',
+                badges: ['Core'],
+                component: 'Authentication'
+            },
+            {
+                number: '08',
+                title: 'Stripe',
+                href: '#',
+                badges: ['Core'],
+                component: 'Payment Integration'
+            },
+            {
+                number: '09',
+                title: 'WebSockets',
+                href: '#',
+                badges: ['Core'],
+                component: 'Real-time Updates'
+            }
+        ]
+    },
+    {
+        index: '03',
+        title: 'Task Management System',
+        className: 'project-03',
+        imageSrc: '/images/chapter-01.webp',
+        imageAlt: 'Task management system Kanban board illustration',
+        techCount: '10+ technologies',
+        totalDuration: '3 weeks development',
+        description:
+            'A full-stack project management system for organizing <strong>workspaces</strong>, <strong>projects</strong>, and <strong>tasks</strong> with collaborative features.<br />Features <strong>drag-and-drop Kanban boards</strong>, <strong>team management</strong>, <strong>role-based permissions</strong>, and real-time updates with comprehensive backend API.',
+        githubUrl: 'https://github.com/BasilOmsha/Task_Management_System',
+        deployedUrl: 'https://task-management-system-basel.vercel.app/login',
+        technologies: [
+            {
+                number: '01',
+                title: 'ASP.NET Core',
+                href: '#',
+                badges: [''],
+                component: 'Backend API'
+            },
+            {
+                number: '02',
+                title: 'PostgreSQL',
+                href: '#',
+                badges: [''],
+                component: 'Database'
+            },
+            {
+                number: '03',
+                title: 'Entity Framework',
+                href: '#',
+                badges: [''],
+                component: 'ORM'
+            },
+            {
+                number: '04',
+                title: 'JWT Authentication',
+                href: '#',
+                badges: ['Core'],
+                component: 'Security'
+            },
+            {
+                number: '05',
+                title: 'React/TypeScript',
+                href: '#',
+                badges: [''],
+                component: 'Frontend'
+            },
+            {
+                number: '06',
+                title: 'TanStack Query',
+                href: '#',
+                badges: [''],
+                component: 'Data Fetching'
+            },
+            {
+                number: '07',
+                title: 'DND-kit',
+                href: '#',
+                badges: ['Core'],
+                component: 'Drag & Drop'
+            },
+            {
+                number: '08',
+                title: 'Azure',
+                href: '#',
+                badges: [''],
+                component: 'Hosting'
+            },
+            {
+                number: '09',
+                title: 'GitHub Actions',
+                href: '#',
+                badges: [''],
+                component: 'CI/CD'
+            }
+        ]
+    }
+]

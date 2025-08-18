@@ -1,31 +1,8 @@
 import type { MouseEvent, ReactNode } from 'react'
 import { useRef } from 'react'
+
+import type { Certification, Education } from '@/constants'
 import './GlowCard.css'
-
-type Certification = {
-    title: string
-    issuer: string
-    date: string
-    credentialId?: string
-    credentialUrl?: string
-    logoPath?: string
-}
-
-type Education = {
-    degree: string
-    institution: string
-    location: string
-    languageOfInstruction: string
-    gpa: string | null
-    gradingScale: string | null
-    period: string
-    thesis?: {
-        topic: string
-        description: string
-        publicationUrl?: string
-        grade?: string
-    }
-}
 
 type Card = {
     review: string
