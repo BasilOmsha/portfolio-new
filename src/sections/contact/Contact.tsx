@@ -9,6 +9,7 @@ import { BeatLoader } from 'react-spinners'
 import ContactExperience from '../../components/models/contact/ContactExperience.tsx'
 import TitleHeader from '../../components/title-header/TitleHeader.tsx'
 import { contactFormSchema, type ContactFormData } from '../../schemas/contactForm.ts'
+
 import './Contact.css'
 
 function Contact() {
@@ -55,14 +56,9 @@ function Contact() {
 
     const onSubmit = async (): Promise<void> => {
         try {
-            // Trigger validation explicitly before submitting
             const isFormValid = await trigger()
 
-            if (!isFormValid) {
-                // If form is invalid, don't proceed with submission
-                // Errors will already be displayed due to trigger()
-                return
-            }
+            if (!isFormValid) return
 
             if (formRef.current) {
                 await emailjs.sendForm(
