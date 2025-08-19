@@ -371,6 +371,13 @@ type Tech = {
     component: string
 }
 
+type ProjectLink = {
+    type: 'github' | 'deploy'
+    url: string
+    label: string
+    enabled?: boolean
+}
+
 export type ProjectChapterProps = {
     index: string
     title: string
@@ -381,9 +388,7 @@ export type ProjectChapterProps = {
     totalDuration: string
     description: string
     technologies: Tech[]
-    githubUrl?: string
-    githubUrls?: { label: string; url: string }[]
-    deployedUrl?: string
+    links?: ProjectLink[]
 }
 
 export const projectChapters: ProjectChapterProps[] = [
@@ -397,8 +402,7 @@ export const projectChapters: ProjectChapterProps[] = [
         totalDuration: '~4 weeks time',
         description:
             'An immersive portfolio website featuring <strong>3D experiences</strong>, <strong>interactive elements</strong>, and <strong>modern animations</strong>.<br />Built with <strong>React</strong>, <strong>TypeScript</strong>, <strong>Three.js</strong>, <strong>WebGL</strong>, <strong>Blender</strong> and <strong>GSAP</strong> for smooth animation.',
-        githubUrl: '',
-        deployedUrl: '',
+        links: [],
         technologies: [
             {
                 number: '01',
@@ -446,15 +450,22 @@ export const projectChapters: ProjectChapterProps[] = [
     },
     {
         index: '02',
-        title: 'Kalibro.io',
+        title: 'Kalibro',
         className: 'project-02',
         imageSrc: '/images/chapter-01.webp',
         imageAlt: 'Website audit and optimization platform illustration',
         techCount: '15+ technologies',
         totalDuration: 'Late 2023 - Present (Ongoing)',
         description:
-            'A comprehensive website audit and optimization platform that empowers businesses to enhance their online presence through <strong>deep technical insights</strong> and <strong>actionable diagnostics</strong>.<br />Features multi-dimensional audits across <strong>SEO</strong>, <strong>accessibility</strong>, <strong>performance</strong>, <strong>security</strong>, and more with integrated business dashboard.',
-        deployedUrl: 'https://www.kalibro.io',
+            'A comprehensive website audit and optimization platform that empowers businesses to enhance their online presence through <strong>deep technical insights</strong> and <strong>actionable diagnostics</strong>.<br />Originally started as a <strong>school project in collaboration with Calevala Interactive</strong>, it evolved into a full-scale business platform featuring four core audit dimensions: <strong>Technical Analysis</strong> (WHOIS, DNS, SSL, IP geolocation, web stack detection), <strong>Web Diagnostics</strong> (performance metrics like LCP/CLS, WCAG accessibility compliance, SEO essentials, security audits), <strong>UI/UX Audits</strong> (color palette extraction, responsive screenshots, design system analysis), and <strong>Detailed Reports</strong> (Kalibro health scores, competitor comparisons, actionable insights).',
+        links: [
+            {
+                type: 'deploy',
+                url: 'https://www.kalibro.io',
+                label: 'Under Development 🚧',
+                enabled: false
+            }
+        ],
         technologies: [
             {
                 number: '01',
@@ -518,6 +529,48 @@ export const projectChapters: ProjectChapterProps[] = [
                 href: '#',
                 badges: ['Core'],
                 component: 'Real-time Updates'
+            },
+            {
+                number: '10',
+                title: 'Lighthouse API',
+                href: '#',
+                badges: ['Core'],
+                component: 'Performance Audits'
+            },
+            {
+                number: '11',
+                title: 'WHOIS/DNS APIs',
+                href: '#',
+                badges: ['Core'],
+                component: 'Domain Analysis'
+            },
+            {
+                number: '12',
+                title: 'SSL Certificate APIs',
+                href: '#',
+                badges: ['Core'],
+                component: 'Security Analysis'
+            },
+            {
+                number: '13',
+                title: 'Web Scraping',
+                href: '#',
+                badges: ['Core'],
+                component: 'Content Analysis'
+            },
+            {
+                number: '14',
+                title: 'Screenshot APIs',
+                href: '#',
+                badges: ['Core'],
+                component: 'Visual Testing'
+            },
+            {
+                number: '15',
+                title: 'Color Extraction',
+                href: '#',
+                badges: ['Core'],
+                component: 'Design Analysis'
             }
         ]
     },
@@ -531,8 +584,18 @@ export const projectChapters: ProjectChapterProps[] = [
         totalDuration: '3 weeks development',
         description:
             'A full-stack project management system for organizing <strong>workspaces</strong>, <strong>projects</strong>, and <strong>tasks</strong> with collaborative features.<br />Features <strong>drag-and-drop Kanban boards</strong>, <strong>team management</strong>, <strong>role-based permissions</strong>, and real-time updates with comprehensive backend API.',
-        githubUrl: 'https://github.com/BasilOmsha/Task_Management_System',
-        deployedUrl: 'https://task-management-system-basel.vercel.app/login',
+        links: [
+            {
+                type: 'github',
+                url: 'https://github.com/BasilOmsha/Task_Management_System',
+                label: 'GitHub'
+            },
+            {
+                type: 'deploy',
+                url: 'https://task-management-system-basel.vercel.app/login',
+                label: 'Live Site'
+            }
+        ],
         technologies: [
             {
                 number: '01',
@@ -609,8 +672,18 @@ export const projectChapters: ProjectChapterProps[] = [
         totalDuration: '~2 Days',
         description:
             'A sophisticated <strong>3D galaxy simulation</strong> built with <strong>Three.js</strong> and <strong>WebGL shaders</strong> featuring procedural generation and real-time physics.<br />Implements advanced astrophysics concepts including <strong>spiral arm dynamics</strong>, <strong>log-normal star distribution</strong>, and solutions to the <strong>galactic winding problem</strong>.',
-        githubUrl: 'https://github.com/BasilOmsha/Galaxy-Simulator',
-        deployedUrl: 'https://galaxy-simulator-ten.vercel.app/',
+        links: [
+            {
+                type: 'github',
+                url: 'https://github.com/BasilOmsha/Galaxy-Simulator',
+                label: 'GitHub'
+            },
+            {
+                type: 'deploy',
+                url: 'https://galaxy-simulator-ten.vercel.app/',
+                label: 'Live Site'
+            }
+        ],
         technologies: [
             {
                 number: '01',
@@ -679,9 +752,19 @@ export const projectChapters: ProjectChapterProps[] = [
         techCount: '9+ technologies',
         totalDuration: '2 Days',
         description:
-            'An atmospheric <strong>3D haunted house scene<strong> featuring <strong>procedural geometry creation<strong>, <strong>realistic textures<strong>, and <strong>animated ghost effects<strong>.<br />Built with <strong>custom BufferGeometry<strong>, <strong>advanced lighting systems<strong>, <strong>shadow mapping<strong>, and <strong>atmospheric effects<strong> including fog and dynamic sky rendering.',
-        githubUrl: 'https://github.com/BasilOmsha/Haunted-House',
-        deployedUrl: 'https://haunted-house-one-ashen.vercel.app/',
+            'An atmospheric <strong>3D haunted house scene</strong> featuring <strong>procedural geometry creation</strong>, <strong>realistic textures</strong>, and <strong>animated ghost effects</strong>.<br />Built with <strong>custom BufferGeometry</strong>, <strong>advanced lighting systems</strong>, <strong>shadow mapping</strong>, and <strong>atmospheric effects</strong> including fog and dynamic sky rendering.',
+        links: [
+            {
+                type: 'github',
+                url: 'https://github.com/BasilOmsha/Haunted-House',
+                label: 'GitHub'
+            },
+            {
+                type: 'deploy',
+                url: 'https://haunted-house-one-ashen.vercel.app/',
+                label: 'Live Site'
+            }
+        ],
         technologies: [
             {
                 number: '01',
@@ -750,95 +833,101 @@ export const projectChapters: ProjectChapterProps[] = [
     },
     {
         index: '06',
-        title: 'Cross-Platform Framework Thesis',
+        title: '.NET MAUI vs Avalonia Cross-Platform Study',
         className: 'project-06',
         imageSrc: '/images/chapter-01.webp',
-        imageAlt: 'Cross-platform mobile development framework comparison illustration',
-        techCount: '12+ technologies',
-        totalDuration: "Bachelor's Thesis (Academic Research)",
+        imageAlt: 'Cross-platform mobile development comparison illustration',
+        techCount: '10+ technologies',
+        totalDuration: '~3 Months Thesis Work',
         description:
-            'A comprehensive <strong>academic thesis</strong> comparing <strong>.NET MAUI</strong> and <strong>Avalonia</strong> frameworks for cross-platform mobile development.<br />Features two complete <strong>Income-Expense Tracker applications</strong> with <strong>geolocation mapping</strong>, <strong>Realm database</strong>, <strong>MVVM architecture</strong>, and detailed framework evaluation including documentation quality, third-party ecosystem, and development experience analysis.',
-        githubUrls: [
+            'A comprehensive <strong>comparative study</strong> of <strong>.NET MAUI</strong> and <strong>Avalonia</strong> frameworks for cross-platform application development.<br />Built identical <strong>expense tracker applications</strong> in both frameworks to evaluate <strong>development experience</strong>, <strong>documentation quality</strong>, <strong>third-party integration</strong>, and <strong>cross-platform capabilities</strong>.',
+        links: [
             {
-                label: 'MAUI Version',
-                url: 'https://github.com/BasilOmsha/Income-Expense-Tracker-MAUI'
+                type: 'github',
+                url: 'https://github.com/BasilOmsha/Income-Expense-Tracker-MAUI',
+                label: 'GitHub (MAUI)'
             },
             {
-                label: 'Avalonia Version',
-                url: 'https://github.com/BasilOmsha/Income-Expense-Tracker-AVALONIA'
+                type: 'github',
+                url: 'https://github.com/BasilOmsha/Income-Expense-Tracker-AVALONIA',
+                label: 'GitHub (Avalonia)'
+            },
+            {
+                type: 'deploy',
+                url: 'https://www.theseus.fi/handle/10024/857200',
+                label: 'Thesis Publication'
             }
         ],
-        deployedUrl: 'https://www.theseus.fi/handle/10024/857200',
         technologies: [
             {
                 number: '01',
                 title: '.NET MAUI',
                 href: '#',
-                badges: ['Core'],
-                component: 'Framework A'
+                badges: [''],
+                component: 'Framework'
             },
             {
                 number: '02',
                 title: 'Avalonia UI',
                 href: '#',
-                badges: ['Core'],
-                component: 'Framework B'
+                badges: [''],
+                component: 'Framework'
             },
             {
                 number: '03',
-                title: 'C# & .NET 8',
+                title: 'C#',
                 href: '#',
                 badges: [''],
-                component: 'Core Language'
+                component: 'Language'
             },
             {
                 number: '04',
+                title: 'XAML',
+                href: '#',
+                badges: [''],
+                component: 'UI Markup'
+            },
+            {
+                number: '05',
+                title: 'SQLite',
+                href: '#',
+                badges: [''],
+                component: 'Local Database'
+            },
+            {
+                number: '06',
                 title: 'MVVM Pattern',
                 href: '#',
                 badges: ['Core'],
                 component: 'Architecture'
             },
             {
-                number: '05',
-                title: 'Realm Database',
-                href: '#',
-                badges: ['Core'],
-                component: 'Local Storage'
-            },
-            {
-                number: '06',
-                title: 'CommunityToolkit.Mvvm',
+                number: '07',
+                title: 'Data Binding',
                 href: '#',
                 badges: [''],
-                component: 'MVVM Framework'
+                component: 'UI Logic'
             },
             {
-                number: '07',
-                title: 'Geolocation API',
+                number: '08',
+                title: 'Maps Integration',
                 href: '#',
                 badges: ['Core'],
                 component: 'Location Services'
             },
             {
-                number: '08',
+                number: '09',
                 title: 'Mapsui',
                 href: '#',
                 badges: ['Core'],
-                component: 'Map Integration'
-            },
-            {
-                number: '09',
-                title: 'Cross-Platform',
-                href: '#',
-                badges: ['Core'],
-                component: 'Multi-Device Support'
+                component: 'Map Components'
             },
             {
                 number: '10',
-                title: 'Academic Research',
+                title: 'Research Methodology',
                 href: '#',
                 badges: ['Core'],
-                component: 'Framework Analysis'
+                component: 'Academic Analysis'
             }
         ]
     }
