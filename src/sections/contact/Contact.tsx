@@ -41,7 +41,8 @@ function Contact() {
         register,
         handleSubmit,
         reset,
-        formState: { errors, isSubmitting, isValid }
+        trigger,
+        formState: { errors, isSubmitting }
     } = useForm<ContactFormData>({
         resolver: zodResolver(contactFormSchema),
         mode: 'all',
@@ -54,6 +55,15 @@ function Contact() {
 
     const onSubmit = async (): Promise<void> => {
         try {
+            // Trigger validation explicitly before submitting
+            const isFormValid = await trigger()
+
+            if (!isFormValid) {
+                // If form is invalid, don't proceed with submission
+                // Errors will already be displayed due to trigger()
+                return
+            }
+
             if (formRef.current) {
                 await emailjs.sendForm(
                     import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
@@ -164,7 +174,7 @@ function Contact() {
 
                                     <button
                                         type="submit"
-                                        disabled={isSubmitting || !isValid}
+                                        disabled={isSubmitting}
                                         className="cta-wrapper"
                                         aria-label={
                                             isSubmitting ? 'Sending message...' : 'Send message'
