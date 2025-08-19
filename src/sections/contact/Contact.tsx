@@ -172,7 +172,7 @@ function Contact() {
                                     >
                                         <div className="cta-button">
                                             <div className="bg-circle" />
-                                            <p className="text">
+                                            <span className="text">
                                                 {isSubmitting ? (
                                                     <div
                                                         style={{
@@ -186,7 +186,7 @@ function Contact() {
                                                 ) : (
                                                     'Send Message'
                                                 )}
-                                            </p>
+                                            </span>
                                         </div>
                                     </button>
                                 </form>
