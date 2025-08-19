@@ -401,7 +401,7 @@ export const projectChapters: ProjectChapterProps[] = [
         techCount: '5+ technologies',
         totalDuration: '~4 weeks time',
         description:
-            'An immersive portfolio website featuring <strong>3D experiences</strong>, <strong>interactive elements</strong>, and <strong>modern animations</strong>.<br />Built with <strong>React</strong>, <strong>TypeScript</strong>, <strong>Three.js</strong>, <strong>WebGL</strong>, <strong>Blender</strong> and <strong>GSAP</strong> for smooth animation.',
+            '<p>An immersive portfolio website featuring <strong>3D experiences</strong>, <strong>interactive elements</strong>, and <strong>modern animations</strong>.</p><p>Built with <strong>React</strong>, <strong>TypeScript</strong>, <strong>Three.js</strong>, <strong>WebGL</strong>, <strong>Blender</strong> and <strong>GSAP</strong> for smooth animation.</p>',
         links: [],
         technologies: [
             {
@@ -457,7 +457,7 @@ export const projectChapters: ProjectChapterProps[] = [
         techCount: '15+ technologies',
         totalDuration: 'Late 2023 - Present (Ongoing)',
         description:
-            'A comprehensive website audit and optimization platform that empowers businesses to enhance their online presence through <strong>deep technical insights</strong> and <strong>actionable diagnostics</strong>.<br />Originally started as a <strong>school project in collaboration with Calevala Interactive</strong>, it evolved into a full-scale business platform featuring four core audit dimensions: <strong>Technical Analysis</strong> (WHOIS, DNS, SSL, IP geolocation, web stack detection), <strong>Web Diagnostics</strong> (performance metrics like LCP/CLS, WCAG accessibility compliance, SEO essentials, security audits), <strong>UI/UX Audits</strong> (color palette extraction, responsive screenshots, design system analysis), and <strong>Detailed Reports</strong> (Kalibro health scores, competitor comparisons, actionable insights).',
+            '<p>A comprehensive website audit and optimization platform that empowers businesses to enhance their online presence through <strong>deep technical insights</strong> and <strong>actionable diagnostics</strong>.</p><p>Originally started as a <strong>school project in collaboration with Calevala Interactive</strong>, it evolved into a full-scale business platform featuring four core audit dimensions: <strong>Technical Analysis</strong> (WHOIS, DNS, SSL, IP geolocation, web stack detection), <strong>Web Diagnostics</strong> (performance metrics like LCP/CLS, WCAG accessibility compliance, SEO essentials, security audits), <strong>UI/UX Audits</strong> (color palette extraction, responsive screenshots, design system analysis), and <strong>Detailed Reports</strong> (Kalibro health scores, competitor comparisons, actionable insights).</p>',
         links: [
             {
                 type: 'deploy',
@@ -583,7 +583,7 @@ export const projectChapters: ProjectChapterProps[] = [
         techCount: '10+ technologies',
         totalDuration: '3 weeks development',
         description:
-            'A full-stack project management system for organizing <strong>workspaces</strong>, <strong>projects</strong>, and <strong>tasks</strong> with collaborative features.<br />Features <strong>drag-and-drop Kanban boards</strong>, <strong>team management</strong>, <strong>role-based permissions</strong>, and real-time updates with comprehensive backend API.',
+            '<p>A full-stack project management system for organizing <strong>workspaces</strong>, <strong>projects</strong>, and <strong>tasks</strong> with collaborative features.</p><p>Features <strong>drag-and-drop Kanban boards</strong>, <strong>team management</strong>, <strong>role-based permissions</strong>, and real-time updates with comprehensive backend API.</p>',
         links: [
             {
                 type: 'github',
@@ -671,7 +671,7 @@ export const projectChapters: ProjectChapterProps[] = [
         techCount: '8+ technologies',
         totalDuration: '~2 Days',
         description:
-            'A sophisticated <strong>3D galaxy simulation</strong> built with <strong>Three.js</strong> and <strong>WebGL shaders</strong> featuring procedural generation and real-time physics.<br />Implements advanced astrophysics concepts including <strong>spiral arm dynamics</strong>, <strong>log-normal star distribution</strong>, and solutions to the <strong>galactic winding problem</strong>.',
+            '<p>A sophisticated <strong>3D galaxy simulation</strong> built with <strong>Three.js</strong> and <strong>WebGL shaders</strong> featuring procedural generation and real-time physics.</p><p>Implements advanced astrophysics concepts including <strong>spiral arm dynamics</strong>, <strong>log-normal star distribution</strong>, and solutions to the <strong>galactic winding problem</strong>.</p>',
         links: [
             {
                 type: 'github',
@@ -752,7 +752,7 @@ export const projectChapters: ProjectChapterProps[] = [
         techCount: '9+ technologies',
         totalDuration: '2 Days',
         description:
-            'An atmospheric <strong>3D haunted house scene</strong> featuring <strong>procedural geometry creation</strong>, <strong>realistic textures</strong>, and <strong>animated ghost effects</strong>.<br />Built with <strong>custom BufferGeometry</strong>, <strong>advanced lighting systems</strong>, <strong>shadow mapping</strong>, and <strong>atmospheric effects</strong> including fog and dynamic sky rendering.',
+            '<p>An atmospheric <strong>3D haunted house scene</strong> featuring <strong>procedural geometry creation</strong>, <strong>realistic textures</strong>, and <strong>animated ghost effects</strong>.</p><p>Built with <strong>custom BufferGeometry</strong>, <strong>advanced lighting systems</strong>, <strong>shadow mapping</strong>, and <strong>atmospheric effects</strong> including fog and dynamic sky rendering.</p>',
         links: [
             {
                 type: 'github',
@@ -840,7 +840,7 @@ export const projectChapters: ProjectChapterProps[] = [
         techCount: '10+ technologies',
         totalDuration: '~3 Months Thesis Work',
         description:
-            'A comprehensive <strong>comparative study</strong> of <strong>.NET MAUI</strong> and <strong>Avalonia</strong> frameworks for cross-platform application development.<br />Built identical <strong>expense tracker applications</strong> in both frameworks to evaluate <strong>development experience</strong>, <strong>documentation quality</strong>, <strong>third-party integration</strong>, and <strong>cross-platform capabilities</strong>.',
+            '<p>A comprehensive <strong>comparative study</strong> of <strong>.NET MAUI</strong> and <strong>Avalonia</strong> frameworks for cross-platform application development.</p><p>Built identical <strong>expense tracker applications</strong> in both frameworks to evaluate <strong>development experience</strong>, <strong>documentation quality</strong>, <strong>third-party integration</strong>, and <strong>cross-platform capabilities</strong>.</p>',
         links: [
             {
                 type: 'github',

@@ -194,6 +194,7 @@ function Contact() {
                                     </div>
                                     <div className="form-field">
                                         <ReCAPTCHA
+                                            className="g-recaptcha"
                                             ref={recaptchaRef}
                                             sitekey={RECAPTCHA_SITE_KEY}
                                             onChange={handleRecaptchaChange}
