@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import emailjs from '@emailjs/browser'
 import { zodResolver } from '@hookform/resolvers/zod'
+import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
 import { BeatLoader } from 'react-spinners'
@@ -15,6 +16,12 @@ import './Contact.css'
 function Contact() {
     const formRef = useRef<HTMLFormElement>(null)
     const [isMouseDown, setIsMouseDown] = useState<boolean>(false)
+
+    // const [recaptchaToken, setRecaptchaToken] = useState<string>('')
+    // const [recaptchaError, setRecaptchaError] = useState<string>('')
+
+    const RECAPTCHA_SITE_KEY = import.meta.env.VITE_APP_SITE_KEY
+    const recaptchaRef = useRef<ReCAPTCHA>(null)
 
     useEffect(() => {
         const canvas = document.querySelector('canvas')
@@ -43,6 +50,7 @@ function Contact() {
         handleSubmit,
         reset,
         trigger,
+        setValue,
         formState: { errors, isSubmitting }
     } = useForm<ContactFormData>({
         resolver: zodResolver(contactFormSchema),
@@ -50,7 +58,8 @@ function Contact() {
         defaultValues: {
             name: '',
             email: '',
-            message: ''
+            message: '',
+            recaptcha: ''
         }
     })
 
@@ -68,11 +77,27 @@ function Contact() {
                     import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
                 )
                 reset()
+
+                if (recaptchaRef.current) {
+                    recaptchaRef.current.reset()
+                }
+
                 toast.success('I received your message. Get back to you soon!')
             }
         } catch (error) {
             console.error('EmailJS error:', error)
             toast.error('Failed to send message. Please try again.')
+        }
+    }
+
+    const handleRecaptchaChange = (token: string | null) => {
+        setValue('recaptcha', token || '', { shouldValidate: true })
+    }
+
+    const handleRecaptchaExpired = () => {
+        setValue('recaptcha', '', { shouldValidate: true })
+        if (recaptchaRef.current) {
+            recaptchaRef.current.reset()
         }
     }
 
@@ -167,7 +192,20 @@ function Contact() {
                                             </span>
                                         )}
                                     </div>
-
+                                    <div className="form-field">
+                                        <ReCAPTCHA
+                                            ref={recaptchaRef}
+                                            sitekey={RECAPTCHA_SITE_KEY}
+                                            onChange={handleRecaptchaChange}
+                                            onExpired={handleRecaptchaExpired}
+                                            theme="dark"
+                                        />
+                                        {errors.recaptcha && (
+                                            <span className="error-message" role="alert">
+                                                {errors.recaptcha.message}
+                                            </span>
+                                        )}
+                                    </div>
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
@@ -187,7 +225,7 @@ function Contact() {
                                                         }}
                                                     >
                                                         <span>Sending </span>
-                                                        <BeatLoader size={10} color="#ffffff" />
+                                                        <BeatLoader size={10} color="#045e01ff" />
                                                     </div>
                                                 ) : (
                                                     'Send Message'
