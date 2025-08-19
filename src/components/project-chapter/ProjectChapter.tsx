@@ -16,7 +16,7 @@ function ProjectChapter({
         <div className="projects-chapter-container">
             <div className="Illustration">
                 <div className="radial-glow"></div>
-                {/* <img className="lazy is-loaded" src={imageSrc} alt={imageAlt} /> */}
+                <img className="lazy is-loaded" src={imageSrc} alt={imageAlt} />
             </div>
             <div className={`project-chapter ${className}`} data-index={index}>
                 <h3 className="section-title element delay-1">{title}</h3>

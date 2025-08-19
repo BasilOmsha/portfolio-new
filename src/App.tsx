@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
+import { Analytics } from '@vercel/analytics/react'
+
 import ContactSection from './sections/contact/Contact.tsx'
 import Experience from './sections/experience/Experience.tsx'
 import Footer from './sections/footer/Footer.tsx'
@@ -56,6 +58,7 @@ function App() {
             <TechStack />
             <ContactSection />
             <Footer />
+            <Analytics />
         </>
     )
 }
