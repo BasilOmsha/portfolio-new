@@ -132,6 +132,27 @@ function Projects() {
                         >
                             <span className="number">03</span>
                         </a>
+                        <a
+                            className={`item ${activeProject === 3 ? 'is-active' : ''} ${activeProject > 3 ? 'is-before' : ''} ${activeProject < 3 ? 'is-after' : ''}`}
+                            href="#"
+                            onClick={(i) => handleNavigation(3, i)}
+                        >
+                            <span className="number">04</span>
+                        </a>
+                        <a
+                            className={`item ${activeProject === 4 ? 'is-active' : ''} ${activeProject > 4 ? 'is-before' : ''} ${activeProject < 4 ? 'is-after' : ''}`}
+                            href="#"
+                            onClick={(i) => handleNavigation(4, i)}
+                        >
+                            <span className="number">05</span>
+                        </a>
+                        <a
+                            className={`item ${activeProject === 5 ? 'is-active' : ''} ${activeProject > 5 ? 'is-before' : ''} ${activeProject < 5 ? 'is-after' : ''}`}
+                            href="#"
+                            onClick={(i) => handleNavigation(5, i)}
+                        >
+                            <span className="number">06</span>
+                        </a>
                     </div>
                 </nav>
                 <div className="projects-chapters">

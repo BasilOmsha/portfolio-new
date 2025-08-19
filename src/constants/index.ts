@@ -382,6 +382,7 @@ export type ProjectChapterProps = {
     description: string
     technologies: Tech[]
     githubUrl?: string
+    githubUrls?: { label: string; url: string }[]
     deployedUrl?: string
 }
 
@@ -595,6 +596,249 @@ export const projectChapters: ProjectChapterProps[] = [
                 href: '#',
                 badges: [''],
                 component: 'CI/CD'
+            }
+        ]
+    },
+    {
+        index: '04',
+        title: 'Galaxy Simulator',
+        className: 'project-04',
+        imageSrc: '/images/chapter-01.webp',
+        imageAlt: '3D procedural galaxy simulation illustration',
+        techCount: '8+ technologies',
+        totalDuration: '~2 Days',
+        description:
+            'A sophisticated <strong>3D galaxy simulation</strong> built with <strong>Three.js</strong> and <strong>WebGL shaders</strong> featuring procedural generation and real-time physics.<br />Implements advanced astrophysics concepts including <strong>spiral arm dynamics</strong>, <strong>log-normal star distribution</strong>, and solutions to the <strong>galactic winding problem</strong>.',
+        githubUrl: 'https://github.com/BasilOmsha/Galaxy-Simulator',
+        deployedUrl: 'https://galaxy-simulator-ten.vercel.app/',
+        technologies: [
+            {
+                number: '01',
+                title: 'Three.js',
+                href: '#',
+                badges: [''],
+                component: '3D Rendering'
+            },
+            {
+                number: '02',
+                title: 'WebGL Shaders',
+                href: '#',
+                badges: ['Core'],
+                component: 'GLSL Rendering'
+            },
+            {
+                number: '03',
+                title: 'JavaScript ES6+',
+                href: '#',
+                badges: [''],
+                component: 'Core Logic'
+            },
+            {
+                number: '04',
+                title: 'BufferGeometry',
+                href: '#',
+                badges: ['Core'],
+                component: 'Particle Systems'
+            },
+            {
+                number: '05',
+                title: 'lil-gui',
+                href: '#',
+                badges: [''],
+                component: 'Debug Controls'
+            },
+            {
+                number: '06',
+                title: 'Vite',
+                href: '#',
+                badges: [''],
+                component: 'Build Tool'
+            },
+            {
+                number: '07',
+                title: 'Mathematical Utils',
+                href: '#',
+                badges: ['Core'],
+                component: 'Astrophysics'
+            },
+            {
+                number: '08',
+                title: 'Factory Pattern',
+                href: '#',
+                badges: [''],
+                component: 'Architecture'
+            }
+        ]
+    },
+    {
+        index: '05',
+        title: 'Haunted House Scene',
+        className: 'project-05',
+        imageSrc: '/images/chapter-01.webp',
+        imageAlt: 'Spooky 3D haunted house scene illustration',
+        techCount: '9+ technologies',
+        totalDuration: '2 Days',
+        description:
+            'An atmospheric <strong>3D haunted house scene<strong> featuring <strong>procedural geometry creation<strong>, <strong>realistic textures<strong>, and <strong>animated ghost effects<strong>.<br />Built with <strong>custom BufferGeometry<strong>, <strong>advanced lighting systems<strong>, <strong>shadow mapping<strong>, and <strong>atmospheric effects<strong> including fog and dynamic sky rendering.',
+        githubUrl: 'https://github.com/BasilOmsha/Haunted-House',
+        deployedUrl: 'https://haunted-house-one-ashen.vercel.app/',
+        technologies: [
+            {
+                number: '01',
+                title: 'Three.js',
+                href: '#',
+                badges: [''],
+                component: '3D Rendering'
+            },
+            {
+                number: '02',
+                title: 'BufferGeometry',
+                href: '#',
+                badges: ['Core'],
+                component: 'Custom Geometry'
+            },
+            {
+                number: '03',
+                title: 'Texture Mapping',
+                href: '#',
+                badges: ['Core'],
+                component: 'Material System'
+            },
+            {
+                number: '04',
+                title: 'Shadow Mapping',
+                href: '#',
+                badges: ['Core'],
+                component: 'Lighting Effects'
+            },
+            {
+                number: '05',
+                title: 'Sky Shader',
+                href: '#',
+                badges: ['Core'],
+                component: 'Atmospheric Effects'
+            },
+            {
+                number: '06',
+                title: 'lil-gui',
+                href: '#',
+                badges: [''],
+                component: 'Debug Interface'
+            },
+            {
+                number: '07',
+                title: 'Vite',
+                href: '#',
+                badges: [''],
+                component: 'Build Tool'
+            },
+            {
+                number: '08',
+                title: 'Timer Animation',
+                href: '#',
+                badges: ['Core'],
+                component: 'Ghost Movement'
+            },
+            {
+                number: '09',
+                title: 'Poly Haven Assets',
+                href: '#',
+                badges: [''],
+                component: 'Texture Library'
+            }
+        ]
+    },
+    {
+        index: '06',
+        title: 'Cross-Platform Framework Thesis',
+        className: 'project-06',
+        imageSrc: '/images/chapter-01.webp',
+        imageAlt: 'Cross-platform mobile development framework comparison illustration',
+        techCount: '12+ technologies',
+        totalDuration: "Bachelor's Thesis (Academic Research)",
+        description:
+            'A comprehensive <strong>academic thesis</strong> comparing <strong>.NET MAUI</strong> and <strong>Avalonia</strong> frameworks for cross-platform mobile development.<br />Features two complete <strong>Income-Expense Tracker applications</strong> with <strong>geolocation mapping</strong>, <strong>Realm database</strong>, <strong>MVVM architecture</strong>, and detailed framework evaluation including documentation quality, third-party ecosystem, and development experience analysis.',
+        githubUrls: [
+            {
+                label: 'MAUI Version',
+                url: 'https://github.com/BasilOmsha/Income-Expense-Tracker-MAUI'
+            },
+            {
+                label: 'Avalonia Version',
+                url: 'https://github.com/BasilOmsha/Income-Expense-Tracker-AVALONIA'
+            }
+        ],
+        deployedUrl: 'https://www.theseus.fi/handle/10024/857200',
+        technologies: [
+            {
+                number: '01',
+                title: '.NET MAUI',
+                href: '#',
+                badges: ['Core'],
+                component: 'Framework A'
+            },
+            {
+                number: '02',
+                title: 'Avalonia UI',
+                href: '#',
+                badges: ['Core'],
+                component: 'Framework B'
+            },
+            {
+                number: '03',
+                title: 'C# & .NET 8',
+                href: '#',
+                badges: [''],
+                component: 'Core Language'
+            },
+            {
+                number: '04',
+                title: 'MVVM Pattern',
+                href: '#',
+                badges: ['Core'],
+                component: 'Architecture'
+            },
+            {
+                number: '05',
+                title: 'Realm Database',
+                href: '#',
+                badges: ['Core'],
+                component: 'Local Storage'
+            },
+            {
+                number: '06',
+                title: 'CommunityToolkit.Mvvm',
+                href: '#',
+                badges: [''],
+                component: 'MVVM Framework'
+            },
+            {
+                number: '07',
+                title: 'Geolocation API',
+                href: '#',
+                badges: ['Core'],
+                component: 'Location Services'
+            },
+            {
+                number: '08',
+                title: 'Mapsui',
+                href: '#',
+                badges: ['Core'],
+                component: 'Map Integration'
+            },
+            {
+                number: '09',
+                title: 'Cross-Platform',
+                href: '#',
+                badges: ['Core'],
+                component: 'Multi-Device Support'
+            },
+            {
+                number: '10',
+                title: 'Academic Research',
+                href: '#',
+                badges: ['Core'],
+                component: 'Framework Analysis'
             }
         ]
     }
