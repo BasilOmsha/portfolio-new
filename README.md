@@ -1,6 +1,7 @@
 # Personal Portfolio
 
 # Table of Contents
+- [Personal Portfolio](#personal-portfolio)
 - [Table of Contents](#table-of-contents)
   - [Intro](#intro)
   - [Tech Overview](#tech-overview)
@@ -17,7 +18,7 @@
   - [Improvements and Future Features](#improvements-and-future-features)
 
 ## Intro
-This is an immersive 3D portfolio website showcasing interactive experiences and modern web technologies. Built as a comprehensive demonstration of full-stack development capabilities, the portfolio combines cutting-edge 3D graphics with responsive design and engaging animations. The project was developed over approximately 4 weeks (December 2024 - January 2025) to create a unique digital experience that stands out from traditional portfolio websites.
+This is an immersive 3D portfolio website showcasing interactive experiences and modern web technologies. Built as a comprehensive demonstration of full-stack development capabilities, the portfolio combines cutting-edge 3D graphics with responsive design and engaging animations.
 
 ## Tech Overview
  - **React 18** with **TypeScript** for type-safe component development and modern React features
