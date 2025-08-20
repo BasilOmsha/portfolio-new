@@ -316,13 +316,13 @@
   .hero-button {
     width: 120px;
     height: 40px;
-    bottom: 20px;
+    bottom: 40px;
     left: calc(50% - 60px);
   }
   .x-button {
     width: 40px;
     height: 40px;
-    bottom: 20px;
+    bottom: 40px;
     left: calc(50% - 20px);
   }
   .arrow-container {
@@ -388,4 +388,22 @@
     border: 1px solid #ccc;
     background-color: white;
   } 
+}
+
+@media (max-width: 375px) and (max-height: 667px) {
+  .hero-button {
+    bottom: 50px !important;
+  }
+  .x-button {
+    bottom: 50px !important;
+  }
+}
+
+@media (max-height: 500px) {
+  .hero-button {
+    bottom: 30px !important;
+  }
+  .x-button {
+    bottom: 30px !important;
+  }
 }
