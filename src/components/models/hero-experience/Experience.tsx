@@ -71,10 +71,10 @@ function Experience() {
     // Calculate Leva position based on screen width
     const getLevaPosition = () => {
         if (windowWidth <= 500) {
-            return { x: 0, y: -50 }
+            return { x: 10, y: 50 }
         }
         if (windowWidth <= 800) {
-            return { x: 0, y: -50 }
+            return { x: 10, y: 50 }
         }
         return { x: 0, y: 50 }
     }
@@ -86,8 +86,23 @@ function Experience() {
         if (windowWidth <= 500) {
             return {
                 sizes: {
-                    rootWidth: '200px',
-                    controlWidth: '120px'
+                    rootWidth: '180px',
+                    controlWidth: '100px'
+                },
+                colors: {
+                    accent1: '#43c049ff',
+                    accent2: '#138d08ff',
+                    elevation1: '#0516afff',
+                    elevation2: '#585858ff',
+                    elevation3: '#1a1a1a'
+                }
+            }
+        }
+        if (windowWidth <= 800) {
+            return {
+                sizes: {
+                    rootWidth: '220px',
+                    controlWidth: '140px'
                 },
                 colors: {
                     accent1: '#43c049ff',
