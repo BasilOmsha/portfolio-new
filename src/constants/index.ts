@@ -398,10 +398,10 @@ export const projectChapters: ProjectChapterProps[] = [
         className: 'project-01',
         imageSrc: 'images/undraw_fishing_n8vg.svg',
         imageAlt: 'Interactive Portfolio Website illustration',
-        techCount: '5+ technologies',
+        techCount: '9+ technologies',
         totalDuration: '~4 weeks time',
         description:
-            '<p>An immersive portfolio website featuring <strong>3D experiences</strong>, <strong>interactive elements</strong>, and <strong>modern animations</strong>.</p><p>Built with <strong>React</strong>, <strong>TypeScript</strong>, <strong>Three.js</strong>, <strong>WebGL</strong>, <strong>Blender</strong> and <strong>GSAP</strong> for smooth animation.</p>',
+            '<p>An immersive portfolio website featuring <strong>3D experiences</strong>, <strong>interactive elements</strong>, and <strong>modern animations</strong>.</p><p>Built with <strong>React</strong>, <strong>TypeScript</strong>, <strong>Three.js</strong>, <strong>WebGL</strong>, <strong>Blender</strong> and <strong>GSAP</strong> for smooth animation.</p><p>Contact functionality is powered by <strong>ASP.NET Core backend</strong> built with <strong>Clean Architecture</strong> principles, with <strong>reCAPTCHA integration</strong> for enhanced security against spam and bot submissions.</p>',
         links: [],
         technologies: [
             {
@@ -445,6 +445,27 @@ export const projectChapters: ProjectChapterProps[] = [
                 href: '#',
                 badges: [''],
                 component: 'Animation'
+            },
+            {
+                number: '07',
+                title: 'ASP.NET Core',
+                href: '#',
+                badges: ['Core'],
+                component: 'Backend API'
+            },
+            {
+                number: '08',
+                title: 'Clean Architecture',
+                href: '#',
+                badges: ['Core'],
+                component: 'Contact Service'
+            },
+            {
+                number: '09',
+                title: 'reCAPTCHA',
+                href: '#',
+                badges: ['Core'],
+                component: 'Form Security'
             }
         ]
     },
