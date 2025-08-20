@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 
-import emailjs from '@emailjs/browser'
 import { zodResolver } from '@hookform/resolvers/zod'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
 import { BeatLoader } from 'react-spinners'
 
+import contactService from '@/api/contact-service.ts'
 import ContactExperience from '../../components/models/contact/ContactExperience.tsx'
 import TitleHeader from '../../components/title-header/TitleHeader.tsx'
 import { contactFormSchema, type ContactFormData } from '../../schemas/contactForm.ts'
@@ -59,43 +59,43 @@ function Contact() {
             name: '',
             email: '',
             message: '',
-            recaptcha: ''
+            recaptchaToken: ''
         }
     })
 
-    const onSubmit = async (): Promise<void> => {
+    const onSubmit = async (data: ContactFormData): Promise<void> => {
         try {
             const isFormValid = await trigger()
-
             if (!isFormValid) return
 
-            if (formRef.current) {
-                await emailjs.sendForm(
-                    import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-                    import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-                    formRef.current,
-                    import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-                )
-                reset()
+            const result = await contactService.sendMessage({
+                name: data.name,
+                email: data.email,
+                message: data.message,
+                recaptchaToken: data.recaptchaToken
+            })
 
+            if (result.success) {
+                reset()
                 if (recaptchaRef.current) {
                     recaptchaRef.current.reset()
                 }
-
                 toast.success('I received your message. Get back to you soon!')
+            } else {
+                toast.error(result.message || 'Failed to send message. Please try again.')
             }
         } catch (error) {
-            console.error('EmailJS error:', error)
+            console.error('Contact service error:', error)
             toast.error('Failed to send message. Please try again.')
         }
     }
 
     const handleRecaptchaChange = (token: string | null) => {
-        setValue('recaptcha', token || '', { shouldValidate: true })
+        setValue('recaptchaToken', token || '', { shouldValidate: true })
     }
 
     const handleRecaptchaExpired = () => {
-        setValue('recaptcha', '', { shouldValidate: true })
+        setValue('recaptchaToken', '', { shouldValidate: true })
         if (recaptchaRef.current) {
             recaptchaRef.current.reset()
         }
@@ -201,9 +201,9 @@ function Contact() {
                                             onExpired={handleRecaptchaExpired}
                                             theme="dark"
                                         />
-                                        {errors.recaptcha && (
+                                        {errors.recaptchaToken && (
                                             <span className="error-message" role="alert">
-                                                {errors.recaptcha.message}
+                                                {errors.recaptchaToken.message}
                                             </span>
                                         )}
                                     </div>

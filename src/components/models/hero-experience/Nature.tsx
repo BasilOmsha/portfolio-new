@@ -14,10 +14,10 @@ extend({ PortalMaterial, PoleLightMaterial, TextMaterial })
 
 function Nature({ orbitControl }: { orbitControl: boolean }) {
     /* Load the model*/
-    const { nodes } = useGLTF('/models/nature.glb') as unknown as NatureTypes
+    const { nodes } = useGLTF('/models/nature-compressed.glb') as unknown as NatureTypes
 
     /*Load the textures*/
-    const bakedTexture = useTexture('/textures/baked.jpg')
+    const bakedTexture = useTexture('/textures/baked.webp')
     bakedTexture.flipY = false
 
     const portalMaterial = useRef<MaterialType>(new PortalMaterial())
@@ -176,4 +176,4 @@ function Nature({ orbitControl }: { orbitControl: boolean }) {
     )
 }
 export default Nature
-useGLTF.preload('/nature.glb')
+useGLTF.preload('models/nature-compressed.glb')
