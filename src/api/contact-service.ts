@@ -19,7 +19,10 @@ const contactService: ContactService = {
             recaptchaToken: contactData.recaptchaToken
         })
 
-        return response.data
+        return {
+            success: true,
+            message: response.data?.message || response.data || 'Message sent successfully!'
+        }
     }
 }
 
