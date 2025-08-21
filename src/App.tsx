@@ -16,6 +16,34 @@ function App() {
     const isDesktop = useMediaQuery({ query: '(min-width: 1025px)' })
 
     useEffect(() => {
+        if (process.env.NODE_ENV === 'production') {
+            const handleKeyDown = (e: KeyboardEvent) => {
+                if (
+                    e.key === 'F12' ||
+                    (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key)) ||
+                    (e.ctrlKey && e.key === 'u')
+                ) {
+                    e.preventDefault()
+                    return false
+                }
+            }
+
+            const handleContextMenu = (e: MouseEvent) => {
+                e.preventDefault()
+                return false
+            }
+
+            document.addEventListener('keydown', handleKeyDown)
+            document.addEventListener('contextmenu', handleContextMenu)
+
+            return () => {
+                document.removeEventListener('keydown', handleKeyDown)
+                document.removeEventListener('contextmenu', handleContextMenu)
+            }
+        }
+    }, [])
+
+    useEffect(() => {
         // Only apply cursor effect if on desktop
         if (isDesktop) {
             const cursor = document.getElementById('cursor')
@@ -49,6 +77,7 @@ function App() {
             }
         }
     }, [isDesktop])
+
     return (
         <>
             {isDesktop && <div className="cursor" id="cursor"></div>}
