@@ -174,7 +174,7 @@ export const expCards: ExperienceCard[] = [
         review: 'Provided IT support for a PhD thesis defense event at Helsinki University, ensuring all technical aspects of the auditorium were prepared and functional.',
         company: 'University of Helsinki',
         imgPath: '',
-        logoPath: '/images/logos/HY__LD02_LogoFV_EN_B3____BW.png',
+        logoPath: '/images/logos/HY__LD01_LogoFP_EN_B3____BW.png',
         title: 'IT Support Gig',
         date2: 'August 15th 2025',
         date: 'May 15th 2025',
