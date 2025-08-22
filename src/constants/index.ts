@@ -133,6 +133,8 @@ type ExperienceCard = {
     company: string
     imgPath: string
     logoPath: string
+    imgWidth: string
+    imgHeight: string
     title: string
     date: string
     date2?: string
@@ -148,6 +150,8 @@ export const expCards: ExperienceCard[] = [
         company: 'Calevala Interactive Ltd',
         imgPath: '/images/exp1.png',
         logoPath: '/images/logos/calevalaLogo.webp',
+        imgWidth: '55px',
+        imgHeight: '45px',
         title: 'Frontend Developer',
         date: 'June 2025 - Present',
         showGlowCard: true,
@@ -175,6 +179,8 @@ export const expCards: ExperienceCard[] = [
         company: 'University of Helsinki',
         imgPath: '',
         logoPath: '/images/logos/HY__LD01_LogoFP_EN_B3____BW.webp',
+        imgWidth: '55px',
+        imgHeight: '55px',
         title: 'IT Support Gig',
         date2: 'August 15th 2025',
         date: 'May 15th 2025',
@@ -204,6 +210,8 @@ export const expCards: ExperienceCard[] = [
         company: 'Calevala Interactive Ltd',
         imgPath: '/images/exp2.png',
         logoPath: '/images/logos/calevalaLogo.webp',
+        imgWidth: '55px',
+        imgHeight: '45px',
         title: 'Application Developer Intern',
         date: 'October 2023 - January 2024',
         showGlowCard: true,
@@ -234,6 +242,8 @@ export const expCards: ExperienceCard[] = [
         company: 'Häme University of Applied Sciences',
         imgPath: '/images/exp3.png',
         logoPath: '/images/logos/hamkLogo.jpg',
+        imgWidth: '55px',
+        imgHeight: '55px',
         title: 'Student Intern',
         date: 'May 2023 - August 2023',
         showGlowCard: true,
@@ -258,6 +268,8 @@ export const expCards: ExperienceCard[] = [
         company: 'FSHKY – Welfare District of Forssa',
         imgPath: '/images/exp4.png',
         logoPath: '/images/logos/fshky_logo.webp',
+        imgWidth: '55px',
+        imgHeight: '55px',
         title: 'ICT Specialist',
         date: 'May 2022 - August 2022',
 
@@ -275,6 +287,8 @@ export const expCards: ExperienceCard[] = [
         company: 'FSHKY – Welfare District of Forssa',
         imgPath: '/images/exp4.png',
         logoPath: '/images/logos/fshky_logo.webp',
+        imgWidth: '55px',
+        imgHeight: '55px',
         title: 'Information Services Specialist',
         date: 'December 2021',
         date2: 'October 2021',
@@ -301,6 +315,8 @@ export const expCards: ExperienceCard[] = [
         company: 'FSHKY – Welfare District of Forssa',
         imgPath: '/images/exp4.png',
         logoPath: '/images/logos/fshky_logo.webp',
+        imgWidth: '55px',
+        imgHeight: '55px',
         title: 'Information Services Specialist',
         date: 'June 2021 - August 2021',
         date2: 'May 2021 - June 2021 (Internship)',

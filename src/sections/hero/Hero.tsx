@@ -63,7 +63,12 @@ function Hero() {
                 <div className="hero_text">
                     <div className="profile-img-container">
                         <div className="square_small_profile_img">
-                            <img src="/images/hero/personal_pic.webp" alt="Profile" />
+                            <img
+                                src="/images/hero/personal_pic.webp"
+                                width="55px"
+                                height="55px"
+                                alt="Profile"
+                            />
                         </div>
                         <span style={{ fontFamily: 'cursive' }}>
                             by{' '}

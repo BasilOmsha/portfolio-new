@@ -117,7 +117,12 @@ function Experience() {
                                         </div>
                                         <div className="expText exp-text">
                                             <div className="timeline-logo">
-                                                <img src={card.logoPath} alt="logo" />
+                                                <img
+                                                    src={card.logoPath}
+                                                    width={card.imgWidth}
+                                                    height={card.imgHeight}
+                                                    alt="logo"
+                                                />
                                             </div>
                                             <div>
                                                 <h1 className="exp-title">{card.title}</h1>
