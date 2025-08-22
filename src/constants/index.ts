@@ -257,7 +257,7 @@ export const expCards: ExperienceCard[] = [
         review: 'ICT Specialist at Welfare District of Forssa (FSHKY), Forssa, Finland. Provided support for Office 365, Lifecare patient information system, AD and Citrix tools, Helpdesk, and TeleQ in a demanding hospital environment.',
         company: 'FSHKY – Welfare District of Forssa',
         imgPath: '/images/exp4.png',
-        logoPath: '/images/logos/fshky_logo.jpeg',
+        logoPath: '/images/logos/fshky_logo.webp',
         title: 'ICT Specialist',
         date: 'May 2022 - August 2022',
 
@@ -353,12 +353,12 @@ export const contactInfo: ContactInfo = {
         {
             name: 'GitHub',
             url: 'https://github.com/BasilOmsha',
-            icon: '/images/socials/github.png'
+            icon: '/images/socials/github.webp'
         },
         {
             name: 'LinkedIn',
             url: 'https://linkedin.com/in/basil-omsha',
-            icon: '/images/socials/linkedin.png'
+            icon: '/images/socials/linkedin.webp'
         }
     ]
 }
