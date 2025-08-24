@@ -331,27 +331,6 @@ export const expCards: ExperienceCard[] = [
             'Utilized TeleQ to respond to requests from different departments.'
         ]
     }
-    // SUMMARY VERSION (commented out)
-    /*
-    {
-        review: 'Various roles at Welfare District of Forssa (FSHKY), Forssa, Finland. ICT Specialist, Information Services Specialist, and Intern. Provided support for Office 365, Lifecare, AD, Citrix, Helpdesk, mobile devices, account management, COVID certificate correction, digital skills instruction, intranet updates, and COVID vaccination recording.',
-        company: 'FSHKY – Welfare District of Forssa',
-        imgPath: '/images/exp4.png',
-        logoPath: '/images/logos/fshky_logo.jpeg',
-        title: 'ICT Specialist / Information Services Specialist / Intern',
-        date: 'May 2021 - August 2022',
-        responsibilities: [
-            'Provided support for Office 365, Lifecare, AD, Citrix, and Helpdesk.',
-            'Installed and managed mobile devices.',
-            'Account management (creation and password changes).',
-            'Corrected COVID certificates.',
-            'Acted as digital skills instructor in Social Services Integration Project.',
-            'Updated intranet (Arabic language).',
-            'Recorded COVID vaccinations during events.',
-            'Learned information management department operations.'
-        ]
-    },
-    */
 ]
 
 type ContactInfo = {

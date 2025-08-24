@@ -7,13 +7,11 @@
   --color-blue-50: #839cb5;
   --color-blue-100: #2d2d38;
 }
-
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 html,
 body {
   width: 100dvw;
@@ -24,8 +22,6 @@ body {
   scroll-behavior: smooth;
   font-family: "Mona Sans", sans-serif;
 }
-
-/* modern scroll */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -36,13 +32,9 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-
-
-/* Custom cursor styles */
 .cursor { 
   position: fixed;
   border-radius: 50%;
-  /* transform: translateX(-50%) translateY(-50%); */
   left: -70px;
   top:-7%;
   mix-blend-mode: difference;
@@ -51,11 +43,11 @@ body {
   border: 2px solid rgb(6, 114, 2);
   height: 140px;
   width: 140px;
-  /* transition: all 300ms ease-out; */
   transition: opacity 300ms ease-out, transform 300ms ease-out;
   pointer-events: none;
+  contain: layout style paint;
+  transform: translate3d(-50%, -50%, 0);
 }
-
 section {
   width: 100dvw;
 }

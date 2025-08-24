@@ -7,7 +7,6 @@
   height: 100vh;
   overflow: hidden;
 }
-
 .hero_background {
   width: 100%;
   height: 100%;
@@ -32,7 +31,6 @@
   border-radius: 10px;
   overflow: hidden;
 }
-
 .square_small_profile_img img {
   width: 100%;
   height: 100%;
@@ -42,13 +40,11 @@
   transition: transform 0.3s ease-in-out;
   filter: invert(1);
 }
-
 .author-link {
   position: relative;
   text-decoration: none;
   color: white;
 }
-
 .author-link::after {
   content: "";
   position: absolute;
@@ -61,11 +57,9 @@
   background-size: 40px 6px;
   transition: background-image 0.4s ease, opacity 0.4s ease;
 }
-
 .author-link:hover::after {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='6' viewBox='0 0 40 6'><path d='M0 3 Q 5 0, 10 3 T 20 3 T 30 3 T 40 3' fill='none' stroke='white' stroke-width='2' /></svg>");
 }
-
 .hero_text {
   display: flex;
   position: relative;
@@ -80,7 +74,6 @@
   min-height: fit-content;
   gap: 1rem;
 }
-
 .hero_text h1 {
   font-size: 3.5rem;
   font-weight: 600;
@@ -88,7 +81,6 @@
   color: #fff;
   flex-wrap: wrap;
 }
-
 .hero_text p {
   font-size: 1.2rem;
   font-weight: 400;
@@ -96,7 +88,6 @@
   color: #fff;
   margin-top: 1.5rem;
 }
-
 .hero_model_section{
   display: flex;
   flex-direction: column;
@@ -105,7 +96,6 @@
   min-width: 60%;
   height: 100vh;
 }
-
 .hero-button {
   display: flex;
   position: absolute;
@@ -123,7 +113,6 @@
   transition-duration: 0.5s;
   cursor: grab;
 }
-
 .x-button {
    position: absolute;
    display: flex;
@@ -142,7 +131,6 @@
    transition-property: opacity, transform;
    transition-duration: 0.5s;
 }
-
 .arrow-container {
   display: flex;
   align-items: center;
@@ -150,7 +138,6 @@
   width: 24px;
   height: 24px;
 }
-
 .arrow {
   position: relative;
   width: 16px;
@@ -159,11 +146,9 @@
   align-items: center;
   justify-content: center;
 }
-
 .isArrow-left {
   transform: rotate(90deg);
 }
-
 .isArrow-right {
   transform: rotate(-90deg);
 }
@@ -174,7 +159,6 @@
   margin: 0 17px;
   overflow: hidden;
 }
-
 .hand-illustration {
   width: 30px;
   height: 30px;
@@ -182,7 +166,6 @@
   background-size: 30px 60px;
   background-position: top left;
 }
-
 .x-icon {
   display: flex;
   align-items: center;
@@ -191,26 +174,24 @@
   height: 20px;
   will-change: "transform";
 }
-
 .f-hero-h1 {
   display: flex;
   flex-direction: row;
 }
-
 .slide {
   margin-top: 8px;
   --transform-translate-y: 0; 
   height: 50px;
   overflow-y: hidden;
 }
-
 .wrapper {
   display: flex;
   padding-bottom: 0.8rem;
   flex-direction: column;
   animation: wordSlider 21s infinite cubic-bezier(0.9, 0.01, 0.3, 0.99);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
-
 .slide-span {
   display: flex; 
   gap: 0.25rem; 
@@ -224,7 +205,6 @@
     border-radius: 50%;
     background-color: white;
   } 
-
 @keyframes wordSlider {
   0% {
     transform: translateY(0.5%);
@@ -251,8 +231,6 @@
     transform: translateY(-87.5%);
   }
 }
-
-
 @media screen and (min-width:2800px) {
   .hero_text h1 {
     font-size: 5rem;
@@ -265,7 +243,6 @@
     height: 82px;
   }
 }
-
 @media screen and (min-width: 801px) and (max-width: 1600px) {
   .hero_text {
     padding: 3rem;
@@ -280,7 +257,6 @@
     font-size: 1rem;
     margin-top: 1rem;
   }
-
   .slide-span img{
     width: 40px;
     height: 40px;
@@ -288,7 +264,6 @@
     border: 1px solid #ccc;
     background-color: white;
   } 
-  
 }
 @media screen and (max-width: 1024px) {
   .square_small_profile_img img {
@@ -355,7 +330,6 @@
     background-color: white;
   } 
 }
-
 @media (max-width: 500px) {
   .hero_section {
     padding-top: 100px;
@@ -389,7 +363,6 @@
     background-color: white;
   } 
 }
-
 @media (max-width: 375px) and (max-height: 667px) {
   .hero-button {
     bottom: 50px !important;
@@ -398,7 +371,6 @@
     bottom: 50px !important;
   }
 }
-
 @media (max-height: 500px) {
   .hero-button {
     bottom: 30px !important;

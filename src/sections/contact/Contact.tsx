@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import ReCAPTCHA from 'react-google-recaptcha'
@@ -17,10 +17,7 @@ function Contact() {
     const formRef = useRef<HTMLFormElement>(null)
     const [isMouseDown, setIsMouseDown] = useState<boolean>(false)
 
-    // const [recaptchaToken, setRecaptchaToken] = useState<string>('')
-    // const [recaptchaError, setRecaptchaError] = useState<string>('')
-
-    const RECAPTCHA_SITE_KEY = import.meta.env.VITE_APP_SITE_KEY
+    const RECAPTCHA_SITE_KEY = useMemo(() => import.meta.env.VITE_APP_SITE_KEY, [])
     const recaptchaRef = useRef<ReCAPTCHA>(null)
 
     useEffect(() => {

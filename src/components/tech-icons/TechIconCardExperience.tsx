@@ -25,44 +25,6 @@ function TechIconCardExperience({ model }: TechIconCardExperienceProps): React.R
             })
         }
     }, [model.name, scene])
-
-    // Handle cursor changes for this specific canvas
-    // useEffect(() => {
-    //     const canvas = canvasRef.current
-    //     if (!canvas) return
-
-    //     // Store function references so we can properly remove them
-    //     const handleMouseDown = () => {
-    //         canvas.style.cursor = 'grabbing'
-    //     }
-
-    //     const handleMouseUp = () => {
-    //         canvas.style.cursor = 'grab'
-    //     }
-
-    //     const handleMouseLeave = () => {
-    //         canvas.style.cursor = 'grab'
-    //     }
-
-    //     // Set initial cursor
-    //     canvas.style.cursor = 'grab'
-
-    //     // Add event listeners
-    //     canvas.addEventListener('mousedown', handleMouseDown)
-    //     canvas.addEventListener('mouseup', handleMouseUp)
-    //     canvas.addEventListener('mouseleave', handleMouseLeave)
-
-    //     // Cleanup function with proper event listener removal
-    //     return () => {
-    //         if (canvas) {
-    //             canvas.style.cursor = 'default'
-    //             canvas.removeEventListener('mousedown', handleMouseDown)
-    //             canvas.removeEventListener('mouseup', handleMouseUp)
-    //             canvas.removeEventListener('mouseleave', handleMouseLeave)
-    //         }
-    //     }
-    // }, [])
-
     // Normalize scale to avoid TypeScript errors
     const normalizedScale: [number, number, number] = (() => {
         if (typeof model.scale === 'number') {

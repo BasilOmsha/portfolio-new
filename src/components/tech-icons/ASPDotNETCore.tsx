@@ -5,36 +5,6 @@ import { Canvas } from '@react-three/fiber'
 
 function ASPDotNETCore() {
     const canvasRef = useRef<HTMLCanvasElement>(null)
-    // useEffect(() => {
-    //     const canvas = canvasRef.current
-    //     if (!canvas) return
-
-    //     const handleMouseDown = () => {
-    //         canvas.style.cursor = 'grabbing'
-    //     }
-    //     const handleMouseUp = () => {
-    //         canvas.style.cursor = 'grab'
-    //     }
-    //     const handleMouseLeave = () => {
-    //         canvas.style.cursor = 'grab'
-    //     }
-
-    //     canvas.style.cursor = 'grab'
-
-    //     canvas.addEventListener('mousedown', handleMouseDown)
-    //     canvas.addEventListener('mouseup', handleMouseUp)
-    //     canvas.addEventListener('mouseleave', handleMouseLeave)
-
-    //     return () => {
-    //         if (canvas) {
-    //             canvas.style.cursor = 'default'
-    //             canvas.removeEventListener('mousedown', handleMouseDown)
-    //             canvas.removeEventListener('mouseup', handleMouseUp)
-    //             canvas.removeEventListener('mouseleave', handleMouseLeave)
-    //         }
-    //     }
-    // }, [])
-
     return (
         <Canvas ref={canvasRef}>
             <ambientLight intensity={0.3} />

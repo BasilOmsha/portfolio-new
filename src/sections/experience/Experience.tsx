@@ -11,83 +11,66 @@ gsap.registerPlugin(ScrollTrigger)
 
 function Experience() {
     useGSAP(() => {
-        // Loop through each timeline card and animate them in
-        // as the user scrolls to each card
-        gsap.utils.toArray('.timeline-card').forEach((card) => {
-            // Animate the card coming in from the left
-            // and fade in
-            gsap.from(card as Element, {
-                // Move the card in from the left
-                xPercent: -100,
-                // Make the card invisible at the start
-                opacity: 0,
-                // Set the origin of the animation to the left side of the card
-                transformOrigin: 'left left',
-                // Animate over 1 second
-                duration: 1,
-                // Use a power2 ease-in-out curve
-                ease: 'power2.inOut',
-                // Trigger the animation when the card is 80% of the way down the screen
+        const ctx = gsap.context(() => {
+            gsap.set(['.timeline-card', '.timeline', '.expText'], {
+                willChange: 'transform',
+                transform: 'translate3d(0,0,0)'
+            })
+            gsap.utils.toArray('.timeline-card').forEach((card) => {
+                gsap.from(card as Element, {
+                    xPercent: -100,
+                    opacity: 0,
+                    transformOrigin: 'left left',
+                    duration: 1,
+                    ease: 'power2.inOut',
+                    scrollTrigger: {
+                        trigger: card as Element,
+                        start: 'top 80%',
+                        onLeave: () => {
+                            gsap.set(card as Element, { willChange: 'auto' })
+                        }
+                    }
+                })
+            })
+
+            gsap.to('.timeline', {
+                transformOrigin: 'bottom bottom',
+                ease: 'power1.inOut',
                 scrollTrigger: {
-                    // The card is the trigger element
-                    trigger: card as Element,
-                    // Trigger the animation when the card is 80% down the screen
-                    start: 'top 80%'
+                    trigger: '.timeline',
+                    start: 'top center',
+                    end: '97% center',
+                    // Update the animation as the user scrolls
+                    onUpdate: (self) => {
+                        gsap.to('.timeline', {
+                            scaleY: 1 - self.progress
+                        })
+                    },
+                    onLeave: () => {
+                        // Remove will-change after animation
+                        gsap.set('.timeline' as unknown as Element, { willChange: 'auto' })
+                    }
                 }
             })
-        })
 
-        // Animate the timeline height as the user scrolls
-        // from the top of the timeline to 70% down the screen
-        // The timeline height should scale down from 1 to 0
-        // as the user scrolls up the screen
-        gsap.to('.timeline', {
-            // Set the origin of the animation to the bottom of the timeline
-            transformOrigin: 'bottom bottom',
-            // Animate the timeline height over 1 second
-            ease: 'power1.inOut',
-            // Trigger the animation when the timeline is at the top of the screen
-            // and end it when the timeline is at 70% down the screen
-            scrollTrigger: {
-                trigger: '.timeline',
-                start: 'top center',
-                end: '97% center',
-                // Update the animation as the user scrolls
-                onUpdate: (self) => {
-                    // Scale the timeline height as the user scrolls
-                    // from 1 to 0 as the user scrolls up the screen
-                    gsap.to('.timeline', {
-                        scaleY: 1 - self.progress
-                    })
-                }
-            }
+            gsap.utils.toArray('.expText').forEach((text) => {
+                gsap.from(text as Element, {
+                    opacity: 0,
+                    xPercent: 0,
+                    duration: 1,
+                    ease: 'power2.inOut',
+                    scrollTrigger: {
+                        trigger: text as Element,
+                        start: 'top 60%',
+                        onLeave: () => {
+                            gsap.set(text as Element, { willChange: 'auto' })
+                        }
+                    }
+                })
+            }, '<') // position parameter - insert at the start of the animation
         })
-
-        // Loop through each expText element and animate them in
-        // as the user scrolls to each text element
-        gsap.utils.toArray('.expText').forEach((text) => {
-            // Animate the text opacity from 0 to 1
-            // and move it from the left to its final position
-            // over 1 second with a power2 ease-in-out curve
-            gsap.from(text as Element, {
-                // Set the opacity of the text to 0
-                opacity: 0,
-                // Move the text from the left to its final position
-                // (xPercent: 0 means the text is at its final position)
-                xPercent: 0,
-                // Animate over 1 second
-                duration: 1,
-                // Use a power2 ease-in-out curve
-                ease: 'power2.inOut',
-                // Trigger the animation when the text is 60% down the screen
-                scrollTrigger: {
-                    // The text is the trigger element
-                    trigger: text as Element,
-                    // Trigger the animation when the text is 60% down the screen
-                    start: 'top 60%'
-                }
-            })
-        }, '<') // position parameter - insert at the start of the animation
+        // Clean up ScrollTrigger instances
+        return () => ctx.revert()
     }, [])
 
     return (
@@ -158,5 +141,4 @@ function Experience() {
         </section>
     )
 }
-
 export default Experience

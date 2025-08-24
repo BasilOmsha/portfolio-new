@@ -1,7 +1,5 @@
 import { Suspense } from 'react'
 
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
 import { BeatLoader } from 'react-spinners'
 
 import { AnimatedCounter } from '@/components/counter/AnimatedCounter.tsx'
@@ -25,36 +23,6 @@ function ModelWithLoader() {
 }
 
 function Hero() {
-    useGSAP(() => {
-        gsap.fromTo(
-            '.square_small_profile_img',
-            { x: -50, opacity: 0 },
-            { x: 0, opacity: 1, duration: 1, ease: 'power2.inOut' }
-        )
-        gsap.fromTo(
-            '.profile-img-container span',
-            { y: -50, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1, ease: 'power2.inOut' }
-        )
-        gsap.fromTo(
-            '.hero_text h1',
-            { y: 50, opacity: 0 },
-            { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: 'power2.inOut' }
-        )
-
-        gsap.fromTo(
-            '.hero_text p',
-            { y: 50, opacity: 0 },
-            { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: 'power2.inOut', delay: 0.5 }
-        )
-
-        // gsap.fromTo(
-        //     '.hero_model_section',
-        //     { x: 100, opacity: 0 },
-        //     { x: 0, opacity: 1, duration: 1, ease: 'power2.inOut', delay: 0.5 }
-        // )
-    })
-
     return (
         <>
             <section id="hero" className="hero_section">
