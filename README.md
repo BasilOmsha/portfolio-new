@@ -1,8 +1,8 @@
 # Personal Portfolio
 
-# Table of Contents
+# Table of Content - **Contact Form** with reCAPTCHA protection and backend API integration
 - [Personal Portfolio](#personal-portfolio)
-- [Table of Contents](#table-of-contents)
+- [Table of Content - **Contact Form** with reCAPTCHA protection and backend API integration](#table-of-content---contact-form-with-recaptcha-protection-and-backend-api-integration)
   - [Intro](#intro)
   - [Tech Overview](#tech-overview)
   - [Features](#features)
@@ -24,11 +24,11 @@ This is an immersive 3D portfolio website showcasing interactive experiences and
  - **React 18** with **TypeScript** for type-safe component development and modern React features
  - **Three.js** and **React Three Fiber (R3F)** for 3D rendering, scene management, and WebGL integration
  - **GSAP (GreenSock)** for high-performance animations and scroll-triggered effects
- - **Tailwind CSS 4** for utility-first styling and responsive design
+ - **Custom CSS** for component-specific styling and responsive design
  - **Vite** as the build tool for fast development and optimized production builds
  - **Blender** for 3D model creation, optimization, and asset preparation
- - **Custom GLSL shaders** for advanced material effects and visual enhancements
- - **EmailJS** for contact form functionality without backend dependencies
+ - **Custom GLSL shaders** for advanced material effects and visual enhanances
+ - **ASP.NET Core backend** with Clean Architecture for contact form functionality
  - **React Hook Form** with **Zod** validation for form management
  - **React Google ReCAPTCHA v3** for spam protection
  - **Vercel Analytics** for performance monitoring and user insights
@@ -141,39 +141,119 @@ yarn preview # Preview the production build locally
 
 Below are the environment variables required for the application:
 
-| Environment Variable       | Description                           | Required |
-| -------------------------- | ------------------------------------- | -------- |
-| `VITE_EMAILJS_SERVICE_ID`  | EmailJS service ID for contact form   | Yes      |
-| `VITE_EMAILJS_TEMPLATE_ID` | EmailJS template ID for contact form  | Yes      |
-| `VITE_EMAILJS_PUBLIC_KEY`  | EmailJS public key for authentication | Yes      |
-| `VITE_RECAPTCHA_SITE_KEY`  | Google reCAPTCHA v3 site key          | Yes      |
+| Environment Variable     | Description                  | Required |
+| ------------------------ | ---------------------------- | -------- |
+| `VITE_API_BASE_URL`      | Base URL for development API | Yes      |
+| `VITE_API_PROD_BASE_URL` | Base URL for production API  | Yes      |
+| `VITE_APP_SITE_KEY`      | Google reCAPTCHA v3 site key | Yes      |
 
-Create a `.env.local` file in the root directory:
+Create `.env.development` and `.env.production` files in the root directory:
+
+**`.env.development`:**
 ```env
-VITE_EMAILJS_SERVICE_ID=your_service_id_here
-VITE_EMAILJS_TEMPLATE_ID=your_template_id_here
-VITE_EMAILJS_PUBLIC_KEY=your_public_key_here
-VITE_RECAPTCHA_SITE_KEY=your_recaptcha_site_key_here
+VITE_API_BASE_URL=http://localhost:5000/api
+VITE_APP_SITE_KEY=your_recaptcha_site_key_here
+```
+
+**`.env.production`:**
+```env
+VITE_API_PROD_BASE_URL=https://your-backend-api.com/api
+VITE_APP_SITE_KEY=your_recaptcha_site_key_here
 ```
 
 ## Project Structure
 ```
 src/
-├── components/          # Reusable UI components
-│   ├── models/         # 3D models and experiences
-│   ├── glow-card/      # Interactive card components
-│   └── counter/        # Animated counter components
-├── sections/           # Main page sections
-│   ├── hero/          # Hero section with 3D scene
-│   ├── projects/      # Project showcase
-│   ├── experience/    # Professional timeline
-│   ├── tech-stack/    # 3D tech visualization
-│   └── contact/       # Contact form
-├── constants/          # Static data and configurations
-├── schemas/           # Zod validation schemas
-├── hooks/             # Custom React hooks
-├── gsap/              # Animation configurations
-└── types.d.ts         # TypeScript type definitions
+├── App.tsx                    # Main application component
+├── main.tsx                   # Application entry point
+├── index.css                  # Global styles
+├── types.d.ts                 # TypeScript type definitions
+├── vite-env.d.ts             # Vite environment types
+├── api/                       # API services
+│   ├── contact-service.ts     # Contact form API service
+│   └── index.ts              # Axios configuration
+├── components/               # Reusable UI components
+│   ├── contact/              # Contact form components
+│   ├── counter/              # Animated counter components
+│   │   ├── AnimatedCounter.css
+│   │   └── AnimatedCounter.tsx
+│   ├── glow-card/           # Interactive card components
+│   │   ├── GlowCard.css
+│   │   └── GlowCard.tsx
+│   ├── loaders/             # Loading components
+│   │   └── AdvancedLoader.tsx
+│   ├── models/              # 3D models and experiences
+│   │   ├── contact/         # Contact section 3D components
+│   │   │   ├── Computer.tsx
+│   │   │   └── ContactExperience.tsx
+│   │   └── hero-experience/ # Hero section 3D components
+│   │       ├── Experience.tsx
+│   │       ├── ExperienceButton.tsx
+│   │       ├── Nature.tsx
+│   │       ├── boneFire/    # Fire effects
+│   │       │   ├── Fire.tsx
+│   │       │   ├── fire/
+│   │       │   │   └── Fire.tsx
+│   │       │   └── material/
+│   │       │       └── Material.tsx
+│   │       ├── materials/   # 3D materials
+│   │       │   └── materials.tsx
+│   │       ├── shaders/     # GLSL shaders
+│   │       │   ├── fire/
+│   │       │   │   ├── fragment.glsl
+│   │       │   │   └── vertex.glsl
+│   │       │   ├── includes/
+│   │       │   │   ├── perlin2d.glsl
+│   │       │   │   └── perlin3d.glsl
+│   │       │   ├── pole-light/
+│   │       │   │   ├── fragment.glsl
+│   │       │   │   └── vertex.glsl
+│   │       │   ├── portal/
+│   │       │   │   ├── fragment.glsl
+│   │       │   │   └── vertex.glsl
+│   │       │   └── text/
+│   │       │       ├── fragment.glsl
+│   │       │       └── vertex.glsl
+│   │       └── types/       # 3D component types
+│   │           └── types.ts
+│   ├── project-chapter/     # Project showcase components
+│   │   └── ProjectChapter.tsx
+│   ├── tech-icons/          # Technology icon components
+│   │   ├── ASPDotNETCore.tsx
+│   │   └── TechIconCardExperience.tsx
+│   └── title-header/        # Title header component
+│       ├── TitleHeader.css
+│       └── TitleHeader.tsx
+├── constants/               # Static data and configurations
+│   └── index.ts
+├── gsap/                   # Animation configurations
+│   └── heroAnimation.ts
+├── hooks/                  # Custom React hooks
+│   └── useCollisionDetection.ts
+├── schemas/                # Zod validation schemas
+│   └── contactForm.ts
+└── sections/               # Main page sections
+    ├── contact/            # Contact form section
+    │   ├── Contact.css
+    │   └── Contact.tsx
+    ├── experience/         # Professional timeline
+    │   ├── Experience.css
+    │   └── Experience.tsx
+    ├── footer/             # Footer section
+    │   ├── Footer.css
+    │   └── Footer.tsx
+    ├── hero/               # Hero section with 3D scene
+    │   ├── hero.css
+    │   └── Hero.tsx
+    ├── nav-bar/            # Navigation bar
+    │   ├── navbar.css
+    │   └── NavBar.tsx
+    ├── projects/           # Project showcase
+    │   ├── Projects.css
+    │   └── Projects.tsx
+    └── tech-stack/         # 3D tech visualization
+        ├── TechStack.css
+        └── TechStack.tsx
 ```
 
 ## What to Expect
@@ -183,20 +263,10 @@ src/
 - **Professional Portfolio** showcasing 6 major projects with detailed technology breakdowns
 - **Interactive Tech Stack** with 3D floating icons representing different technologies
 - **Comprehensive Experience Timeline** including education, certifications, and work history
-- **Functional Contact Form** with spam protection and email delivery
+- **Functional Contact Form** with spam protection and backend API integration
 - **Performance Optimized** for fast loading and smooth 60fps 3D rendering
-- **Accessibility Features** following WCAG guidelines for inclusive design
 
 ## Improvements and Future Features
 - **Enhanced 3D Interactions** with physics-based animations and particle systems
 - **Dark/Light Mode Toggle** for improved user preference support
-- **Multi-language Support** for international accessibility
-- **Blog Integration** for sharing development insights and tutorials
-- **Advanced Analytics** for deeper user behavior insights
-- **Progressive Web App (PWA)** features for offline functionality
 - **Enhanced Accessibility** with screen reader optimizations and keyboard navigation
-- **Performance Monitoring** with Core Web Vitals tracking
-- **3D Model Compression** for even faster loading times
-- **Interactive Project Demos** embedded within the portfolio
-- **Advanced Shader Effects** for more stunning visual presentations
-- **Voice Navigation** for accessibility and modern interaction patterns

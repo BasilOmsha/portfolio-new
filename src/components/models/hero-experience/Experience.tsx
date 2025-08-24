@@ -131,102 +131,25 @@ function Experience() {
         setIsOrbitEnabled(enabled)
     }
 
-    // Calculate Leva position based on screen width
-    // const getLevaPosition = () => {
-    //     if (windowWidth <= 500) {
-    //         return { x: 10, y: 50 }
-    //     }
-    //     if (windowWidth <= 800) {
-    //         return { x: 10, y: 50 }
-    //     }
-    //     return { x: 0, y: 50 }
-    // }
-    // // set position once
-    // const [initialPosition] = useState(() => getLevaPosition())
-
-    // // Calculate Leva theme based on screen width
-    // const getLevaTheme = () => {
-    //     if (windowWidth <= 500) {
-    //         return {
-    //             sizes: {
-    //                 rootWidth: '180px',
-    //                 controlWidth: '100px'
-    //             },
-    //             colors: {
-    //                 accent1: '#43c049ff',
-    //                 accent2: '#138d08ff',
-    //                 elevation1: '#0516afff',
-    //                 elevation2: '#585858ff',
-    //                 elevation3: '#1a1a1a'
-    //             }
-    //         }
-    //     }
-    //     if (windowWidth <= 800) {
-    //         return {
-    //             sizes: {
-    //                 rootWidth: '220px',
-    //                 controlWidth: '140px'
-    //             },
-    //             colors: {
-    //                 accent1: '#43c049ff',
-    //                 accent2: '#138d08ff',
-    //                 elevation1: '#0516afff',
-    //                 elevation2: '#585858ff',
-    //                 elevation3: '#1a1a1a'
-    //             }
-    //         }
-    //     }
-    //     return {
-    //         sizes: {
-    //             rootWidth: '280px',
-    //             controlWidth: '160px'
-    //         },
-    //         colors: {
-    //             accent1: '#43c049ff',
-    //             accent2: '#138d08ff',
-    //             elevation1: '#0516afff',
-    //             elevation2: '#585858ff',
-    //             elevation3: '#1a1a1a'
-    //         }
-    //     }
-    // }
-
     return (
         <>
             <Leva
                 hidden={!isOrbitEnabled}
                 collapsed
-                // theme={getLevaTheme()}
                 theme={levaTheme}
                 titleBar={{
-                    // position: initialPosition
                     position: levaPosition
                 }}
             />
             <Canvas camera={cameraSettings}>
                 <CameraAnimator isOrbitEnabled={isOrbitEnabled} />
-                <OrbitControls
-                    // enablePan={false} // Panning is for moving the camera around the scene
-                    // minDistance={5}
-                    // maxDistance={100}
-                    // enableZoom={isOrbitEnabled}
-                    // enableRotate={isOrbitEnabled}
-                    {...orbitControlsConfig}
-                />
+                <OrbitControls {...orbitControlsConfig} />
 
                 {/*Scene*/}
                 <Fire />
                 <Nature orbitControl={isOrbitEnabled} />
                 <EffectComposer>
-                    <Bloom
-                        // mipmapBlur
-                        // luminanceThreshold={0.8}
-                        // luminanceSmoothing={0.5}
-                        // intensity={0.5}
-                        // width={256}
-                        // height={256}
-                        {...bloomConfig}
-                    />
+                    <Bloom {...bloomConfig} />
                     <ToneMapping blendFunction={BlendFunction.DARKEN} />
                 </EffectComposer>
             </Canvas>
