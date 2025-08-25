@@ -5,66 +5,120 @@ import { defineConfig } from 'vite'
 import glsl from 'vite-plugin-glsl'
 
 export default defineConfig({
-    root: './', // Root directory of the project
-    publicDir: 'public', // Directory for static assets
+    root: './',
+    publicDir: 'public',
     plugins: [react(), tailwindcss(), glsl()],
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './src')
-        }
+        },
+        // Fix React conflicts
+        dedupe: ['react', 'react-dom']
     },
     server: {
-        host: true, // Open to local network and display URL
-        // open: !("SANDBOX_URL" in process.env || "CODESANDBOX_HOST" in process.env) // Open if it's not a CodeSandbox
-        port: 5174 // Default port for development server
+        host: true,
+        port: 5174
     },
+
+    // esbuild configuration goes at root level, not inside build
+    esbuild: {
+        // Remove console logs and debugger statements
+        drop: ['console', 'debugger'],
+
+        // Remove comments
+        legalComments: 'none',
+
+        // Target modern browsers
+        target: 'es2020'
+    },
+
     build: {
-        outDir: 'dist', // Output in the dist/ folder
-        emptyOutDir: true, // Empty the folder first
-        sourcemap: true, // Add sourcemap for debugging
-        minify: 'terser', // Use Terser for minification
-        terserOptions: {
-            parse: {
-                ecma: 2020 // Support modern JavaScript syntax
-            },
-            compress: {
-                // Safe compression options for portfolio
-                drop_console: true, // Remove console.logs in production
-                drop_debugger: true, // Remove debugger statements
-                passes: 2, // Multiple compression passes for better results
-                pure_funcs: ['console.info', 'console.debug'], // Remove specific console methods
-                dead_code: true, // Remove unreachable code
-                conditionals: true, // Optimize if statements
-                evaluate: true, // Evaluate constant expressions
-                sequences: true, // Join consecutive statements
-                unused: true, // Remove unused variables
-                toplevel: true, // Remove unused top-level code
-                // Keep these safe for portfolio
-                unsafe: false, // Avoid unsafe optimizations
-                keep_infinity: true, // Keep Infinity readable
-                reduce_vars: true, // Optimize variable usage
-                collapse_vars: true // Collapse single-use variables
-            },
-            mangle: {
-                // Safe mangling for portfolio
-                toplevel: true, // Mangle top-level names
-                keep_classnames: false, // Mangle class names (safe for most portfolios)
-                keep_fnames: false, // Mangle function names (usually safe)
-                safari10: true, // Work around Safari 10 bugs
-                reserved: ['webkitURL'] // Reserve browser-specific globals if needed
-            },
-            format: {
-                comments: false, // Remove comments
-                preserve_annotations: true, // Keep /*@__PURE__*/ for tree shaking
-                ecma: 2020, // Use modern output format
-                safari10: true // Safari compatibility
-            },
-            // Portfolio-safe top-level options
-            ecma: 2020, // Target modern browsers (good for portfolio)
-            keep_classnames: false, // Usually safe to mangle
-            keep_fnames: false, // Usually safe to mangle
-            safari10: true, // Better browser compatibility
-            toplevel: true // Enable top-level optimizations
-        }
+        outDir: 'dist',
+        emptyOutDir: true,
+        sourcemap: false, // Disable for production performance
+
+        // Use esbuild minification (default, but explicit)
+        minify: 'esbuild',
+
+        // Enhanced chunking for better performance and caching
+        rollupOptions: {
+            output: {
+                manualChunks: (id) => {
+                    if (id.includes('node_modules')) {
+                        // React core - changes rarely
+                        if (id.includes('react') || id.includes('react-dom')) {
+                            return 'react-vendor'
+                        }
+
+                        // Three.js core - stable, large library
+                        if (id.includes('three') && !id.includes('@react-three')) {
+                            return 'three-core'
+                        }
+
+                        // React Three Fiber - bridge between React and Three.js
+                        if (id.includes('@react-three/fiber')) {
+                            return 'r3f'
+                        }
+
+                        // Drei helpers - frequently updated, many utilities
+                        if (id.includes('@react-three/drei')) {
+                            return 'drei'
+                        }
+
+                        // Postprocessing - effects and shaders, can be large
+                        if (
+                            id.includes('@react-three/postprocessing') ||
+                            id.includes('postprocessing')
+                        ) {
+                            return 'postprocessing'
+                        }
+
+                        // Animation library
+                        if (id.includes('gsap')) {
+                            return 'gsap'
+                        }
+
+                        // Development tools - keep separate
+                        if (id.includes('leva') || id.includes('merge-value')) {
+                            return 'dev-tools'
+                        }
+
+                        // Other vendor libraries
+                        return 'vendor'
+                    }
+                },
+                chunkFileNames: 'assets/[name]-[hash].js',
+                entryFileNames: 'assets/[name]-[hash].js',
+                assetFileNames: 'assets/[name]-[hash].[ext]'
+            }
+        },
+
+        // Performance settings
+        chunkSizeWarningLimit: 1000,
+        assetsInlineLimit: 4096
+    },
+
+    // Optimize dependencies
+    optimizeDeps: {
+        include: [
+            'react',
+            'react-dom',
+            'three',
+            '@react-three/fiber',
+            '@react-three/drei',
+            '@react-three/postprocessing',
+            'postprocessing',
+            'gsap',
+            'prop-types',
+            'attr-accept',
+            'leva',
+            'merge-value'
+        ],
+        exclude: []
+    },
+
+    define: {
+        global: 'globalThis',
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
     }
 })
