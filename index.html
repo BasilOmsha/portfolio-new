@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Performance: Preconnect to external domains -->
+    <link rel="preconnect" href="https://www.gstatic.com" />
+    <link rel="dns-prefetch" href="https://www.gstatic.com" />
+    
+    <!-- Performance: Preload critical images responsively -->
+    <link rel="preload" href="/images/hero/personal_pic-400w.webp" as="image" type="image/webp" media="(max-width: 768px)" />
+    <link rel="preload" href="/images/hero/personal_pic-800w.webp" as="image" type="image/webp" media="(min-width: 769px) and (max-width: 1200px)" />
+    <link rel="preload" href="/images/hero/personal_pic-1200w.webp" as="image" type="image/webp" media="(min-width: 1201px)" />
+    
+    <!-- Preload hero background -->
+    <link rel="preload" href="/images/hero/hero_bg-800w.webp" as="image" type="image/webp" media="(max-width: 1200px)" />
+    <link rel="preload" href="/images/hero/hero_bg.webp" as="image" type="image/webp" media="(min-width: 1201px)" />
     
     <!-- Basic SEO Meta Tags -->
     <title>Basil Omsha - Full Stack Developer </title>
@@ -29,10 +42,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Basil Omsha" />
-    
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="https://basilomsha.vercel.app/images/hero/personal_pic.webp" as="image" type="image/webp" />
-    <link rel="preload" href="https://basilomsha.vercel.app/images/hero/hero_bg.webp" as="image" type="image/webp" />
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://basilomsha.vercel.app/" />
