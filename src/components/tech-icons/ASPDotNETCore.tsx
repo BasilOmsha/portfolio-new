@@ -6,7 +6,13 @@ import { Canvas } from '@react-three/fiber'
 function ASPDotNETCore() {
     const canvasRef = useRef<HTMLCanvasElement>(null)
     return (
-        <Canvas ref={canvasRef}>
+        <Canvas
+            ref={canvasRef}
+            style={{
+                pointerEvents: 'none',
+                touchAction: 'pan-y'
+            }}
+        >
             <ambientLight intensity={0.3} />
             <directionalLight position={[5, 5, 5]} intensity={1} />
             <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} intensity={2} />
