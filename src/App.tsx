@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 import { Analytics } from '@vercel/analytics/react'
@@ -43,40 +43,67 @@ function App() {
         }
     }, [])
 
-    useEffect(() => {
-        // Only apply cursor effect if on desktop
-        if (isDesktop) {
-            const cursor = document.getElementById('cursor')
+    const setupCursorAnimation = useCallback(() => {
+        const cursor = document.getElementById('cursor')
+        if (!cursor) return
 
-            if (cursor) {
-                let animationId: number
+        let animationId: number
+        let lastX = 0
+        let lastY = 0
+        let isAnimating = false
 
-                const handleMouseMove = (e: MouseEvent) => {
-                    if (animationId) {
-                        cancelAnimationFrame(animationId)
-                    }
+        const updateCursor = (x: number, y: number) => {
+            if (isAnimating) return
 
-                    // animationId = requestAnimationFrame(() => {
-                    //     cursor.style.left = e.clientX + 'px'
-                    //     cursor.style.top = e.clientY + 'px'
-                    // })
-                    animationId = requestAnimationFrame(() => {
-                        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`
-                    })
-                }
+            isAnimating = true
+            animationId = requestAnimationFrame(() => {
+                // Use transform3d for better GPU acceleration
+                cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`
+                isAnimating = false
+            })
+        }
 
-                document.body.addEventListener('mousemove', handleMouseMove, { passive: true })
+        const handleMouseMove = (e: MouseEvent) => {
+            const deltaX = Math.abs(e.clientX - lastX)
+            const deltaY = Math.abs(e.clientY - lastY)
 
-                // Clean up the event listener when component unmounts
-                return () => {
-                    document.body.removeEventListener('mousemove', handleMouseMove)
-                    if (animationId) {
-                        cancelAnimationFrame(animationId)
-                    }
-                }
+            // Only update if mouse moved significantly (reduces unnecessary repaints)
+            if (deltaX > 0.5 || deltaY > 0.5) {
+                lastX = e.clientX
+                lastY = e.clientY
+                updateCursor(e.clientX, e.clientY)
             }
         }
-    }, [isDesktop])
+
+        // Add mouse enter/leave effects for better UX
+        const handleMouseEnter = () => {
+            cursor.style.opacity = '0.99'
+        }
+
+        const handleMouseLeave = () => {
+            cursor.style.opacity = '0'
+        }
+
+        document.body.addEventListener('mousemove', handleMouseMove, { passive: true })
+        document.body.addEventListener('mouseenter', handleMouseEnter, { passive: true })
+        document.body.addEventListener('mouseleave', handleMouseLeave, { passive: true })
+
+        return () => {
+            document.body.removeEventListener('mousemove', handleMouseMove)
+            document.body.removeEventListener('mouseenter', handleMouseEnter)
+            document.body.removeEventListener('mouseleave', handleMouseLeave)
+            if (animationId) {
+                cancelAnimationFrame(animationId)
+            }
+        }
+    }, [])
+
+    useEffect(() => {
+        if (isDesktop) {
+            const cleanup = setupCursorAnimation()
+            return cleanup
+        }
+    }, [isDesktop, setupCursorAnimation])
 
     return (
         <>
