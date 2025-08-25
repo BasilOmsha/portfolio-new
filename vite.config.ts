@@ -28,7 +28,7 @@ export default defineConfig({
         // Remove comments for smaller bundle
         legalComments: 'none',
 
-        // Target modern browsers for better optimization
+        // Use compatible esbuild target (remove conflicting target)
         target: 'es2020',
 
         // Additional esbuild optimizations
@@ -51,8 +51,8 @@ export default defineConfig({
         emptyOutDir: true,
         sourcemap: false, // Disable for production performance
 
-        // Use Vite's latest browser target for optimal performance
-        target: 'baseline-widely-available', // Chrome 107+, Edge 107+, Firefox 104+, Safari 16+
+        // Use compatible browser target instead of Vite-specific one
+        target: 'es2020', // Compatible with modern browsers
 
         // Use esbuild minification (faster than Terser, nearly same compression)
         minify: 'esbuild',
