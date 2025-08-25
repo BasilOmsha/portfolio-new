@@ -9,9 +9,18 @@
     <link rel="preconnect" href="https://www.gstatic.com" />
     <link rel="dns-prefetch" href="https://www.gstatic.com" />
     
-    <!-- Performance: Preload critical images responsively -->
-    <link rel="preload" href="https://basilomsha.vercel.app/images/hero/personal_pic.webp" as="image" type="image/webp" />
-    <link rel="preload" href="https://basilomsha.vercel.app/images/hero/hero_bg.webp" as="image" type="image/webp" />
+    <!-- Performance: Preload critical resources -->
+    <link rel="preload" href="/images/hero/personal_pic.webp" as="image" type="image/webp" />
+    <link rel="preload" href="/images/hero/hero_bg.webp" as="image" type="image/webp" />
+    <link rel="preload" href="/gt.json" as="fetch" type="application/json" crossorigin />
+    
+    <!-- Prefetch non-critical 3D models for later sections -->
+    <link rel="prefetch" href="/models/nature-compressed.glb" as="fetch" type="application/octet-stream" />
+    <link rel="prefetch" href="/models/computer-optimized-transformed.glb" as="fetch" type="application/octet-stream" />
+    
+    <!-- Resource hints for critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
     <!-- Basic SEO Meta Tags -->
     <title>Basil Omsha - Full Stack Developer </title>
