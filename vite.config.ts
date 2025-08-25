@@ -24,6 +24,7 @@ export default defineConfig({
         sourcemap: false, // Disable sourcemaps in production for smaller bundles
         minify: 'terser', // Use terser for better minification
         chunkSizeWarningLimit: 1000, // Increase warning limit
+        cssMinify: true, // Enable CSS minification
         rollupOptions: {
             output: {
                 // Code splitting configuration
