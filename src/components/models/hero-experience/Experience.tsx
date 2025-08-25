@@ -19,6 +19,9 @@ function Experience() {
         typeof window !== 'undefined' ? window.innerWidth : 0
     )
 
+    /**
+     * Memoizing all expensive calculations to improve performance
+     */
     const cameraSettings: CameraSettingsType = useMemo(
         () => ({
             fov: 25,
@@ -26,10 +29,20 @@ function Experience() {
         }),
         []
     )
-
-    /**
-     * Memoizing all expensive calculations to improve performance
-     */
+    const canvasStyles = useMemo(
+        () => ({
+            ...(isOrbitEnabled
+                ? {
+                      pointerEvents: 'auto' as const,
+                      touchAction: 'none' as const
+                  }
+                : {
+                      pointerEvents: 'none' as const,
+                      touchAction: 'pan-y' as const
+                  })
+        }),
+        [isOrbitEnabled]
+    )
     const orbitControlsConfig = useMemo(
         () => ({
             enablePan: false,
@@ -141,7 +154,7 @@ function Experience() {
                     position: levaPosition
                 }}
             />
-            <Canvas camera={cameraSettings}>
+            <Canvas camera={cameraSettings} style={canvasStyles}>
                 <CameraAnimator isOrbitEnabled={isOrbitEnabled} />
                 <OrbitControls {...orbitControlsConfig} />
 

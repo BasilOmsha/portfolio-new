@@ -1,10 +1,12 @@
 import { useGSAP } from '@gsap/react'
+
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import GlowCard from '@/components/glow-card/GlowCard'
 import TitleHeader from '@/components/title-header/TitleHeader.js'
 import { expCards } from '@/constants'
+
 import './Experience.css'
 
 gsap.registerPlugin(ScrollTrigger)
