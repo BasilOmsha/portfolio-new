@@ -5,8 +5,8 @@ import { defineConfig } from 'vite'
 import glsl from 'vite-plugin-glsl'
 
 export default defineConfig({
-    root: './',
-    publicDir: 'public',
+    root: './', // Root directory of the project
+    publicDir: 'public', // Directory for static assets
     plugins: [react(), tailwindcss(), glsl()],
     resolve: {
         alias: {
@@ -14,127 +14,57 @@ export default defineConfig({
         }
     },
     server: {
-        host: true,
-        port: 5174
+        host: true, // Open to local network and display URL
+        // open: !("SANDBOX_URL" in process.env || "CODESANDBOX_HOST" in process.env) // Open if it's not a CodeSandbox
+        port: 5174 // Default port for development server
     },
     build: {
-        outDir: 'dist',
-        emptyOutDir: true,
-        sourcemap: false, // Disable in production for better performance
-
-        // Set build target for better optimization
-        target: 'es2020', // Modern browsers for better performance
-
-        // Bundle optimization
-        rollupOptions: {
-            output: {
-                // Split chunks for better caching and loading
-                manualChunks: {
-                    // Large 3D libraries
-                    three: ['three', '@react-three/fiber', '@react-three/drei'],
-                    postprocessing: ['@react-three/postprocessing', 'postprocessing'],
-                    // Animation library
-                    gsap: ['gsap'],
-                    // React core
-                    react: ['react', 'react-dom'],
-                    // Development tools (only in dev)
-                    utils: ['leva']
-                },
-                // Optimize chunk naming
-                chunkFileNames: 'assets/[name]-[hash].js',
-                entryFileNames: 'assets/[name]-[hash].js',
-                assetFileNames: 'assets/[name]-[hash].[ext]'
-            }
-        },
-
-        // Use Terser for better compression
-        minify: 'terser',
+        outDir: 'dist', // Output in the dist/ folder
+        emptyOutDir: true, // Empty the folder first
+        sourcemap: true, // Add sourcemap for debugging
+        minify: 'terser', // Use Terser for minification
         terserOptions: {
-            // ECMAScript target - use 2020 for modern features
-            ecma: 2020,
-
-            // Enable top-level optimizations
-            toplevel: true,
-
-            // Compress options
+            parse: {
+                ecma: 2020 // Support modern JavaScript syntax
+            },
             compress: {
-                // Remove console logs in production
-                drop_console: true,
-                drop_debugger: true,
-
-                // Additional optimizations
-                pure_funcs: ['console.log', 'console.info', 'console.warn'],
-
-                // Multiple passes for better compression
-                passes: 3,
-
-                // Remove dead code
-                dead_code: true,
-
-                // Inline functions when beneficial
-                inline: 2,
-
-                // Optimize loops
-                loops: true,
-
-                // Remove unused code
-                unused: true,
-
-                // Evaluate constant expressions
-                evaluate: true,
-
-                // Join consecutive var statements
-                join_vars: true,
-
-                // Optimize property access
-                properties: true
+                // Safe compression options for portfolio
+                drop_console: true, // Remove console.logs in production
+                drop_debugger: true, // Remove debugger statements
+                passes: 2, // Multiple compression passes for better results
+                pure_funcs: ['console.info', 'console.debug'], // Remove specific console methods
+                dead_code: true, // Remove unreachable code
+                conditionals: true, // Optimize if statements
+                evaluate: true, // Evaluate constant expressions
+                sequences: true, // Join consecutive statements
+                unused: true, // Remove unused variables
+                toplevel: true, // Remove unused top-level code
+                // Keep these safe for portfolio
+                unsafe: false, // Avoid unsafe optimizations
+                keep_infinity: true, // Keep Infinity readable
+                reduce_vars: true, // Optimize variable usage
+                collapse_vars: true // Collapse single-use variables
             },
-
-            // Mangle options for smaller output
             mangle: {
-                // Mangle top-level names
-                toplevel: true,
-
-                // Preserve certain function names if needed
-                keep_fnames: false,
-                keep_classnames: false,
-
-                // Mangle properties (be careful with this)
-                properties: {
-                    regex: /^_/ // Only mangle properties starting with underscore
-                }
+                // Safe mangling for portfolio
+                toplevel: true, // Mangle top-level names
+                keep_classnames: false, // Mangle class names (safe for most portfolios)
+                keep_fnames: false, // Mangle function names (usually safe)
+                safari10: true, // Work around Safari 10 bugs
+                reserved: ['webkitURL'] // Reserve browser-specific globals if needed
             },
-
-            // Format options
             format: {
-                // Remove comments
-                comments: false,
-
-                // Compact output
-                beautify: false,
-
-                // Remove unnecessary semicolons
-                semicolons: false,
-
-                // Optimize ASCII output
-                ascii_only: false
-            }
-        },
-
-        // Increase chunk size warning limit for 3D assets
-        chunkSizeWarningLimit: 1000,
-
-        // Optimize asset handling
-        assetsInlineLimit: 4096, // Inline assets smaller than 4KB
-
-        // Enable compressed size reporting for optimization feedback
-        reportCompressedSize: true
-    },
-
-    // Add this section to handle problematic modules
-    define: {
-        global: 'globalThis',
-        // Define NODE_ENV for better dead code elimination
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
+                comments: false, // Remove comments
+                preserve_annotations: true, // Keep /*@__PURE__*/ for tree shaking
+                ecma: 2020, // Use modern output format
+                safari10: true // Safari compatibility
+            },
+            // Portfolio-safe top-level options
+            ecma: 2020, // Target modern browsers (good for portfolio)
+            keep_classnames: false, // Usually safe to mangle
+            keep_fnames: false, // Usually safe to mangle
+            safari10: true, // Better browser compatibility
+            toplevel: true // Enable top-level optimizations
+        }
     }
 })
