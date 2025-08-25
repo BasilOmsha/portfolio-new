@@ -80,17 +80,10 @@ function Experience() {
                 <TitleHeader title="My Tech Journey" />
                 <div className="experience-content">
                     <div className="experience-cards-container">
-                        {/* {expCards.map((card, index) => ( */}
-                        {expCards.map((card, index) => (
+                        {expCards.map((card) => (
                             <div key={`${card.title}-${card.date}`} className="exp-card-wrapper">
                                 <div className="card-section">
-                                    {card.showGlowCard ? (
-                                        <GlowCard card={card} index={index}>
-                                            <div>
-                                                {/* <img src={card.imgPath} alt="exp-img" /> */}
-                                            </div>
-                                        </GlowCard>
-                                    ) : null}
+                                    {card.showGlowCard ? <GlowCard card={card} /> : null}
                                 </div>
                                 <div className="content-section">
                                     <div className="content-wrapper">

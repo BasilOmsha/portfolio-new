@@ -2,16 +2,13 @@
   border: 1px solid var(--color-black-50, #1c1c21);
   background: var(--color-black-100, #0e0e10); 
 }
-
 .card {
   --start: 0;
   position: relative;
   z-index: 40;
   overflow: hidden;
   transition: border-color 1s ease-in-out;
-  /* will-change: auto; */
 }
-
 .card::before {
   position: absolute;
   content: "";
@@ -37,57 +34,38 @@
   mask-clip: padding-box, border-box;
   opacity: 0;
   transition: 0.3s ease;
-  /* will-change: opacity; */
+  will-change: opacity;
 }
-
 .card:hover::before {
   opacity: 0.99;
 }
-
-.glow {
-  pointer-events: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  filter: blur(10px) saturate(200%);
-  /* will-change: filter; */
-}
-
 .timeline-card {
   position: relative;
 }
-
 .glow-card {
   border-radius: 12px; 
   padding: 40px; 
   margin-bottom: 20px; 
   break-inside: avoid;
 }
-
 .star-rating {
   display: flex;
   align-items: center;
   gap: 4px;
   margin-bottom: 20px;
 }
-
 .education-header {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
 }
-
 .certification-header {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
 }
-
 .education-badge {
   background: rgba(4, 152, 189, 0.2);
   color: #0498bd;
@@ -96,7 +74,6 @@
   font-size: 12px;
   font-weight: 500;
 }
-
 .education-period {
   background: rgba(131, 156, 181, 0.2);
   color: #839cb5;
@@ -105,7 +82,6 @@
   font-size: 12px;
   font-weight: 500;
 }
-
 .cert-badge {
   background: rgba(172, 240, 166, 0.2);
   color: #acf0a6;
@@ -114,7 +90,6 @@
   font-size: 12px;
   font-weight: 500;
 }
-
 .cert-date-badge {
   background: rgba(131, 156, 181, 0.2);
   color: #839cb5;
@@ -123,67 +98,56 @@
   font-size: 12px;
   font-weight: 500;
 }
-
 .star-image {
   width: 20px;
   height: 20px;
   object-fit: contain;
 }
-
 .review-container {
   margin-bottom: 20px;
   position: relative;
   z-index: 5;
 }
-
 .review-text {
   color: var(--color-white-50, #d9ecff);
   font-size: 18px;
   line-height: 1.75;
   margin: 0;
 }
-
 .education-section {
   margin-bottom: 24px;
 }
-
 .education-title {
   color: var(--color-white-50, #d9ecff);
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 16px;
 }
-
 .education-item {
   margin-bottom: 16px;
 }
-
 .degree-title {
   color: var(--color-white-50, #d9ecff);
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 8px;
 }
-
 .institution-name {
   color: #839cb5;
   font-size: 15px;
   margin-bottom: 6px;
 }
-
 .education-details {
   color: #839cb5;
   font-size: 14px;
   margin-bottom: 6px;
 }
-
 .education-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
   margin-top: 12px;
 }
-
 .education-lang,
 .education-gpa {
   color: #839cb5;
@@ -193,7 +157,6 @@
   border-radius: 8px;
   border: 1px solid rgba(131, 156, 181, 0.2);
 }
-
 .thesis-topic {
   color: var(--color-white-50, #d9ecff);
   font-size: 13px;
@@ -203,7 +166,6 @@
   border: 1px solid rgba(4, 152, 189, 0.2);
   font-weight: 600;
 }
-
 .thesis-description {
   color: #839cb5;
   font-size: 12px;
@@ -214,7 +176,6 @@
   flex-basis: 100%;
   line-height: 1.4;
 }
-
 .thesis-grade {
   color: #acf0a6;
   font-size: 13px;
@@ -223,7 +184,6 @@
   border-radius: 8px;
   border: 1px solid rgba(172, 240, 166, 0.2);
 }
-
 .thesis-link {
   color: #0498bd;
   font-size: 13px;
@@ -238,74 +198,62 @@
   border-radius: 8px;
   border: 1px solid rgba(4, 152, 189, 0.2);
 }
-
 .thesis-link:hover {
   color: #06c2f0;
   background: rgba(4, 152, 189, 0.2);
 }
-
 .certifications-section {
   margin-top: 24px;
   position: relative;
   z-index: 5;
 }
-
 .certifications-title {
   color: var(--color-white-50, #d9ecff);
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 16px;
 }
-
 .certification-item {
   margin-bottom: 16px;
   padding-bottom: 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 .certification-item:last-child {
   border-bottom: none;
   margin-bottom: 0;
 }
-
 .cert-title {
   color: var(--color-white-50, #d9ecff);
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 6px;
 }
-
 .cert-issuer {
   color: #839cb5;
   font-size: 15px;
   margin-bottom: 4px;
 }
-
 .cert-date {
   color: #839cb5;
   font-size: 14px;
   margin-bottom: 4px;
 }
-
 .cert-id {
   color: #839cb5;
   font-size: 14px;
   margin-bottom: 8px;
 }
-
 .thesis-section {
   margin-top: 20px;
   padding-top: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 .thesis-label {
   color: var(--color-white-50, #d9ecff);
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 12px;
 }
-
 .thesis-topic {
   color: var(--color-white-50, #d9ecff);
   font-size: 14px;
@@ -313,21 +261,18 @@
   margin-bottom: 8px;
   line-height: 1.4;
 }
-
 .thesis-description {
   color: #839cb5;
   font-size: 13px;
   line-height: 1.5;
   margin-bottom: 12px;
 }
-
 .thesis-details {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
 }
-
 .thesis-grade {
   color: #acf0a6;
   font-size: 13px;
@@ -336,7 +281,6 @@
   border-radius: 8px;
   border: 1px solid rgba(172, 240, 166, 0.2);
 }
-
 .thesis-link {
   color: #0498bd;
   font-size: 13px;
@@ -347,7 +291,6 @@
   cursor: pointer;
   display: inline-block;
 }
-
 .thesis-link:hover {
   color: #06c2f0;
   text-decoration: underline;
