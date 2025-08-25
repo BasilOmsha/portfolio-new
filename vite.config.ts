@@ -10,36 +10,28 @@ export default defineConfig({
     plugins: [react(), tailwindcss(), glsl()],
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, './src')
+            '@': path.resolve(__dirname, './src'),
+            // Force React resolution to single instance - CRITICAL for Leva
+            react: path.resolve(__dirname, './node_modules/react'),
+            'react-dom': path.resolve(__dirname, './node_modules/react-dom')
         },
-        // Fix React conflicts - enhanced for all React ecosystem packages
-        dedupe: ['react', 'react-dom', 'react/jsx-runtime']
+        // Enhanced deduplication for React consistency
+        dedupe: ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime']
     },
     server: {
         host: true,
         port: 5174
     },
 
-    // Enhanced esbuild configuration for maximum optimization
+    // Enhanced esbuild configuration
     esbuild: {
-        // Remove console logs and debugger statements in production
-        drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
-
-        // Remove comments for smaller bundle
+        drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [], // Keep console for Leva debugging
         legalComments: 'none',
-
-        // Use compatible esbuild target (remove conflicting target)
         target: 'es2020',
-
-        // Additional esbuild optimizations
         minifyIdentifiers: true,
         minifySyntax: true,
         minifyWhitespace: true,
-
-        // Tree shaking optimization
         treeShaking: true,
-
-        // Define replacements for better dead code elimination
         define: {
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
             __DEV__: JSON.stringify(process.env.NODE_ENV !== 'production')
@@ -49,43 +41,36 @@ export default defineConfig({
     build: {
         outDir: 'dist',
         emptyOutDir: true,
-        sourcemap: false, // Disable for production performance
-
-        // Use compatible browser target instead of Vite-specific one
-        target: 'es2020', // Compatible with modern browsers
-
-        // Use esbuild minification (faster than Terser, nearly same compression)
+        sourcemap: false,
+        target: 'es2020',
         minify: 'esbuild',
+        cssMinify: 'esbuild',
 
-        // CSS minification
-        cssMinify: 'esbuild', // Fast CSS minification
-
-        // Enhanced chunking for better performance and caching
         rollupOptions: {
             output: {
                 manualChunks: (id) => {
                     if (id.includes('node_modules')) {
-                        // React core - changes rarely
+                        // React core - Keep as single chunk to prevent conflicts
                         if (id.includes('react') || id.includes('react-dom')) {
                             return 'react-vendor'
                         }
 
-                        // Three.js core - stable, large library
+                        // Three.js core
                         if (id.includes('three') && !id.includes('@react-three')) {
                             return 'three-core'
                         }
 
-                        // React Three Fiber - bridge between React and Three.js
+                        // React Three Fiber
                         if (id.includes('@react-three/fiber')) {
                             return 'r3f'
                         }
 
-                        // Drei helpers - frequently updated, many utilities
+                        // Drei helpers
                         if (id.includes('@react-three/drei')) {
                             return 'drei'
                         }
 
-                        // Postprocessing - effects and shaders, can be large
+                        // Postprocessing
                         if (
                             id.includes('@react-three/postprocessing') ||
                             id.includes('postprocessing')
@@ -98,9 +83,9 @@ export default defineConfig({
                             return 'gsap'
                         }
 
-                        // Development tools
+                        // Leva and its dependencies - Keep together for consistency
                         if (id.includes('leva') || id.includes('merge-value')) {
-                            return 'dev-tools'
+                            return 'leva-ui'
                         }
 
                         // UI libraries
@@ -112,7 +97,6 @@ export default defineConfig({
                         return 'vendor'
                     }
                 },
-                // Organized asset structure
                 chunkFileNames: 'assets/js/[name]-[hash].js',
                 entryFileNames: 'assets/js/[name]-[hash].js',
                 assetFileNames: (assetInfo) => {
@@ -133,16 +117,13 @@ export default defineConfig({
             }
         },
 
-        // Performance settings
-        chunkSizeWarningLimit: 1000, // 1MB for 3D assets
-        assetsInlineLimit: 4096, // 4KB inline threshold
-
-        // Additional build optimizations
+        chunkSizeWarningLimit: 1000,
+        assetsInlineLimit: 4096,
         reportCompressedSize: true,
         copyPublicDir: true
     },
 
-    // Enhanced dependency optimization
+    // CRITICAL: Include Leva in optimization for production
     optimizeDeps: {
         include: [
             'react',
@@ -156,6 +137,7 @@ export default defineConfig({
             'gsap',
             'prop-types',
             'attr-accept',
+            // Include Leva for production use
             'leva',
             'merge-value'
         ],
@@ -163,7 +145,6 @@ export default defineConfig({
         force: true,
         esbuildOptions: {
             target: 'es2020',
-            // Additional optimization options
             minifyIdentifiers: true,
             minifySyntax: true,
             treeShaking: true
