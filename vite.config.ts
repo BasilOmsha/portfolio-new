@@ -12,8 +12,8 @@ export default defineConfig({
         alias: {
             '@': path.resolve(__dirname, './src')
         },
-        // Fix React conflicts
-        dedupe: ['react', 'react-dom']
+        // Fix React conflicts - enhanced for Leva
+        dedupe: ['react', 'react-dom', 'react/jsx-runtime']
     },
     server: {
         host: true,
@@ -45,7 +45,7 @@ export default defineConfig({
             output: {
                 manualChunks: (id) => {
                     if (id.includes('node_modules')) {
-                        // React core - changes rarely
+                        // React core - changes rarely (include jsx-runtime for Leva)
                         if (id.includes('react') || id.includes('react-dom')) {
                             return 'react-vendor'
                         }
@@ -78,7 +78,7 @@ export default defineConfig({
                             return 'gsap'
                         }
 
-                        // Development tools - keep separate
+                        // Development tools - keep separate but ensure React context works
                         if (id.includes('leva') || id.includes('merge-value')) {
                             return 'dev-tools'
                         }
@@ -98,11 +98,12 @@ export default defineConfig({
         assetsInlineLimit: 4096
     },
 
-    // Optimize dependencies
+    // Enhanced optimizeDeps to fix Leva React context issues
     optimizeDeps: {
         include: [
             'react',
             'react-dom',
+            'react/jsx-runtime', // Important for Leva
             'three',
             '@react-three/fiber',
             '@react-three/drei',
@@ -114,7 +115,13 @@ export default defineConfig({
             'leva',
             'merge-value'
         ],
-        exclude: []
+        exclude: [],
+        // Force dependency optimization to ensure consistent React context
+        force: true,
+        // Add esbuildOptions for better compatibility
+        esbuildOptions: {
+            target: 'es2020'
+        }
     },
 
     define: {
