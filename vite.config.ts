@@ -12,7 +12,7 @@ export default defineConfig({
         alias: {
             '@': path.resolve(__dirname, './src')
         },
-        // Fix React conflicts - enhanced for Leva
+        // Fix React conflicts - enhanced for all React ecosystem packages
         dedupe: ['react', 'react-dom', 'react/jsx-runtime']
     },
     server: {
@@ -20,16 +20,30 @@ export default defineConfig({
         port: 5174
     },
 
-    // esbuild configuration goes at root level, not inside build
+    // Enhanced esbuild configuration for maximum optimization
     esbuild: {
-        // Remove console logs and debugger statements
-        drop: ['console', 'debugger'],
+        // Remove console logs and debugger statements in production
+        drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
 
-        // Remove comments
+        // Remove comments for smaller bundle
         legalComments: 'none',
 
-        // Target modern browsers
-        target: 'es2020'
+        // Target modern browsers for better optimization
+        target: 'es2020',
+
+        // Additional esbuild optimizations
+        minifyIdentifiers: true,
+        minifySyntax: true,
+        minifyWhitespace: true,
+
+        // Tree shaking optimization
+        treeShaking: true,
+
+        // Define replacements for better dead code elimination
+        define: {
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
+            __DEV__: JSON.stringify(process.env.NODE_ENV !== 'production')
+        }
     },
 
     build: {
@@ -37,15 +51,21 @@ export default defineConfig({
         emptyOutDir: true,
         sourcemap: false, // Disable for production performance
 
-        // Use esbuild minification (default, but explicit)
+        // Use Vite's latest browser target for optimal performance
+        target: 'baseline-widely-available', // Chrome 107+, Edge 107+, Firefox 104+, Safari 16+
+
+        // Use esbuild minification (faster than Terser, nearly same compression)
         minify: 'esbuild',
+
+        // CSS minification
+        cssMinify: 'esbuild', // Fast CSS minification
 
         // Enhanced chunking for better performance and caching
         rollupOptions: {
             output: {
                 manualChunks: (id) => {
                     if (id.includes('node_modules')) {
-                        // React core - changes rarely (include jsx-runtime for Leva)
+                        // React core - changes rarely
                         if (id.includes('react') || id.includes('react-dom')) {
                             return 'react-vendor'
                         }
@@ -78,32 +98,56 @@ export default defineConfig({
                             return 'gsap'
                         }
 
-                        // Development tools - keep separate but ensure React context works
+                        // Development tools
                         if (id.includes('leva') || id.includes('merge-value')) {
                             return 'dev-tools'
+                        }
+
+                        // UI libraries
+                        if (id.includes('framer-motion') || id.includes('react-responsive')) {
+                            return 'ui-vendor'
                         }
 
                         // Other vendor libraries
                         return 'vendor'
                     }
                 },
-                chunkFileNames: 'assets/[name]-[hash].js',
-                entryFileNames: 'assets/[name]-[hash].js',
-                assetFileNames: 'assets/[name]-[hash].[ext]'
+                // Organized asset structure
+                chunkFileNames: 'assets/js/[name]-[hash].js',
+                entryFileNames: 'assets/js/[name]-[hash].js',
+                assetFileNames: (assetInfo) => {
+                    const name = assetInfo.name ?? ''
+                    const info = name.split('.')
+                    const ext = info[info.length - 1]
+                    if (/\.(png|jpe?g|svg|gif|webp|avif)$/i.test(name)) {
+                        return `assets/images/[name]-[hash].${ext}`
+                    }
+                    if (/\.(woff2?|eot|ttf|otf)$/i.test(name)) {
+                        return `assets/fonts/[name]-[hash].${ext}`
+                    }
+                    if (/\.(css)$/i.test(name)) {
+                        return `assets/css/[name]-[hash].${ext}`
+                    }
+                    return `assets/[name]-[hash].${ext}`
+                }
             }
         },
 
         // Performance settings
-        chunkSizeWarningLimit: 1000,
-        assetsInlineLimit: 4096
+        chunkSizeWarningLimit: 1000, // 1MB for 3D assets
+        assetsInlineLimit: 4096, // 4KB inline threshold
+
+        // Additional build optimizations
+        reportCompressedSize: true,
+        copyPublicDir: true
     },
 
-    // Enhanced optimizeDeps to fix Leva React context issues
+    // Enhanced dependency optimization
     optimizeDeps: {
         include: [
             'react',
             'react-dom',
-            'react/jsx-runtime', // Important for Leva
+            'react/jsx-runtime',
             'three',
             '@react-three/fiber',
             '@react-three/drei',
@@ -116,16 +160,19 @@ export default defineConfig({
             'merge-value'
         ],
         exclude: [],
-        // Force dependency optimization to ensure consistent React context
         force: true,
-        // Add esbuildOptions for better compatibility
         esbuildOptions: {
-            target: 'es2020'
+            target: 'es2020',
+            // Additional optimization options
+            minifyIdentifiers: true,
+            minifySyntax: true,
+            treeShaking: true
         }
     },
 
     define: {
         global: 'globalThis',
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
+        __DEV__: JSON.stringify(process.env.NODE_ENV !== 'production')
     }
 })
