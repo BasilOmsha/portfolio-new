@@ -10,9 +10,12 @@ export default defineConfig({
     plugins: [react(), tailwindcss(), glsl()],
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, './src')
+            '@': path.resolve(__dirname, './src'),
+            // Force React resolution to prevent multiple instances
+            react: path.resolve(__dirname, './node_modules/react'),
+            'react-dom': path.resolve(__dirname, './node_modules/react-dom')
         },
-        // Fix React conflicts - enhanced for Leva
+        // Enhanced deduplication for React
         dedupe: ['react', 'react-dom', 'react/jsx-runtime']
     },
     server: {
@@ -40,13 +43,18 @@ export default defineConfig({
         // Use esbuild minification (default, but explicit)
         minify: 'esbuild',
 
-        // Enhanced chunking for better performance and caching
+        // Modified chunking to keep Leva with React
         rollupOptions: {
             output: {
                 manualChunks: (id) => {
                     if (id.includes('node_modules')) {
-                        // React core - changes rarely (include jsx-runtime for Leva)
-                        if (id.includes('react') || id.includes('react-dom')) {
+                        // Keep Leva in the same chunk as React to prevent context issues
+                        if (
+                            id.includes('react') ||
+                            id.includes('react-dom') ||
+                            id.includes('leva') ||
+                            id.includes('merge-value')
+                        ) {
                             return 'react-vendor'
                         }
 
@@ -78,11 +86,6 @@ export default defineConfig({
                             return 'gsap'
                         }
 
-                        // Development tools - keep separate but ensure React context works
-                        if (id.includes('leva') || id.includes('merge-value')) {
-                            return 'dev-tools'
-                        }
-
                         // Other vendor libraries
                         return 'vendor'
                     }
@@ -98,12 +101,12 @@ export default defineConfig({
         assetsInlineLimit: 4096
     },
 
-    // Enhanced optimizeDeps to fix Leva React context issues
+    // Enhanced optimizeDeps with specific React handling
     optimizeDeps: {
         include: [
             'react',
             'react-dom',
-            'react/jsx-runtime', // Important for Leva
+            'react/jsx-runtime',
             'three',
             '@react-three/fiber',
             '@react-three/drei',
@@ -111,16 +114,16 @@ export default defineConfig({
             'postprocessing',
             'gsap',
             'prop-types',
-            'attr-accept',
-            'leva',
-            'merge-value'
+            'attr-accept'
         ],
         exclude: [],
         // Force dependency optimization to ensure consistent React context
         force: true,
         // Add esbuildOptions for better compatibility
         esbuildOptions: {
-            target: 'es2020'
+            target: 'es2020',
+            // Ensure proper JSX handling
+            jsx: 'automatic'
         }
     },
 
