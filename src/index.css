@@ -34,19 +34,19 @@ body {
 }
 .cursor { 
   position: fixed;
-  border-radius: 50%;
   left: -70px;
-  top:-7%;
-  mix-blend-mode: difference;
-  background-color: #ffffff;
-  z-index: 10000;
-  border: 2px solid rgb(6, 114, 2);
-  height: 140px;
+  top: -7%;
   width: 140px;
-  transition: opacity 300ms ease-out, transform 300ms ease-out;
+  height: 140px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid rgb(6, 114, 2);
+  mix-blend-mode: difference;
   pointer-events: none;
+  z-index: 10000;
+  will-change: transform;
   contain: layout style paint;
-  transform: translate3d(-50%, -50%, 0);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
 }
 section {
   width: 100dvw;

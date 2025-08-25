@@ -1,5 +1,6 @@
 import { navLinks } from '@/constants'
 import { useEffect, useState } from 'react'
+
 import './navbar.css'
 
 function NavBar() {
@@ -11,7 +12,7 @@ function NavBar() {
             setScrolled(isScrolled)
         }
 
-        window.addEventListener('scroll', handleScroll)
+        window.addEventListener('scroll', handleScroll, { passive: true })
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
