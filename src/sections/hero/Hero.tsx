@@ -35,7 +35,7 @@ function Hero() {
                                 src="/images/hero/personal_pic.webp"
                                 width="100%"
                                 height="auto"
-                                alt="Profile"
+                                alt="Profile Image"
                             />
                         </div>
                         <span style={{ fontFamily: 'cursive' }}>
