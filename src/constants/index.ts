@@ -138,6 +138,7 @@ type ExperienceCard = {
     title: string
     date: string
     date2?: string
+    date3?: string
     responsibilities: string[]
     showGlowCard?: boolean
     education?: Education
@@ -182,6 +183,7 @@ export const expCards: ExperienceCard[] = [
         imgWidth: '100%',
         imgHeight: 'auto',
         title: 'IT Support Gig',
+        date3: 'September 5th 2025',
         date2: 'August 15th 2025',
         date: 'May 15th 2025',
         showGlowCard: true,

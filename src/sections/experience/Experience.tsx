@@ -109,6 +109,9 @@ function Experience() {
                                                 {card.date2 && (
                                                     <p className="exp-date">🗓️&nbsp;{card.date2}</p>
                                                 )}
+                                                {card.date3 && (
+                                                    <p className="exp-date">🗓️&nbsp;{card.date3}</p>
+                                                )}
                                                 <p className="responsibilities-label">
                                                     Responsibilities
                                                 </p>
