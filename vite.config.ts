@@ -52,18 +52,22 @@ export default defineConfig({
                         './src/components/loaders/AdvancedLoader.tsx',
                         './src/components/models/contact/Computer.tsx',
                         './src/components/models/contact/ContactExperience.tsx',
-                        './src/components/models/hero-experience/Experience.tsx',
-                        './src/components/models/hero-experience/ExperienceButton.tsx',
-                        './src/components/models/hero-experience/Nature.tsx',
-                        './src/components/models/hero-experience/boneFire/Fire.tsx',
-                        './src/components/models/hero-experience/boneFire/fire/Fire.tsx',
-                        './src/components/models/hero-experience/boneFire/material/Material.tsx',
-                        './src/components/models/hero-experience/materials/materials.tsx',
-                        './src/components/models/hero-experience/types/types.ts',
                         './src/components/project-chapter/ProjectChapter.tsx',
                         './src/components/tech-icons/ASPDotNETCore.tsx',
                         './src/components/tech-icons/TechIconCardExperience.tsx',
                         './src/components/title-header/TitleHeader.tsx'
+                    ],
+                    heroExperienceMain: [
+                        './src/components/models/hero-experience/Experience.tsx',
+                        './src/components/models/hero-experience/ExperienceButton.tsx',
+                        './src/components/models/hero-experience/Nature.tsx'
+                    ],
+                    heroExperienceDetails: [
+                        './src/components/models/hero-experience/boneFire/Fire.tsx',
+                        './src/components/models/hero-experience/boneFire/fire/Fire.tsx',
+                        './src/components/models/hero-experience/boneFire/material/Material.tsx',
+                        './src/components/models/hero-experience/materials/materials.tsx',
+                        './src/components/models/hero-experience/types/types.ts'
                     ],
                     sections: [
                         './src/sections/contact/Contact.tsx',
