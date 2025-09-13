@@ -391,7 +391,7 @@ export type ProjectChapterProps = {
 export const projectChapters: ProjectChapterProps[] = [
     {
         index: '01',
-        title: 'Portfolio (this)',
+        title: 'this.portfolio',
         className: 'project-01',
         imageSrc: 'images/undraw_fishing_n8vg.svg',
         imageAlt: 'Interactive Portfolio Website illustration',
