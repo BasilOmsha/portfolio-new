@@ -95,6 +95,10 @@ export default defineConfig({
                 drop_console: true, // Remove console.log statements
                 drop_debugger: true,
                 pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn']
+            },
+            format: {
+                comments: false, // Remove comments
+                beautify: false // Ensure output is not pretty-printed
             }
         }
     }
