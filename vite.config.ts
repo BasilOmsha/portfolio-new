@@ -29,22 +29,36 @@ export default defineConfig({
         rollupOptions: {
             output: {
                 // Code splitting configuration
-                manualChunks: {
-                    // Vendor chunk for React and core libraries
-                    vendor: ['react', 'react-dom'],
-                    // Three.js and related libraries
-                    three: [
-                        'three',
-                        '@react-three/fiber',
-                        '@react-three/drei',
-                        '@react-three/postprocessing'
-                    ],
-                    // GSAP animation library
-                    gsap: ['gsap', '@gsap/react'],
-                    // Form and validation libraries
-                    forms: ['react-hook-form', '@hookform/resolvers', 'zod'],
-                    // UI and utility libraries
-                    ui: ['react-spinners', 'react-hot-toast', 'react-responsive', 'react-countup']
+                manualChunks: (id) => {
+                    // Vendor and library chunks
+                    if (id.includes('node_modules')) {
+                        if (id.includes('react')) return 'vendor'
+                        if (id.includes('three') || id.includes('@react-three')) return 'three'
+                        if (id.includes('gsap')) return 'gsap'
+                        if (
+                            id.includes('react-hook-form') ||
+                            id.includes('@hookform/resolvers') ||
+                            id.includes('zod')
+                        )
+                            return 'forms'
+                        if (
+                            id.includes('react-spinners') ||
+                            id.includes('react-hot-toast') ||
+                            id.includes('react-responsive') ||
+                            id.includes('react-countup')
+                        )
+                            return 'ui'
+                    }
+                    // Split your own code by folder
+                    if (id.includes('/src/components/')) return 'components'
+                    if (id.includes('/src/sections/')) return 'sections'
+                    if (id.includes('/src/hooks/')) return 'hooks'
+                    if (id.includes('/src/constants/')) return 'constants'
+                    if (id.includes('/src/gsap/')) return 'gsap-custom'
+                    if (id.includes('/src/api/')) return 'api'
+                    if (id.includes('/src/schemas/')) return 'schemas'
+                    if (id.includes('/src/types')) return 'types'
+                    // fallback: let Vite/Rollup decide
                 },
                 // Optimize chunk naming
                 chunkFileNames: (chunkInfo) => {
