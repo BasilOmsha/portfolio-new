@@ -21,6 +21,11 @@ export const useVersionCheck = (options: UseVersionCheckOptions = {}) => {
     const isCheckingRef = useRef(false)
     const mountedRef = useRef(true)
 
+    // Clear notification state when app loads (allows new notifications after refresh)
+    useEffect(() => {
+        updateNotificationService.clearShownVersion()
+    }, [])
+
     const performVersionCheck = useCallback(async () => {
         if (isCheckingRef.current || !mountedRef.current) {
             return
@@ -40,7 +45,8 @@ export const useVersionCheck = (options: UseVersionCheckOptions = {}) => {
 
                 updateNotificationService.showUpdateNotification(
                     currentVersion.version,
-                    result.newVersion.version
+                    result.newVersion.version,
+                    result.newVersion.buildHash
                 )
 
                 onUpdateDetected?.(currentVersion.version, result.newVersion.version)
@@ -59,8 +65,8 @@ export const useVersionCheck = (options: UseVersionCheckOptions = {}) => {
             return
         }
 
-        // Perform initial check
-        performVersionCheck()
+        // Perform initial check after a short delay
+        setTimeout(performVersionCheck, 5000)
 
         // Set up interval for periodic checks
         intervalRef.current = setInterval(performVersionCheck, checkInterval)

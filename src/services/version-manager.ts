@@ -54,7 +54,6 @@ export class VersionManager {
 
                 const versionInfo: VersionInfo = await response.json()
 
-                // Validate response structure
                 if (!this.isValidVersionInfo(versionInfo)) {
                     throw new Error('Invalid version info structure')
                 }
@@ -68,7 +67,7 @@ export class VersionManager {
                 }
 
                 if (attempt < this.config.retryAttempts) {
-                    await this.delay(this.config.retryDelay * attempt) // Exponential backoff
+                    await this.delay(this.config.retryDelay * attempt)
                 }
             }
         }
@@ -89,12 +88,10 @@ export class VersionManager {
 
             const currentVersion = this.getCurrentVersion()
 
-            // Check if versions are different (build hash is the most reliable indicator)
-            const hasUpdate =
-                latestVersion.buildHash !== currentVersion.buildHash ||
-                latestVersion.timestamp > currentVersion.timestamp
+            // Simple check: if buildHash is different, there's an update
+            const isDifferentVersion = latestVersion.buildHash !== currentVersion.buildHash
 
-            if (hasUpdate) {
+            if (isDifferentVersion) {
                 return {
                     hasUpdate: true,
                     newVersion: latestVersion

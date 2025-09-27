@@ -1,113 +1,78 @@
 .update-notification {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
   z-index: 9999;
-  max-width: 400px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: calc(100% - 40px);
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  animation: slideInRight 0.3s ease-out
+  backdrop-filter: blur(20px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none
 }
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1
-  }
+.update-notification.visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto
 }
 .update-notification-content {
-  padding: 20px;
+  padding: 16px 20px;
   color: white;
   display: flex;
-  align-items: flex-start;
-  gap: 16px
+  align-items: center;
+  gap: 12px
 }
 .update-notification-icon {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  color: #fff;
-  margin-top: 2px
+  width: 20px;
+  height: 20px;
+  color: #4ade80
 }
 .update-notification-text {
   flex: 1;
   min-width: 0
 }
 .update-notification-text h4 {
-  margin: 0 0 8px 0;
-  font-size: 16px;
+  margin: 0 0 4px 0;
+  font-size: 14px;
   font-weight: 600;
   color: white
 }
 .update-notification-text p {
   margin: 0;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.9)
-}
-.update-notification-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 12px
-}
-.update-btn {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  min-width: 80px
-}
-.update-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed
-}
-.update-btn-primary {
-  background-color: white;
-  color: #667eea;
-}
-.update-btn-primary:hover:not(:disabled) {
-  background-color: #f8f9ff;
-  transform: translateY(-1px)
-}
-.update-btn-secondary {
-  background-color: transparent;
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3)
-}
-.update-btn-secondary:hover:not(:disabled) {
-  background-color: rgba(255, 255, 255, 0.1)
+  color: rgba(255, 255, 255, 0.8)
 }
 @media (max-width: 768px) {
   .update-notification {
-    top: 10px;
-    right: 10px;
+    bottom: 10px;
     left: 10px;
+    right: 10px;
+    transform: translateY(100px);
+    width: auto;
     max-width: none
   }
+  .update-notification.visible {
+    transform: translateY(0)
+  }
   .update-notification-content {
-    padding: 16px
+    padding: 14px 16px
   }
-  .update-notification-actions {
-    flex-direction: row;
-    justify-content: flex-end
+  .update-notification-text h4 {
+    font-size: 13px
   }
-  .update-btn {
-    flex: 1
+  .update-notification-text p {
+    font-size: 12px
   }
 }
-@media (prefers-color-scheme: dark) {
+@media (prefers-reduced-motion: reduce) {
   .update-notification {
-    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
-    border-color: rgba(255, 255, 255, 0.2)
+    transition: opacity 0.2s ease
   }
 }

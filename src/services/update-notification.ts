@@ -10,14 +10,13 @@ export class UpdateNotificationService {
         newVersion: '',
         isVisible: false
     }
+    private readonly NOTIFICATION_SHOWN_KEY = 'update_notification_shown_for'
 
     /**
      * Subscribe to notification state changes
      */
     subscribe(listener: NotificationListener): () => void {
         this.listeners.add(listener)
-
-        // Send current state immediately
         listener(this.state)
 
         return () => {
@@ -28,23 +27,56 @@ export class UpdateNotificationService {
     /**
      * Show update notification
      */
-    showUpdateNotification(currentVersion: string, newVersion: string): void {
+    showUpdateNotification(currentVersion: string, newVersion: string, newBuildHash: string): void {
+        // Check if we've already shown notification for this version
+        const shownForVersion = this.getShownForVersion()
+        if (shownForVersion === newBuildHash) {
+            return // Don't show again for same version
+        }
+
         this.updateState({
             isUpdateAvailable: true,
             currentVersion,
             newVersion,
             isVisible: true
         })
+
+        // Mark that we've shown notification for this version
+        this.markNotificationShown(newBuildHash)
     }
 
     /**
-     * Hide update notification
+     * Mark notification as shown for this version
      */
-    hideNotification(): void {
-        this.updateState({
-            ...this.state,
-            isVisible: false
-        })
+    private markNotificationShown(buildHash: string): void {
+        try {
+            localStorage.setItem(this.NOTIFICATION_SHOWN_KEY, buildHash)
+        } catch (error) {
+            console.warn('Failed to mark notification as shown:', error)
+        }
+    }
+
+    /**
+     * Get which version's notification was shown
+     */
+    private getShownForVersion(): string | null {
+        try {
+            return localStorage.getItem(this.NOTIFICATION_SHOWN_KEY)
+        } catch (error) {
+            console.warn('Failed to get shown version:', error)
+            return null
+        }
+    }
+
+    /**
+     * Clear shown version (called when app initializes - this allows new notifications)
+     */
+    clearShownVersion(): void {
+        try {
+            localStorage.removeItem(this.NOTIFICATION_SHOWN_KEY)
+        } catch (error) {
+            console.warn('Failed to clear shown version:', error)
+        }
     }
 
     /**
@@ -72,6 +104,13 @@ export class UpdateNotificationService {
     private updateState(newState: UpdateNotificationState): void {
         this.state = newState
         this.listeners.forEach((listener) => listener(this.state))
+    }
+
+    /**
+     * Cleanup resources
+     */
+    cleanup(): void {
+        // No timeouts to cleanup since message stays until refresh
     }
 }
 
