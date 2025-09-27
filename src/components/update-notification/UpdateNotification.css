@@ -1,0 +1,113 @@
+.update-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  max-width: 400px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  animation: slideInRight 0.3s ease-out
+}
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1
+  }
+}
+.update-notification-content {
+  padding: 20px;
+  color: white;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px
+}
+.update-notification-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: #fff;
+  margin-top: 2px
+}
+.update-notification-text {
+  flex: 1;
+  min-width: 0
+}
+.update-notification-text h4 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: white
+}
+.update-notification-text p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9)
+}
+.update-notification-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px
+}
+.update-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-width: 80px
+}
+.update-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed
+}
+.update-btn-primary {
+  background-color: white;
+  color: #667eea;
+}
+.update-btn-primary:hover:not(:disabled) {
+  background-color: #f8f9ff;
+  transform: translateY(-1px)
+}
+.update-btn-secondary {
+  background-color: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3)
+}
+.update-btn-secondary:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.1)
+}
+@media (max-width: 768px) {
+  .update-notification {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none
+  }
+  .update-notification-content {
+    padding: 16px
+  }
+  .update-notification-actions {
+    flex-direction: row;
+    justify-content: flex-end
+  }
+  .update-btn {
+    flex: 1
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .update-notification {
+    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+    border-color: rgba(255, 255, 255, 0.2)
+  }
+}

@@ -27,3 +27,6 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# Generated files  
+public/version.json

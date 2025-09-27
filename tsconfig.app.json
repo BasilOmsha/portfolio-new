@@ -31,5 +31,5 @@
     "node_modules/gsap/types/index.d.ts",
     "src/types.d.ts"
   ],
-  "include": ["src"]
+  "include": ["src", "scripts"]
 }
