@@ -114,7 +114,6 @@ void main() {
 
 ### Performance Optimization
 - **Efficient 3D Rendering:** Optimized geometry and materials for smooth 60fps performance
-- **Lazy Loading:** Components and assets loaded on demand
 - **Image Optimization:** WebP format with fallbacks for better loading times
 - **Bundle Splitting:** Code splitting for reduced initial load time
 - **Memory Management:** Proper cleanup of Three.js resources and event listeners
@@ -145,7 +144,7 @@ Below are the environment variables required for the application:
 | ------------------------ | ---------------------------- | -------- |
 | `VITE_API_BASE_URL`      | Base URL for development API | Yes      |
 | `VITE_API_PROD_BASE_URL` | Base URL for production API  | Yes      |
-| `VITE_APP_SITE_KEY`      | Google reCAPTCHA v3 site key | Yes      |
+| `VITE_APP_SITE_KEY`      | Google reCAPTCHA v2 site key | Yes      |
 
 Create `.env.development` and `.env.production` files in the root directory:
 
@@ -270,3 +269,4 @@ src/
 - **Enhanced 3D Interactions** with physics-based animations and particle systems
 - **Dark/Light Mode Toggle** for improved user preference support
 - **Enhanced Accessibility** with screen reader optimizations and keyboard navigation
+- **Performance** optimization for smoother experience across different browsers and devices

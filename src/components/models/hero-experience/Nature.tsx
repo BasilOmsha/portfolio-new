@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { useGSAP } from '@gsap/react'
 import { useGLTF, useTexture } from '@react-three/drei'
@@ -24,10 +24,68 @@ function Nature({ orbitControl }: { orbitControl: boolean }) {
     const poleLightMaterial = useRef<MaterialType>(new PoleLightMaterial())
     const textMaterial = useRef<MaterialType>(new TextMaterial())
 
+    const [visibleTextEmissions, setVisibleTextEmissions] = useState<Set<string>>(new Set())
+    const [showPortalLight, setShowPortalLight] = useState<boolean>(false)
+    const [showPoleLight, setShowPoleLight] = useState<boolean>(false)
+
+    const textEmissionNodes = useMemo(
+        () => [
+            'BTextEmission',
+            'ZTextEmission',
+            'NTextEmission',
+            'OTextEmission',
+            'RuneEmission1',
+            'RuneEmission2',
+            'RuneEmission3'
+        ],
+        []
+    )
+
     useFrame((_, delta) => {
-        portalMaterial.current.uTime += delta * 2
-        poleLightMaterial.current.uTime += delta * 0.6
+        if (orbitControl) {
+            portalMaterial.current.uTime += delta * 2
+            poleLightMaterial.current.uTime += delta * 0.6
+        }
     })
+
+    useEffect(() => {
+        if (orbitControl) {
+            // Reset all states
+            setVisibleTextEmissions(new Set())
+            setShowPortalLight(false)
+            setShowPoleLight(false)
+
+            // Create timeouts for each text emission
+            const textTimeouts = textEmissionNodes.map((nodeName, index) => {
+                return setTimeout(() => {
+                    setVisibleTextEmissions((prev) => new Set([...prev, nodeName]))
+                }, index * 200)
+            })
+
+            // Calculate when all text emissions are done
+            const allTextEmissionsDelay = textEmissionNodes.length * 200
+
+            // Show portal light after all text emissions
+            const portalTimeout = setTimeout(() => {
+                setShowPortalLight(true)
+            }, allTextEmissionsDelay)
+
+            // Show pole light after portal light
+            const poleTimeout = setTimeout(() => {
+                setShowPoleLight(true)
+            }, allTextEmissionsDelay + 800) // 800ms after portal light
+
+            return () => {
+                textTimeouts.forEach((timeout) => clearTimeout(timeout))
+                clearTimeout(portalTimeout)
+                clearTimeout(poleTimeout)
+            }
+        } else {
+            setVisibleTextEmissions(new Set())
+            setShowPortalLight(false)
+            setShowPoleLight(false)
+        }
+    }, [orbitControl, textEmissionNodes])
 
     const portalLightPosition = nodes.portalLight?.position || new THREE.Vector3(0, 0, 0)
     const portalLightRotation = nodes.portalLight?.rotation || new THREE.Euler(0, 0, 0)
@@ -105,8 +163,6 @@ function Nature({ orbitControl }: { orbitControl: boolean }) {
             {nodes.baked7 && nodes.baked7.geometry && (
                 <mesh
                     geometry={nodes.baked7.geometry}
-                    // position={nodes.baked7.position}
-                    // rotation={nodes.baked7.rotation}
                     position={[levaValues.x, levaValues.y, levaValues.z]}
                     rotation={[levaValues.rotationx, levaValues.rotationy, levaValues.rotationz]}
                     scale={nodes.baked7.scale}
@@ -121,7 +177,8 @@ function Nature({ orbitControl }: { orbitControl: boolean }) {
                 </mesh>
             )}
 
-            {nodes.portalLight && nodes.portalLight.geometry && (
+            {/* Portal light appears after all text emissions */}
+            {orbitControl && showPortalLight && nodes.portalLight && nodes.portalLight.geometry && (
                 <mesh
                     geometry={nodes.portalLight.geometry}
                     position={portalLightPosition}
@@ -136,28 +193,33 @@ function Nature({ orbitControl }: { orbitControl: boolean }) {
                 </mesh>
             )}
 
-            {nodes.poleLightEmission && nodes.poleLightEmission.geometry && (
-                <mesh
-                    geometry={nodes.poleLightEmission.geometry}
-                    position={poleLightPosition}
-                    rotation={poleLightRotation}
-                    scale={poleLightScale}
-                >
-                    <primitive object={poleLightMaterial.current} attach="material" />
-                </mesh>
-            )}
+            {/* Pole light appears after portal light */}
+            {orbitControl &&
+                showPoleLight &&
+                nodes.poleLightEmission &&
+                nodes.poleLightEmission.geometry && (
+                    <mesh
+                        geometry={nodes.poleLightEmission.geometry}
+                        position={poleLightPosition}
+                        rotation={poleLightRotation}
+                        scale={poleLightScale}
+                    >
+                        <primitive object={poleLightMaterial.current} attach="material" />
+                    </mesh>
+                )}
 
-            {[
-                'BTextEmission',
-                'ZTextEmission',
-                'NTextEmission',
-                'OTextEmission',
-                'RuneEmission1',
-                'RuneEmission2',
-                'RuneEmission3'
-            ].map((nodeName) => {
+            {/* Text emissions appear sequentially first */}
+            {textEmissionNodes.map((nodeName) => {
                 const node = nodes[nodeName]
-                if (node && typeof node === 'object' && 'geometry' in node && node.geometry) {
+                const isVisible = orbitControl && visibleTextEmissions.has(nodeName)
+
+                if (
+                    node &&
+                    typeof node === 'object' &&
+                    'geometry' in node &&
+                    node.geometry &&
+                    isVisible
+                ) {
                     return (
                         <mesh
                             key={nodeName}
@@ -175,5 +237,6 @@ function Nature({ orbitControl }: { orbitControl: boolean }) {
         </>
     )
 }
+
 export default Nature
 useGLTF.preload('models/nature-compressed.glb')

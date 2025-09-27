@@ -159,7 +159,7 @@ function Experience() {
                 <OrbitControls {...orbitControlsConfig} />
 
                 {/*Scene*/}
-                <Fire />
+                {isOrbitEnabled && <Fire />}
                 <Nature orbitControl={isOrbitEnabled} />
                 <EffectComposer>
                     <Bloom {...bloomConfig} />
