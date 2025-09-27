@@ -4,7 +4,6 @@
   "version": "1.0.2",
   "type": "module",
   "scripts": {
-    "prebuild": "node scripts/generateVersion.js",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",

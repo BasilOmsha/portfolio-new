@@ -5,8 +5,6 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 
 import CookieConsent from './components/cookies/CookiesConsent.tsx'
-import UpdateNotification from './components/update-notification/UpdateNotification.tsx'
-import { useVersionCheck } from './hooks/useVersionCheck.ts'
 import ContactSection from './sections/contact/Contact.tsx'
 import Experience from './sections/experience/Experience.tsx'
 import Footer from './sections/footer/Footer.tsx'
@@ -108,13 +106,6 @@ function App() {
         }
     }, [isDesktop, setupCursorAnimation])
 
-    useVersionCheck({
-        enabled: import.meta.env.PROD, // Only check in production
-        onUpdateDetected: (current, newVersion) => {
-            console.log(`Update detected: ${current} -> ${newVersion}`)
-        }
-    })
-
     return (
         <>
             {isDesktop && <div className="cursor" id="cursor"></div>}
@@ -128,7 +119,6 @@ function App() {
             <Footer />
             <Analytics />
             <SpeedInsights />
-            <UpdateNotification />
         </>
     )
 }

@@ -1,6 +1,5 @@
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
-import { createHash } from 'crypto'
 import path from 'path'
 import { defineConfig } from 'vite'
 import glsl from 'vite-plugin-glsl'
@@ -9,15 +8,6 @@ export default defineConfig({
     root: './', // Root directory of the project
     publicDir: 'public', // Directory for static assets
     plugins: [react(), tailwindcss(), glsl()],
-    define: {
-        __APP_VERSION__: JSON.stringify(process.env.npm_package_version || '1.0.0'),
-        __BUILD_HASH__: JSON.stringify(
-            process.env.NODE_ENV === 'production'
-                ? createHash('sha1').update(Date.now().toString()).digest('hex').substring(0, 10)
-                : 'development'
-        ),
-        __BUILD_TIMESTAMP__: JSON.stringify(Date.now())
-    },
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './src')
