@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 
+import CookieConsent from './components/cookies/CookiesConsent.tsx'
 import ContactSection from './sections/contact/Contact.tsx'
 import Experience from './sections/experience/Experience.tsx'
 import Footer from './sections/footer/Footer.tsx'
@@ -108,6 +109,7 @@ function App() {
     return (
         <>
             {isDesktop && <div className="cursor" id="cursor"></div>}
+            <CookieConsent />
             <NavBar />
             <Hero />
             <Projects />
