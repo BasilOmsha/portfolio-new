@@ -1,11 +1,10 @@
-import type React from 'react'
 import { useState } from 'react'
 
 import { contactInfo } from '../../constants'
 
 import './Footer.css'
 
-const Footer: React.FC = () => {
+const Footer = () => {
     const [showPrivacyModal, setShowPrivacyModal] = useState(false)
 
     const openPrivacyModal = () => setShowPrivacyModal(true)

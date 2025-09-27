@@ -1,8 +1,8 @@
-import type React from 'react'
 import { useEffect, useState } from 'react'
+
 import './CookieConsent.css'
 
-const CookieConsent: React.FC = () => {
+const CookieConsent = () => {
     const [showBanner, setShowBanner] = useState(false)
 
     useEffect(() => {
