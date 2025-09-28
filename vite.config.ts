@@ -55,7 +55,8 @@ export default defineConfig({
                         './src/components/project-chapter/ProjectChapter.tsx',
                         './src/components/tech-icons/ASPDotNETCore.tsx',
                         './src/components/tech-icons/TechIconCardExperience.tsx',
-                        './src/components/title-header/TitleHeader.tsx'
+                        './src/components/title-header/TitleHeader.tsx',
+                        './src/components/cookie/CookieConsent.tsx'
                     ],
                     heroExperienceMain: [
                         './src/components/models/hero-experience/Experience.tsx',
