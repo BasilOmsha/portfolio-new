@@ -15,6 +15,10 @@ export const navLinks: NavLink[] = [
     {
         name: 'Skills',
         link: '#skills'
+    },
+    {
+        name: 'Learn With Me',
+        link: '/dashboard'
     }
 ]
 
