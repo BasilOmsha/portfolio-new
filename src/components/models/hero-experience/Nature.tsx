@@ -14,10 +14,10 @@ extend({ PortalMaterial, PoleLightMaterial, TextMaterial })
 
 function Nature({ orbitControl }: { orbitControl: boolean }) {
     /* Load the model*/
-    const { nodes } = useGLTF('/models/nature-compressed.glb') as unknown as NatureTypes
+    const { nodes } = useGLTF('/models/natureOptimizedComp3.glb') as unknown as NatureTypes
 
     /*Load the textures*/
-    const bakedTexture = useTexture('/textures/baked.webp')
+    const bakedTexture = useTexture('/textures/OptBakeCom.webp')
     bakedTexture.flipY = false
 
     const portalMaterial = useRef<MaterialType>(new PortalMaterial())
@@ -95,8 +95,8 @@ function Nature({ orbitControl }: { orbitControl: boolean }) {
     const poleLightRotation = nodes.poleLightEmission?.rotation || new THREE.Euler(0, 0, 0)
     const poleLightScale = nodes.poleLightEmission?.scale || new THREE.Vector3(1, 1, 1)
 
-    const bakedMeshPosition = nodes.baked7?.position || new THREE.Vector3(0, 0, 0)
-    const bakedMeshRotation = nodes.baked7?.rotation || new THREE.Euler(0, 0, 0)
+    const bakedMeshPosition = nodes.baked8?.position || new THREE.Vector3(0, 0, 0)
+    const bakedMeshRotation = nodes.baked8?.rotation || new THREE.Euler(0, 0, 0)
 
     const originalValues = {
         x: bakedMeshPosition.x,
@@ -160,12 +160,12 @@ function Nature({ orbitControl }: { orbitControl: boolean }) {
 
     return (
         <>
-            {nodes.baked7 && nodes.baked7.geometry && (
+            {nodes.baked8 && nodes.baked8.geometry && (
                 <mesh
-                    geometry={nodes.baked7.geometry}
+                    geometry={nodes.baked8.geometry}
                     position={[levaValues.x, levaValues.y, levaValues.z]}
                     rotation={[levaValues.rotationx, levaValues.rotationy, levaValues.rotationz]}
-                    scale={nodes.baked7.scale}
+                    scale={nodes.baked8.scale}
                 >
                     <meshBasicMaterial
                         map={bakedTexture}
@@ -188,7 +188,8 @@ function Nature({ orbitControl }: { orbitControl: boolean }) {
                     <primitive
                         object={portalMaterial.current}
                         attach="material"
-                        side={THREE.DoubleSide}
+                        // side={THREE.DoubleSide}
+                        side={false}
                     />
                 </mesh>
             )}
@@ -239,4 +240,4 @@ function Nature({ orbitControl }: { orbitControl: boolean }) {
 }
 
 export default Nature
-useGLTF.preload('models/nature-compressed.glb')
+useGLTF.preload('models/natureOptimizedComp3.glb')

@@ -18,7 +18,7 @@ export type NatureTypes = {
         RuneEmission3: Nodes
         RuneEmission1: Nodes
         RuneEmission2: Nodes
-        baked7: Nodes
+        baked8: Nodes
         [key: string]: Nodes | string
     }
     meshes: {
@@ -31,7 +31,7 @@ export type NatureTypes = {
         RuneEmission3: Mesh
         RuneEmission1: Mesh
         RuneEmission2: Mesh
-        baked7: Mesh
+        baked8: Mesh
     }
 }
 

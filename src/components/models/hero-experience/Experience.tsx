@@ -49,14 +49,18 @@ function Experience() {
             minDistance: 5,
             maxDistance: 100,
             enableZoom: isOrbitEnabled,
-            enableRotate: isOrbitEnabled
+            enableRotate: isOrbitEnabled,
+            // minPolarAngle: Math.PI / 2,
+            maxPolarAngle: 1.85,
+            minAzimuthAngle: -0.01,
+            maxAzimuthAngle: 1.45
         }),
         [isOrbitEnabled]
     )
 
     const bloomConfig = useMemo(
         () => ({
-            mipmapBlur: true,
+            mipmapBlur: false,
             luminanceThreshold: 0.8,
             luminanceSmoothing: 0.5,
             intensity: 0.5,
