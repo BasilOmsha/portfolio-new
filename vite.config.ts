@@ -41,7 +41,7 @@ export default defineConfig({
                         { name: 'components', test: /src\/components/ },
                         {
                             name: 'heroExperienceMain',
-                            test: /src\/components\/models\/hero-experience/
+                            test: /src\/components\/models\/hero-experience\//
                         },
                         {
                             name: 'heroExperienceBoneFire1',
@@ -65,7 +65,8 @@ export default defineConfig({
                         { name: 'constants', test: /src\/constants/ },
                         { name: 'api', test: /src\/api/ },
                         { name: 'schemas', test: /src\/schemas/ },
-                        { name: 'types', test: /src\/types/ }
+                        { name: 'types', test: /src\/types/ },
+                        { name: 'gsapCustom', test: /src\/gsap/ }
                     ]
                 },
                 chunkFileNames: (chunkInfo) => {
