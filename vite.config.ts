@@ -5,8 +5,8 @@ import { defineConfig } from 'vite'
 import glsl from 'vite-plugin-glsl'
 
 export default defineConfig({
-    root: './',
-    publicDir: 'public',
+    root: './', // Root directory of the project
+    publicDir: 'public', // Directory for static assets
     plugins: [react(), tailwindcss(), glsl()],
     resolve: {
         alias: {
@@ -14,61 +14,79 @@ export default defineConfig({
         }
     },
     server: {
-        host: true,
-        port: 5174
+        host: true, // Open to local network and display URL
+        // open: !("SANDBOX_URL" in process.env || "CODESANDBOX_HOST" in process.env) // Open if it's not a CodeSandbox
+        port: 5174 // Default port for development server
     },
     build: {
-        outDir: 'dist',
-        emptyOutDir: true,
-        sourcemap: false,
-        minify: 'terser',
-        chunkSizeWarningLimit: 1000,
-        cssMinify: 'lightningcss', // Rolldown default CSS minifier
-        cssCodeSplit: true,
+        outDir: 'dist', // Output in the dist/ folder
+        emptyOutDir: true, // Empty the folder first
+        sourcemap: false, // Disable sourcemaps in production for smaller bundles
+        minify: 'terser', // Use terser for better minification
+        chunkSizeWarningLimit: 1000, // Increase warning limit
+        cssMinify: 'esbuild', // Use esbuild for CSS minification (faster and more aggressive)
+        cssCodeSplit: true, // Split CSS into separate files for better caching
         rollupOptions: {
             output: {
-                // Rolldown-compatible chunk grouping
-                advancedChunks: {
-                    groups: [
-                        { name: 'vendor', test: /\/react(?:-dom)?/ },
-                        { name: 'three', test: /three|@react-three/ },
-                        { name: 'gsap', test: /gsap/ },
-                        { name: 'forms', test: /react-hook-form|zod/ },
-                        {
-                            name: 'ui',
-                            test: /react-spinners|react-hot-toast|react-responsive|react-countup/
-                        },
-                        { name: 'components', test: /src\/components/ },
-                        {
-                            name: 'heroExperienceMain',
-                            test: /src\/components\/models\/hero-experience\//
-                        },
-                        {
-                            name: 'heroExperienceBoneFire1',
-                            test: /src\/components\/models\/hero-experience\/boneFire/
-                        },
-                        {
-                            name: 'heroExperienceBoneFire2',
-                            test: /src\/components\/models\/hero-experience\/boneFire\/fire/
-                        },
-                        {
-                            name: 'heroExperienceBoneFire3',
-                            test: /src\/components\/models\/hero-experience\/boneFire\/materials/
-                        },
-                        {
-                            name: 'materials',
-                            test: /src\/components\/models\/hero-experience\/materials/
-                        },
-                        { name: 'types', test: /src\/components\/models\/hero-experience\/types/ },
-                        { name: 'sections', test: /src\/sections/ },
-                        { name: 'hooks', test: /src\/hooks/ },
-                        { name: 'constants', test: /src\/constants/ },
-                        { name: 'api', test: /src\/api/ },
-                        { name: 'schemas', test: /src\/schemas/ },
-                        { name: 'types', test: /src\/types/ },
-                        { name: 'gsapCustom', test: /src\/gsap/ }
-                    ]
+                // Code splitting configuration
+                manualChunks: {
+                    // Vendor chunk for React and core libraries
+                    vendor: ['react', 'react-dom'],
+                    // Three.js and related libraries
+                    three: [
+                        'three',
+                        '@react-three/fiber',
+                        '@react-three/drei',
+                        '@react-three/postprocessing'
+                    ],
+                    // GSAP animation library
+                    gsap: ['gsap', '@gsap/react'],
+                    // Form and validation libraries
+                    forms: ['react-hook-form', '@hookform/resolvers', 'zod'],
+                    // UI and utility libraries
+                    ui: ['react-spinners', 'react-hot-toast', 'react-responsive', 'react-countup'],
+                    components: [
+                        './src/components/contact/ContactForm.tsx',
+                        './src/components/counter/AnimatedCounter.tsx',
+                        './src/components/glow-card/GlowCard.tsx',
+                        './src/components/loaders/AdvancedLoader.tsx',
+                        './src/components/models/contact/Computer.tsx',
+                        './src/components/models/contact/ContactExperience.tsx',
+                        './src/components/project-chapter/ProjectChapter.tsx',
+                        './src/components/tech-icons/ASPDotNETCore.tsx',
+                        './src/components/tech-icons/TechIconCardExperience.tsx',
+                        './src/components/title-header/TitleHeader.tsx',
+                        './src/components/cookies/CookiesConsent.tsx'
+                    ],
+                    heroExperienceMain: [
+                        './src/components/models/hero-experience/Experience.tsx',
+                        './src/components/models/hero-experience/ExperienceButton.tsx',
+                        './src/components/models/hero-experience/Nature.tsx'
+                    ],
+                    heroExperienceDetails: [
+                        './src/components/models/hero-experience/boneFire/Fire.tsx',
+                        './src/components/models/hero-experience/boneFire/fire/Fire.tsx',
+                        './src/components/models/hero-experience/boneFire/material/Material.tsx',
+                        './src/components/models/hero-experience/materials/materials.tsx',
+                        './src/components/models/hero-experience/types/types.ts'
+                    ],
+                    sections: [
+                        './src/sections/contact/Contact.tsx',
+                        './src/sections/experience/Experience.tsx',
+                        './src/sections/footer/Footer.tsx',
+                        './src/sections/hero/Hero.tsx',
+                        './src/sections/nav-bar/NavBar.tsx',
+                        './src/sections/projects/Projects.tsx',
+                        './src/sections/tech-stack/TechStack.tsx'
+                    ],
+                    hooks: ['./src/hooks/useCollisionDetection.ts'],
+                    constants: ['./src/constants/index.ts'],
+                    gsapCustom: ['./src/gsap/heroAnimation.ts'],
+                    api: ['./src/api/index.ts', './src/api/contact-service.ts'],
+                    schemas: ['./src/schemas/contactForm.ts'],
+                    types: ['./src/types.d.ts']
                 },
+                // Optimize chunk naming
                 chunkFileNames: (chunkInfo) => {
                     const facadeModuleId = chunkInfo.facadeModuleId
                         ? chunkInfo.facadeModuleId.split('/').pop()
@@ -77,7 +95,6 @@ export default defineConfig({
                 }
             }
         },
-        // Rolldown-compatible minifier config
         terserOptions: {
             compress: {
                 drop_console: true, // Remove console.log statements
@@ -89,8 +106,5 @@ export default defineConfig({
                 beautify: false // Ensure output is not pretty-printed
             }
         }
-    },
-    experimental: {
-        enableNativePlugin: 'v1' // Use native Rust-based plugins for better performance
     }
 })
