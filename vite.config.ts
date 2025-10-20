@@ -39,6 +39,27 @@ export default defineConfig({
                             test: /react-spinners|react-hot-toast|react-responsive|react-countup/
                         },
                         { name: 'components', test: /src\/components/ },
+                        {
+                            name: 'heroExperienceMain',
+                            test: /src\/components\/models\/hero-experience/
+                        },
+                        {
+                            name: 'heroExperienceBoneFire1',
+                            test: /src\/components\/models\/hero-experience\/boneFire/
+                        },
+                        {
+                            name: 'heroExperienceBoneFire2',
+                            test: /src\/components\/models\/hero-experience\/boneFire\/fire/
+                        },
+                        {
+                            name: 'heroExperienceBoneFire3',
+                            test: /src\/components\/models\/hero-experience\/boneFire\/materials/
+                        },
+                        {
+                            name: 'materials',
+                            test: /src\/components\/models\/hero-experience\/materials/
+                        },
+                        { name: 'types', test: /src\/components\/models\/hero-experience\/types/ },
                         { name: 'sections', test: /src\/sections/ },
                         { name: 'hooks', test: /src\/hooks/ },
                         { name: 'constants', test: /src\/constants/ },
