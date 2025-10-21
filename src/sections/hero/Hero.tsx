@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 
 import { BeatLoader } from 'react-spinners'
 
@@ -10,22 +10,65 @@ import { words } from '@/constants'
 import './hero.css'
 
 function ModelWithLoader() {
-    const handleLoadComplete = () => {
-        setTimeout(() => {}, 100)
-    }
-
     return (
         <>
-            <AdvancedLoader onLoadComplete={handleLoadComplete} />
+            <AdvancedLoader />
             <Experience />
         </>
     )
 }
 
 function Hero() {
+    const [isModelVisible, setIsModelVisible] = useState(false)
+    const heroRef = useRef<HTMLElement>(null)
+    const timeoutRef = useRef<number | null>(null)
+
+    useEffect(() => {
+        const heroElement = heroRef.current
+        if (!heroElement) return
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    // If Hero section is in view (even partially)
+                    if (entry.isIntersecting) {
+                        if (timeoutRef.current !== null) {
+                            clearTimeout(timeoutRef.current)
+                            timeoutRef.current = null
+                        }
+                        setIsModelVisible(true)
+                    } else {
+                        // Delay unmount slightly to avoid flickering during fast scrolls
+                        timeoutRef.current = window.setTimeout(() => {
+                            setIsModelVisible(false)
+                            timeoutRef.current = null
+                        }, 300)
+                    }
+                })
+            },
+            {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when any part enters viewport
+            }
+        )
+
+        observer.observe(heroElement)
+
+        // Cleanup
+        return () => {
+            if (heroElement) {
+                observer.unobserve(heroElement)
+            }
+            if (timeoutRef.current !== null) {
+                clearTimeout(timeoutRef.current)
+            }
+        }
+    }, [])
+
     return (
         <>
-            <section id="hero" className="hero_section">
+            <section id="hero" className="hero_section" ref={heroRef}>
                 <div className="hero_background"></div>
 
                 <div className="hero_text">
@@ -71,28 +114,32 @@ function Hero() {
                     <h1> I build projects and level up with every line</h1>
 
                     <p>
-                        {' '}
                         Hi, I am a developer based in Finland with a focus on creating clean,
                         efficient, and maintainable code.
                     </p>
                 </div>
-                {/* model section */}
+
+                {/* model section - conditionally rendered */}
                 <div className="hero_model_section" style={{ position: 'relative' }}>
-                    <Suspense
-                        fallback={
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    alignItems: 'center'
-                                }}
-                            >
-                                <span style={{ color: '#045e01ff' }}>Finalizing </span>
-                                <BeatLoader size={10} color="#045e01ff" />
-                            </div>
-                        }
-                    >
-                        <ModelWithLoader />
-                    </Suspense>
+                    {isModelVisible ? (
+                        <Suspense
+                            fallback={
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center'
+                                    }}
+                                >
+                                    <span style={{ color: '#045e01ff' }}>Finalizing </span>
+                                    <BeatLoader size={10} color="#045e01ff" />
+                                </div>
+                            }
+                        >
+                            <ModelWithLoader />
+                        </Suspense>
+                    ) : (
+                        <div style={{ width: '100%', height: '100%' }} />
+                    )}
                 </div>
             </section>
             <AnimatedCounter />

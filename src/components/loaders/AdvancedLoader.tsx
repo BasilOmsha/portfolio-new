@@ -3,11 +3,7 @@ import { useEffect, useState } from 'react'
 import { useProgress } from '@react-three/drei'
 import { BeatLoader } from 'react-spinners'
 
-type AdvancedLoaderProps = {
-    onLoadComplete?: () => void
-}
-
-function AdvancedLoader({ onLoadComplete }: AdvancedLoaderProps) {
+function AdvancedLoader() {
     const { progress, active, loaded, total } = useProgress()
     const [isComplete, setIsComplete] = useState(false)
 
@@ -15,12 +11,11 @@ function AdvancedLoader({ onLoadComplete }: AdvancedLoaderProps) {
         if (progress === 100 && !active && !isComplete) {
             const timer = setTimeout(() => {
                 setIsComplete(true)
-                onLoadComplete?.()
             }, 300)
 
             return () => clearTimeout(timer)
         }
-    }, [progress, active, isComplete, onLoadComplete])
+    }, [progress, active, isComplete])
 
     if (isComplete) {
         return null
