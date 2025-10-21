@@ -53,13 +53,19 @@ function App() {
         let lastY = 0
         let isAnimating = false
 
+        const OFFSET_X = -70
+        const OFFSET_Y_PERCENT = -0.07 // -7% as decimal
+
         const updateCursor = (x: number, y: number) => {
             if (isAnimating) return
 
             isAnimating = true
             animationId = requestAnimationFrame(() => {
-                // Use transform3d for better GPU acceleration
-                cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`
+                // Calculate -7% of viewport height
+                const offsetY = window.innerHeight * OFFSET_Y_PERCENT
+
+                // Apply transform with offsets
+                cursor.style.transform = `translate3d(${x + OFFSET_X}px, ${y + offsetY}px, 0)`
                 isAnimating = false
             })
         }
@@ -68,7 +74,6 @@ function App() {
             const deltaX = Math.abs(e.clientX - lastX)
             const deltaY = Math.abs(e.clientY - lastY)
 
-            // Only update if mouse moved significantly (reduces unnecessary repaints)
             if (deltaX > 0.5 || deltaY > 0.5) {
                 lastX = e.clientX
                 lastY = e.clientY
@@ -76,7 +81,6 @@ function App() {
             }
         }
 
-        // Add mouse enter/leave effects for better UX
         const handleMouseEnter = () => {
             cursor.style.opacity = '0.99'
         }
