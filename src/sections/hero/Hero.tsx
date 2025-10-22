@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef, useState } from 'react'
+import { Suspense, useRef } from 'react'
 
 import { BeatLoader } from 'react-spinners'
 
@@ -6,6 +6,7 @@ import { AnimatedCounter } from '@/components/counter/AnimatedCounter.tsx'
 import AdvancedLoader from '@/components/loaders/AdvancedLoader.tsx'
 import Experience from '@/components/models/hero-experience/Experience.tsx'
 import { words } from '@/constants'
+import useHideModel from '@/hooks/useHideModel.ts'
 
 import './hero.css'
 
@@ -19,52 +20,10 @@ function ModelWithLoader() {
 }
 
 function Hero() {
-    const [isModelVisible, setIsModelVisible] = useState(false)
     const heroRef = useRef<HTMLElement>(null)
     const timeoutRef = useRef<number | null>(null)
 
-    useEffect(() => {
-        const heroElement = heroRef.current
-        if (!heroElement) return
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    // If Hero section is in view (even partially)
-                    if (entry.isIntersecting) {
-                        if (timeoutRef.current !== null) {
-                            clearTimeout(timeoutRef.current)
-                            timeoutRef.current = null
-                        }
-                        setIsModelVisible(true)
-                    } else {
-                        // Delay unmount slightly to avoid flickering during fast scrolls
-                        timeoutRef.current = window.setTimeout(() => {
-                            setIsModelVisible(false)
-                            timeoutRef.current = null
-                        }, 300)
-                    }
-                })
-            },
-            {
-                root: null, // viewport
-                rootMargin: '0px',
-                threshold: 0.1 // Trigger when any part enters viewport
-            }
-        )
-
-        observer.observe(heroElement)
-
-        // Cleanup
-        return () => {
-            if (heroElement) {
-                observer.unobserve(heroElement)
-            }
-            if (timeoutRef.current !== null) {
-                clearTimeout(timeoutRef.current)
-            }
-        }
-    }, [])
+    const isModelVisible = useHideModel(heroRef, timeoutRef)
 
     return (
         <>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { Toaster } from 'react-hot-toast'
 
@@ -6,10 +6,16 @@ import ContactForm from '@/components/contact/ContactForm.tsx'
 import ContactExperience from '../../components/models/contact/ContactExperience.tsx'
 import TitleHeader from '../../components/title-header/TitleHeader.tsx'
 
+import useHideModel from '@/hooks/useHideModel.ts'
+
 import './Contact.css'
 
 function Contact() {
     const [isMouseDown, setIsMouseDown] = useState<boolean>(false)
+    const contactRef = useRef<HTMLElement>(null)
+    const timeoutRef = useRef<number | null>(null)
+
+    const isModelVisible = useHideModel(contactRef, timeoutRef)
 
     useEffect(() => {
         const canvas = document.querySelector('canvas')
@@ -62,7 +68,7 @@ function Contact() {
                     }
                 }}
             />
-            <section id="contact" className="contact-section">
+            <section id="contact" className="contact-section" ref={contactRef}>
                 <div className="contact-container">
                     <TitleHeader title="💬 Get in Touch" />
                     <div className="contact-content">
@@ -74,7 +80,11 @@ function Contact() {
 
                         <div className="contact-visual">
                             <div className="contact-3d-wrapper">
-                                <ContactExperience />
+                                {isModelVisible ? (
+                                    <ContactExperience />
+                                ) : (
+                                    <div style={{ width: '100%', height: '100%' }} />
+                                )}
                             </div>
                         </div>
                     </div>
