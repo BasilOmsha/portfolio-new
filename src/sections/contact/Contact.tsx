@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 
 import { Toaster } from 'react-hot-toast'
+import { BeatLoader } from 'react-spinners'
 
 import ContactForm from '@/components/contact/ContactForm.tsx'
+import ModelLoader from '@/components/ModalLoader.tsx'
 import ContactExperience from '../../components/models/contact/ContactExperience.tsx'
 import TitleHeader from '../../components/title-header/TitleHeader.tsx'
 
@@ -81,7 +83,22 @@ function Contact() {
                         <div className="contact-visual">
                             <div className="contact-3d-wrapper">
                                 {isModelVisible ? (
-                                    <ContactExperience />
+                                    <Suspense
+                                        fallback={
+                                            <div
+                                                style={{
+                                                    display: 'flex',
+                                                    alignItems: 'center'
+                                                }}
+                                            >
+                                                <BeatLoader size={10} color="#c7ad98" />
+                                            </div>
+                                        }
+                                    >
+                                        <ModelLoader size={80} color="#c7ad98">
+                                            <ContactExperience />
+                                        </ModelLoader>
+                                    </Suspense>
                                 ) : (
                                     <div style={{ width: '100%', height: '100%' }} />
                                 )}

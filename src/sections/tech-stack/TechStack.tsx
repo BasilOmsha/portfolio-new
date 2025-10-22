@@ -1,5 +1,8 @@
-import { useRef } from 'react'
+import { Suspense, useRef } from 'react'
 
+import { BeatLoader } from 'react-spinners'
+
+import ModelLoader from '@/components/ModalLoader.tsx'
 import ASPDotNETCore from '@/components/tech-icons/ASPDotNETCore'
 import TechIconCardExperience from '@/components/tech-icons/TechIconCardExperience.tsx'
 import TitleHeader from '@/components/title-header/TitleHeader.tsx'
@@ -26,7 +29,22 @@ function TechStack() {
                         <div className="tech-card-content">
                             <div className="tech-icon-wrapper">
                                 {isModelVisible ? (
-                                    <ASPDotNETCore />
+                                    <Suspense
+                                        fallback={
+                                            <div
+                                                style={{
+                                                    display: 'flex',
+                                                    alignItems: 'center'
+                                                }}
+                                            >
+                                                <BeatLoader size={10} color="#c7ad98" />
+                                            </div>
+                                        }
+                                    >
+                                        <ModelLoader size={50} color="#c7ad98">
+                                            <ASPDotNETCore />
+                                        </ModelLoader>
+                                    </Suspense>
                                 ) : (
                                     <div style={{ width: '100%', height: '100%' }} />
                                 )}
@@ -44,7 +62,25 @@ function TechStack() {
                             <div className="tech-card-content">
                                 <div className="tech-icon-wrapper">
                                     {isModelVisible ? (
-                                        <TechIconCardExperience model={techStackIcon} />
+                                        <Suspense
+                                            fallback={
+                                                <div
+                                                    style={{
+                                                        display: 'flex',
+                                                        alignItems: 'center'
+                                                    }}
+                                                >
+                                                    <span style={{ color: '#045e01ff' }}>
+                                                        Finalizing{' '}
+                                                    </span>
+                                                    <BeatLoader size={10} color="#045e01ff" />
+                                                </div>
+                                            }
+                                        >
+                                            <ModelLoader size={50} color="#c7ad98">
+                                                <TechIconCardExperience model={techStackIcon} />
+                                            </ModelLoader>
+                                        </Suspense>
                                     ) : (
                                         <div style={{ width: '100%', height: '100%' }} />
                                     )}
