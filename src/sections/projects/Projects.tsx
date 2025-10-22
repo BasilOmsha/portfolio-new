@@ -21,6 +21,10 @@ function Projects() {
 
     useCollisionDetection(projectsContainerRef)
 
+    const SCROLL_ANIMATION_DURATION = 0.1
+    const ACTIVE_PROJECT_UPDATE_DELAY = 60
+    const SECTION_CENTER_OFFSET = 100
+
     // Update measures based on actual project content elements
     useEffect(() => {
         const updateMeasures = () => {
@@ -68,7 +72,7 @@ function Projects() {
                 const sectionCenter = offset + height * 0.5
                 const viewportCenter = scrollY + windowHeight * 0.5
 
-                if (viewportCenter >= sectionCenter - 100) {
+                if (viewportCenter >= sectionCenter - SECTION_CENTER_OFFSET) {
                     newActiveProject = i
                 }
             }
@@ -82,23 +86,29 @@ function Projects() {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [activeProject])
 
-    const handleNavigation = (t: number, i: React.MouseEvent) => {
-        i.preventDefault()
-        setActiveProject(t)
+    const handleNavigation = (targetIndex: number, event: React.MouseEvent) => {
+        event.preventDefault()
 
-        const h = {
+        const scrollState = {
             scrollY: window.scrollY
         }
-        const a = measuresRef.current.chapters[t]
-        if (!a) return
+        const targetChapter = measuresRef.current.chapters[targetIndex]
+        if (!targetChapter) return
 
-        const r = a[0] + a[1] * 0.5 - measuresRef.current.windowHeight * 0.5
+        const [chapterOffset, chapterHeight] = targetChapter
+        const targetScrollPosition =
+            chapterOffset + chapterHeight * 0.5 - measuresRef.current.windowHeight * 0.5
 
-        gsap.to(h, {
-            duration: 0.3,
-            scrollY: r,
+        gsap.to(scrollState, {
+            duration: SCROLL_ANIMATION_DURATION,
+            scrollY: targetScrollPosition,
             onUpdate: () => {
-                window.scrollTo(0, h.scrollY)
+                window.scrollTo(0, scrollState.scrollY)
+            },
+            onComplete: () => {
+                setTimeout(() => {
+                    setActiveProject(targetIndex)
+                }, ACTIVE_PROJECT_UPDATE_DELAY)
             }
         })
     }
