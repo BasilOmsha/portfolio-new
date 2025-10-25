@@ -76,7 +76,7 @@ function Experience() {
         }
     }
 
-    const getLevaPosition = () => {
+    const levaPosition = useMemo(() => {
         if (windowWidth <= 500) {
             return { x: 10, y: 50 }
         }
@@ -84,7 +84,7 @@ function Experience() {
             return { x: 10, y: 50 }
         }
         return { x: 0, y: 50 }
-    }
+    }, [windowWidth])
 
     // Track window width for responsive positioning
     useEffect(() => {
@@ -147,7 +147,7 @@ function Experience() {
                 collapsed
                 theme={getLevaTheme()}
                 titleBar={{
-                    position: getLevaPosition()
+                    position: levaPosition
                 }}
             />
             <Canvas

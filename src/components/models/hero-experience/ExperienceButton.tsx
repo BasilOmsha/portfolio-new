@@ -94,7 +94,12 @@ export default function ExperienceButton({ onButtonToggle }: ExperienceButtonPro
     return (
         <>
             {!isActive && (
-                <button className="hero-button" ref={clickRef} onClick={handleHandClick}>
+                <button
+                    aria-label="Activate hero button"
+                    className="hero-button"
+                    ref={clickRef}
+                    onClick={handleHandClick}
+                >
                     <div className="arrow-container">
                         <div className="arrow isArrow-left">
                             <svg
