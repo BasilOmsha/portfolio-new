@@ -9,7 +9,7 @@ function useHideModel(
     useEffect(() => {
         const modelElement = modelRef.current
         if (!modelElement) return
-        console.log(isModelInView)
+
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {

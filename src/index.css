@@ -51,11 +51,14 @@ section {
 }
 @font-face {
   font-family: 'Mona Sans';
-  src: url('/fonts/MonaSans-Regular.woff2') format('woff2-variations');
+  src:
+    url('/fonts/MonaSans-Regular.woff2') format('woff2 supports variations'),
+    url('/fonts/MonaSans-Regular.woff2') format('woff2-variations');
   font-weight: 200 900;
-  font-style: normal;
+  font-stretch: 75% 125%;
   font-display: swap;
-  ascent-override: 100%;
-  descent-override: 20%;
-  line-gap-override: 0%
+}
+
+html {
+  font-family: 'Mona Sans';
 }
