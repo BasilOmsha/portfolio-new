@@ -24,8 +24,8 @@ function Hero() {
                         <div className="square_small_profile_img">
                             <img
                                 src="/images/hero/personal_pic.webp"
-                                width="100%"
-                                height="auto"
+                                width="60"
+                                height="60"
                                 alt="Profile Image"
                             />
                         </div>
