@@ -53,19 +53,16 @@ function App() {
         let lastY = 0
         let isAnimating = false
 
-        const OFFSET_X = -70
-        const OFFSET_Y_PERCENT = -0.07 // -7% as decimal
+        const CURSOR_SIZE = 140
+        const OFFSET_X = -(CURSOR_SIZE / 2)
+        const OFFSET_Y = -(CURSOR_SIZE / 2)
 
         const updateCursor = (x: number, y: number) => {
             if (isAnimating) return
 
             isAnimating = true
             animationId = requestAnimationFrame(() => {
-                // Calculate -7% of viewport height
-                const offsetY = window.innerHeight * OFFSET_Y_PERCENT
-
-                // Apply transform with offsets
-                cursor.style.transform = `translate3d(${x + OFFSET_X}px, ${y + offsetY}px, 0)`
+                cursor.style.transform = `translate3d(${x + OFFSET_X}px, ${y + OFFSET_Y}px, 0)`
                 isAnimating = false
             })
         }
