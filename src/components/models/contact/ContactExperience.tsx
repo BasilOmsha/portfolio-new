@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 
-import Computer from './Computer'
+import Computer from './Computer.tsx'
 
 function ContactExperience() {
     const [key, setKey] = useState(0)
@@ -23,6 +23,8 @@ function ContactExperience() {
             shadows
             camera={{ position: [0, 3, 7], fov: 45 }}
             style={{ width: '100%', height: '100%' }}
+            resize={{ scroll: false }} // prevents the canvas from recalculating its size on every scroll event
+            frameloop="demand" // Canvas only renders when something changes
         >
             <ambientLight intensity={0.5} color="#fff4e6" />
 

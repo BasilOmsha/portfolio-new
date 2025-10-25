@@ -12,37 +12,28 @@ import ExperienceButton from './ExperienceButton.tsx'
 import Nature from './Nature.tsx'
 import type { CameraSettingsType } from './types/types.ts'
 
+const CAMERA_SETTINGS: CameraSettingsType = {
+    fov: 25,
+    position: [50, 40, 35]
+}
+
+const BLOOM_CONFIG = {
+    mipmapBlur: false,
+    luminanceThreshold: 0.8,
+    luminanceSmoothing: 0.5,
+    intensity: 0.5,
+    width: 256,
+    height: 256
+}
+
 function Experience() {
     const [isOrbitEnabled, setIsOrbitEnabled] = useState<boolean>(false)
     const [isMouseDown, setIsMouseDown] = useState<boolean>(false)
     const [windowWidth, setWindowWidth] = useState<number>(
         typeof window !== 'undefined' ? window.innerWidth : 0
     )
+    const [frameloopMode, setFrameloopMode] = useState<'always' | 'demand'>('demand')
 
-    /**
-     * Memoizing all expensive calculations to improve performance
-     */
-    const cameraSettings: CameraSettingsType = useMemo(
-        () => ({
-            fov: 25,
-            position: [50, 40, 35]
-        }),
-        []
-    )
-    const canvasStyles = useMemo(
-        () => ({
-            ...(isOrbitEnabled
-                ? {
-                      pointerEvents: 'auto' as const,
-                      touchAction: 'none' as const
-                  }
-                : {
-                      pointerEvents: 'none' as const,
-                      touchAction: 'pan-y' as const
-                  })
-        }),
-        [isOrbitEnabled]
-    )
     const orbitControlsConfig = useMemo(
         () => ({
             enablePan: false,
@@ -58,19 +49,7 @@ function Experience() {
         [isOrbitEnabled]
     )
 
-    const bloomConfig = useMemo(
-        () => ({
-            mipmapBlur: false,
-            luminanceThreshold: 0.8,
-            luminanceSmoothing: 0.5,
-            intensity: 0.5,
-            width: 256,
-            height: 256
-        }),
-        []
-    )
-
-    const levaTheme = useMemo(() => {
+    const getLevaTheme = () => {
         const baseColors = {
             accent1: '#43c049ff',
             accent2: '#138d08ff',
@@ -95,9 +74,9 @@ function Experience() {
             sizes: { rootWidth: '280px', controlWidth: '160px' },
             colors: baseColors
         }
-    }, [windowWidth])
+    }
 
-    const levaPosition = useMemo(() => {
+    const getLevaPosition = () => {
         if (windowWidth <= 500) {
             return { x: 10, y: 50 }
         }
@@ -105,7 +84,7 @@ function Experience() {
             return { x: 10, y: 50 }
         }
         return { x: 0, y: 50 }
-    }, [windowWidth])
+    }
 
     // Track window width for responsive positioning
     useEffect(() => {
@@ -148,17 +127,38 @@ function Experience() {
         setIsOrbitEnabled(enabled)
     }
 
+    // Handle frameloop mode with delay when switching to demand
+    useEffect(() => {
+        if (isOrbitEnabled) {
+            setFrameloopMode('always')
+        } else {
+            const timer = setTimeout(() => {
+                setFrameloopMode('demand')
+            }, 300)
+
+            return () => clearTimeout(timer)
+        }
+    }, [isOrbitEnabled])
+
     return (
         <>
             <Leva
                 hidden={!isOrbitEnabled}
                 collapsed
-                theme={levaTheme}
+                theme={getLevaTheme()}
                 titleBar={{
-                    position: levaPosition
+                    position: getLevaPosition()
                 }}
             />
-            <Canvas camera={cameraSettings} style={canvasStyles}>
+            <Canvas
+                camera={CAMERA_SETTINGS}
+                style={{
+                    pointerEvents: isOrbitEnabled ? 'auto' : 'none',
+                    touchAction: isOrbitEnabled ? 'none' : 'pan-y'
+                }}
+                resize={{ scroll: false }}
+                frameloop={frameloopMode}
+            >
                 <CameraAnimator isOrbitEnabled={isOrbitEnabled} />
                 <OrbitControls {...orbitControlsConfig} />
 
@@ -166,7 +166,7 @@ function Experience() {
                 {isOrbitEnabled && <Fire />}
                 <Nature orbitControl={isOrbitEnabled} />
                 <EffectComposer>
-                    <Bloom {...bloomConfig} />
+                    <Bloom {...BLOOM_CONFIG} />
                     <ToneMapping blendFunction={BlendFunction.DARKEN} />
                 </EffectComposer>
             </Canvas>

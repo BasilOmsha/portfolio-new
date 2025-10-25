@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { useGSAP } from '@gsap/react'
 import { useGLTF, useTexture } from '@react-three/drei'
@@ -11,6 +11,10 @@ import { PoleLightMaterial, PortalMaterial, TextMaterial } from './materials/mat
 import type { MaterialType, NatureTypes } from './types/types.ts'
 
 extend({ PortalMaterial, PoleLightMaterial, TextMaterial })
+
+const TEXT_EMISSION_NODES = ['BTextEmission', 'ZTextEmission', 'NTextEmission', 'OTextEmission']
+
+const RUNE_EMISSION_NODES = ['RuneEmission1', 'RuneEmission2', 'RuneEmission3']
 
 function Nature({ orbitControl }: { orbitControl: boolean }) {
     /* Load the model*/
@@ -28,19 +32,6 @@ function Nature({ orbitControl }: { orbitControl: boolean }) {
     const [showPortalLight, setShowPortalLight] = useState<boolean>(false)
     const [showPoleLight, setShowPoleLight] = useState<boolean>(false)
 
-    const textEmissionNodes = useMemo(
-        () => [
-            'BTextEmission',
-            'ZTextEmission',
-            'NTextEmission',
-            'OTextEmission',
-            'RuneEmission1',
-            'RuneEmission2',
-            'RuneEmission3'
-        ],
-        []
-    )
-
     useFrame((_, delta) => {
         if (orbitControl) {
             portalMaterial.current.uTime += delta * 2
@@ -56,14 +47,14 @@ function Nature({ orbitControl }: { orbitControl: boolean }) {
             setShowPoleLight(false)
 
             // Create timeouts for each text emission
-            const textTimeouts = textEmissionNodes.map((nodeName, index) => {
+            const textTimeouts = TEXT_EMISSION_NODES.map((nodeName, index) => {
                 return setTimeout(() => {
                     setVisibleTextEmissions((prev) => new Set([...prev, nodeName]))
                 }, index * 200)
             })
 
             // Calculate when all text emissions are done
-            const allTextEmissionsDelay = textEmissionNodes.length * 200
+            const allTextEmissionsDelay = TEXT_EMISSION_NODES.length * 200
 
             // Show portal light after all text emissions
             const portalTimeout = setTimeout(() => {
@@ -85,7 +76,7 @@ function Nature({ orbitControl }: { orbitControl: boolean }) {
             setShowPortalLight(false)
             setShowPoleLight(false)
         }
-    }, [orbitControl, textEmissionNodes])
+    }, [orbitControl])
 
     const portalLightPosition = nodes.portalLight?.position || new THREE.Vector3(0, 0, 0)
     const portalLightRotation = nodes.portalLight?.rotation || new THREE.Euler(0, 0, 0)
@@ -210,7 +201,8 @@ function Nature({ orbitControl }: { orbitControl: boolean }) {
                 )}
 
             {/* Text emissions appear sequentially first */}
-            {textEmissionNodes.map((nodeName) => {
+            {/* Text emissions */}
+            {TEXT_EMISSION_NODES.map((nodeName) => {
                 const node = nodes[nodeName]
                 const isVisible = orbitControl && visibleTextEmissions.has(nodeName)
 
@@ -221,6 +213,26 @@ function Nature({ orbitControl }: { orbitControl: boolean }) {
                     node.geometry &&
                     isVisible
                 ) {
+                    return (
+                        <mesh
+                            key={nodeName}
+                            geometry={node.geometry}
+                            position={node.position}
+                            rotation={node.rotation}
+                            scale={node.scale}
+                        >
+                            <primitive object={textMaterial.current} attach="material" />
+                        </mesh>
+                    )
+                }
+                return null
+            })}
+
+            {/* Rune emissions - always visible */}
+            {RUNE_EMISSION_NODES.map((nodeName) => {
+                const node = nodes[nodeName]
+
+                if (node && typeof node === 'object' && 'geometry' in node && node.geometry) {
                     return (
                         <mesh
                             key={nodeName}

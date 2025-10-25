@@ -8,7 +8,7 @@ import TechIconCardExperience from '@/components/tech-icons/TechIconCardExperien
 import TitleHeader from '@/components/title-header/TitleHeader.tsx'
 import { techStackIcons } from '@/constants'
 
-import { useHideModel } from '@/hooks/useHideModel.ts'
+import useHideModel from '@/hooks/useHideModel.ts'
 
 import './TechStack.css'
 
