@@ -505,7 +505,12 @@ p:last-child {
     font-size: 11px;
     padding: 2px 5px;
   }
-.project-chapter .projects .project-duration {
+  .project-chapter .projects .project-duration {
     font-size: 11px;
+    padding-left: 8px;
+    min-width: 50px;
+  }
+  .project-chapter .projects .project-number {
+    padding-right: 8px;
   }
 }

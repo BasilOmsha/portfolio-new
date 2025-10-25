@@ -793,7 +793,7 @@ export const projectChapters: ProjectChapterProps[] = [
             },
             {
                 number: '02',
-                title: 'BufferGeometry',
+                title: 'Buffer Geometry',
                 href: '#',
                 badges: ['Core'],
                 component: 'Custom Geometry'
