@@ -3,7 +3,7 @@ import { useRef } from 'react'
 import { Center, Environment, Float, OrbitControls, Text3D } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 
-function ASPDotNETCore() {
+function ASPDotNETCore({ isModelInView }: { isModelInView: boolean }) {
     const canvasRef = useRef<HTMLCanvasElement>(null)
     return (
         <Canvas
@@ -13,6 +13,7 @@ function ASPDotNETCore() {
                 touchAction: 'pan-y'
             }}
             resize={{ scroll: false }}
+            frameloop={isModelInView ? 'always' : 'never'}
         >
             <ambientLight intensity={0.3} />
             <directionalLight position={[5, 5, 5]} intensity={1} />

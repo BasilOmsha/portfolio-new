@@ -1,7 +1,6 @@
 import { Suspense, useEffect, useRef, useState } from 'react'
 
 import { Toaster } from 'react-hot-toast'
-import { BeatLoader } from 'react-spinners'
 
 import ContactForm from '@/components/contact/ContactForm.tsx'
 import ModelLoader from '@/components/ModalLoader.tsx'
@@ -17,7 +16,7 @@ function Contact() {
     const contactRef = useRef<HTMLElement>(null)
     const timeoutRef = useRef<number | null>(null)
 
-    const isModelVisible = useHideModel(contactRef, timeoutRef)
+    const isModelInView = useHideModel(contactRef, timeoutRef)
 
     useEffect(() => {
         const canvas = document.querySelector('canvas')
@@ -82,26 +81,15 @@ function Contact() {
 
                         <div className="contact-visual">
                             <div className="contact-3d-wrapper">
-                                {isModelVisible ? (
-                                    <Suspense
-                                        fallback={
-                                            <div
-                                                style={{
-                                                    display: 'flex',
-                                                    alignItems: 'center'
-                                                }}
-                                            >
-                                                <BeatLoader size={10} color="#c7ad98" />
-                                            </div>
-                                        }
-                                    >
-                                        <ModelLoader size={80} color="#c7ad98">
-                                            <ContactExperience />
-                                        </ModelLoader>
-                                    </Suspense>
-                                ) : (
-                                    <div style={{ width: '100%', height: '100%' }} />
-                                )}
+                                {/* {isModelVisible ? ( */}
+                                <Suspense>
+                                    <ModelLoader size={80} color="#c7ad98">
+                                        <ContactExperience isModelInView={isModelInView} />
+                                    </ModelLoader>
+                                </Suspense>
+                                {/* ) : (
+                                        <div style={{ width: '100%', height: '100%' }} />
+                                    )} */}
                             </div>
                         </div>
                     </div>

@@ -8,9 +8,13 @@ import type { TechStackIcon } from '@/constants'
 
 type TechIconCardExperienceProps = {
     model: TechStackIcon
+    isModelInView?: boolean
 }
 
-function TechIconCardExperience({ model }: TechIconCardExperienceProps): React.ReactElement {
+function TechIconCardExperience({
+    model,
+    isModelInView
+}: TechIconCardExperienceProps): React.ReactElement {
     const scene = useGLTF(model.modelPath)
     const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -46,6 +50,7 @@ function TechIconCardExperience({ model }: TechIconCardExperienceProps): React.R
                 touchAction: 'pan-y'
             }}
             resize={{ scroll: false }}
+            frameloop={isModelInView ? 'always' : 'never'}
         >
             <ambientLight intensity={0.3} />
             <directionalLight position={[5, 5, 5]} intensity={1} />

@@ -32,7 +32,7 @@ function Experience() {
     const [windowWidth, setWindowWidth] = useState<number>(
         typeof window !== 'undefined' ? window.innerWidth : 0
     )
-    const [frameloopMode, setFrameloopMode] = useState<'always' | 'demand'>('demand')
+    const [frameloopMode, setFrameloopMode] = useState<'always' | 'demand' | 'never'>('demand')
 
     const orbitControlsConfig = useMemo(
         () => ({

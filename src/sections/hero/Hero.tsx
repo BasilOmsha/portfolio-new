@@ -1,7 +1,5 @@
 import { Suspense, useRef } from 'react'
 
-import { BeatLoader } from 'react-spinners'
-
 import { AnimatedCounter } from '@/components/counter/AnimatedCounter.tsx'
 import AdvancedLoader from '@/components/loaders/AdvancedLoader.tsx'
 import Experience from '@/components/models/hero-experience/Experience.tsx'
@@ -10,20 +8,11 @@ import useHideModel from '@/hooks/useHideModel.ts'
 
 import './hero.css'
 
-function ModelWithLoader() {
-    return (
-        <>
-            <AdvancedLoader />
-            <Experience />
-        </>
-    )
-}
-
 function Hero() {
     const heroRef = useRef<HTMLElement>(null)
     const timeoutRef = useRef<number | null>(null)
 
-    const isModelVisible = useHideModel(heroRef, timeoutRef)
+    const isModelInView = useHideModel(heroRef, timeoutRef)
 
     return (
         <>
@@ -80,21 +69,10 @@ function Hero() {
 
                 {/* model section - conditionally rendered */}
                 <div className="hero_model_section" style={{ position: 'relative' }}>
-                    {isModelVisible ? (
-                        <Suspense
-                            fallback={
-                                <div
-                                    style={{
-                                        display: 'flex',
-                                        alignItems: 'center'
-                                    }}
-                                >
-                                    <span style={{ color: '#045e01ff' }}>Finalizing </span>
-                                    <BeatLoader size={10} color="#045e01ff" />
-                                </div>
-                            }
-                        >
-                            <ModelWithLoader />
+                    {isModelInView ? (
+                        <Suspense>
+                            <AdvancedLoader />
+                            <Experience />
                         </Suspense>
                     ) : (
                         <div style={{ width: '100%', height: '100%' }} />

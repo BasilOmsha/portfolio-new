@@ -5,7 +5,7 @@ import { Canvas } from '@react-three/fiber'
 
 import Computer from './Computer.tsx'
 
-function ContactExperience() {
+function ContactExperience({ isModelInView }: { isModelInView: boolean }) {
     const [key, setKey] = useState(0)
 
     useEffect(() => {
@@ -24,7 +24,7 @@ function ContactExperience() {
             camera={{ position: [0, 3, 7], fov: 45 }}
             style={{ width: '100%', height: '100%' }}
             resize={{ scroll: false }} // prevents the canvas from recalculating its size on every scroll event
-            frameloop="demand" // Canvas only renders when something changes
+            frameloop={isModelInView ? 'demand' : 'never'} // 'demand' Canvas only renders when something changes
         >
             <ambientLight intensity={0.5} color="#fff4e6" />
 

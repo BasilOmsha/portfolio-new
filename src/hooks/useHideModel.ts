@@ -4,12 +4,12 @@ function useHideModel(
     modelRef: React.RefObject<HTMLElement | null>,
     timeoutRef: React.RefObject<number | null>
 ) {
-    const [isModelVisible, setIsModelVisible] = useState(false)
+    const [isModelInView, setIsModelInView] = useState(false)
 
     useEffect(() => {
         const modelElement = modelRef.current
         if (!modelElement) return
-
+        console.log(isModelInView)
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -17,15 +17,15 @@ function useHideModel(
                         clearTimeout(timeoutRef.current)
                         timeoutRef.current = null
                     }
-                    setIsModelVisible(true)
+                    setIsModelInView(true)
                 } else {
                     timeoutRef.current = window.setTimeout(() => {
-                        setIsModelVisible(false)
+                        setIsModelInView(false)
                         timeoutRef.current = null
                     }, 300)
                 }
             },
-            { threshold: 0.1 }
+            { threshold: 0.0 }
         )
 
         observer.observe(modelElement)
@@ -37,6 +37,6 @@ function useHideModel(
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    return isModelVisible
+    return isModelInView
 }
 export default useHideModel

@@ -16,7 +16,7 @@ function TechStack() {
     const techStackRef = useRef<HTMLElement>(null)
     const timeoutRef = useRef<number | null>(null)
 
-    const isModelVisible = useHideModel(techStackRef, timeoutRef)
+    const isModelInView = useHideModel(techStackRef, timeoutRef)
     return (
         <section id="skills" className="tech-stack-container" ref={techStackRef}>
             <div className="tech-stack-wrapper">
@@ -28,26 +28,15 @@ function TechStack() {
                         <div className="tech-card-animated-bg" />
                         <div className="tech-card-content">
                             <div className="tech-icon-wrapper">
-                                {isModelVisible ? (
-                                    <Suspense
-                                        fallback={
-                                            <div
-                                                style={{
-                                                    display: 'flex',
-                                                    alignItems: 'center'
-                                                }}
-                                            >
-                                                <BeatLoader size={10} color="#c7ad98" />
-                                            </div>
-                                        }
-                                    >
-                                        <ModelLoader size={50} color="#c7ad98">
-                                            <ASPDotNETCore />
-                                        </ModelLoader>
-                                    </Suspense>
-                                ) : (
+                                {/* {isModelInView ? ( */}
+                                <Suspense>
+                                    <ModelLoader size={50} color="#c7ad98">
+                                        <ASPDotNETCore isModelInView={isModelInView} />
+                                    </ModelLoader>
+                                </Suspense>
+                                {/* ) : (
                                     <div style={{ width: '100%', height: '100%' }} />
-                                )}
+                                )} */}
                             </div>
 
                             <div className="tech-padding-x">
@@ -61,29 +50,30 @@ function TechStack() {
                             <div className="tech-card-animated-bg" />
                             <div className="tech-card-content">
                                 <div className="tech-icon-wrapper">
-                                    {isModelVisible ? (
-                                        <Suspense
-                                            fallback={
-                                                <div
-                                                    style={{
-                                                        display: 'flex',
-                                                        alignItems: 'center'
-                                                    }}
-                                                >
-                                                    <span style={{ color: '#045e01ff' }}>
-                                                        Finalizing{' '}
-                                                    </span>
-                                                    <BeatLoader size={10} color="#045e01ff" />
-                                                </div>
-                                            }
-                                        >
-                                            <ModelLoader size={50} color="#c7ad98">
-                                                <TechIconCardExperience model={techStackIcon} />
-                                            </ModelLoader>
-                                        </Suspense>
-                                    ) : (
+                                    {/* {isModelVisible ? ( */}
+                                    <Suspense
+                                        fallback={
+                                            <div
+                                                style={{
+                                                    display: 'flex',
+                                                    alignItems: 'center'
+                                                }}
+                                            >
+                                                <span style={{ color: '#c7ad98' }}>Loading </span>
+                                                <BeatLoader size={10} color="#c7ad98" />
+                                            </div>
+                                        }
+                                    >
+                                        <ModelLoader size={50} color="#c7ad98">
+                                            <TechIconCardExperience
+                                                model={techStackIcon}
+                                                isModelInView={isModelInView}
+                                            />
+                                        </ModelLoader>
+                                    </Suspense>
+                                    {/* ) : (
                                         <div style={{ width: '100%', height: '100%' }} />
-                                    )}
+                                    )} */}
                                 </div>
                                 <div className="tech-padding-x">
                                     <p>{techStackIcon.name}</p>
