@@ -32,12 +32,7 @@ function Experience({ isModelInView }: { isModelInView: boolean }) {
     const [windowWidth, setWindowWidth] = useState<number>(
         typeof window !== 'undefined' ? window.innerWidth : 0
     )
-
-    const frameloopMode: 'always' | 'demand' | 'never' = !isModelInView
-        ? 'never'
-        : isOrbitEnabled
-          ? 'always'
-          : 'always'
+    const [frameloopMode, setFrameloopMode] = useState<'always' | 'demand' | 'never'>('demand')
 
     const orbitControlsConfig = useMemo(
         () => ({
@@ -131,6 +126,27 @@ function Experience({ isModelInView }: { isModelInView: boolean }) {
     const handleButtonToggle = (enabled: boolean) => {
         setIsOrbitEnabled(enabled)
     }
+
+    // Handle frameloop mode with delay when switching to demand
+    useEffect(() => {
+        if (!isModelInView && !isOrbitEnabled) {
+            setFrameloopMode('never')
+            return
+        }
+        if (!isModelInView && isOrbitEnabled) {
+            setFrameloopMode('never')
+            return
+        }
+        if (isOrbitEnabled) {
+            setFrameloopMode('always')
+        } else {
+            const timer = setTimeout(() => {
+                setFrameloopMode('demand')
+            }, 300)
+
+            return () => clearTimeout(timer)
+        }
+    }, [isOrbitEnabled, isModelInView])
 
     return (
         <>
