@@ -69,14 +69,10 @@ function Hero() {
 
                 {/* model section - conditionally rendered */}
                 <div className="hero_model_section" style={{ position: 'relative' }}>
-                    {isModelInView ? (
-                        <Suspense>
-                            <AdvancedLoader />
-                            <Experience />
-                        </Suspense>
-                    ) : (
-                        <div style={{ width: '100%', height: '100%' }} />
-                    )}
+                    <Suspense>
+                        <AdvancedLoader />
+                        <Experience isModelInView={isModelInView} />
+                    </Suspense>
                 </div>
             </section>
             <AnimatedCounter />
