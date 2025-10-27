@@ -32,13 +32,7 @@ function Experience() {
     const [windowWidth, setWindowWidth] = useState<number>(
         typeof window !== 'undefined' ? window.innerWidth : 0
     )
-    // const [frameloopMode, setFrameloopMode] = useState<'always' | 'demand' | 'never'>('demand')
-
-    const timeOutDemand = setTimeout(() => {
-        'demand'
-    }, 300)
-
-    const frameloopMode = isOrbitEnabled ? 'always' : (timeOutDemand.toString() as 'demand')
+    const [frameloopMode, setFrameloopMode] = useState<'always' | 'demand' | 'never'>('demand')
 
     const orbitControlsConfig = useMemo(
         () => ({
@@ -134,17 +128,17 @@ function Experience() {
     }
 
     // Handle frameloop mode with delay when switching to demand
-    // useEffect(() => {
-    //     if (isOrbitEnabled) {
-    //         setFrameloopMode('always')
-    //     } else {
-    //         const timer = setTimeout(() => {
-    //             setFrameloopMode('demand')
-    //         }, 300)
+    useEffect(() => {
+        if (isOrbitEnabled) {
+            setFrameloopMode('always')
+        } else {
+            const timer = setTimeout(() => {
+                setFrameloopMode('demand')
+            }, 300)
 
-    //         return () => clearTimeout(timer)
-    //     }
-    // }, [isOrbitEnabled])
+            return () => clearTimeout(timer)
+        }
+    }, [isOrbitEnabled])
 
     return (
         <>
