@@ -270,3 +270,4 @@ src/
 - **Dark/Light Mode Toggle** for improved user preference support
 - **Enhanced Accessibility** with screen reader optimizations and keyboard navigation
 - **Performance** optimization for smoother experience across different browsers and devices
+- 
