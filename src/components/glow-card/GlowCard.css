@@ -1,6 +1,6 @@
 .card-border {
   border: 1px solid var(--color-black-50, #1c1c21);
-  background: var(--color-black-100, #0e0e10); 
+  background: var(--color-black-100, #0e0e10);
 }
 .card {
   --start: 0;
@@ -43,255 +43,195 @@
   position: relative;
 }
 .glow-card {
-  border-radius: 12px; 
-  padding: 40px; 
-  margin-bottom: 20px; 
+  border-radius: 12px;
+  padding: 40px;
+  margin-bottom: 20px;
   break-inside: avoid;
 }
-.star-rating {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  margin-bottom: 20px;
-}
-.education-header {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-}
-.certification-header {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-}
-.education-badge {
-  background: rgba(4, 152, 189, 0.2);
-  color: #0498bd;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 500;
-}
-.education-period {
-  background: rgba(131, 156, 181, 0.2);
-  color: #839cb5;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 500;
-}
-.cert-badge {
-  background: rgba(172, 240, 166, 0.2);
-  color: #acf0a6;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 500;
-}
-.cert-date-badge {
-  background: rgba(131, 156, 181, 0.2);
-  color: #839cb5;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 500;
-}
-.star-image {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-}
-.review-container {
-  margin-bottom: 20px;
+
+.glow-card-content {
   position: relative;
-  z-index: 5;
+  z-index: 1;
 }
-.review-text {
-  color: var(--color-white-50, #d9ecff);
-  font-size: 18px;
-  line-height: 1.75;
-  margin: 0;
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.section-type {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #acf0a6;
+}
+.section-period {
+  font-size: 13px;
+  color: #839cb5;
+  font-weight: 400;
 }
 .education-section {
-  margin-bottom: 24px;
-}
-.education-title {
-  color: var(--color-white-50, #d9ecff);
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 16px;
-}
-.education-item {
-  margin-bottom: 16px;
+  margin-bottom: 0;
 }
 .degree-title {
-  color: var(--color-white-50, #d9ecff);
-  font-size: 16px;
+  color: #fff;
+  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
 }
 .institution-name {
-  color: #839cb5;
+  color: #d9ecff;
   font-size: 15px;
-  margin-bottom: 6px;
+  margin: 0 0 4px 0;
+  font-weight: 400;
 }
-.education-details {
+.location-text {
   color: #839cb5;
   font-size: 14px;
-  margin-bottom: 6px;
+  margin: 0 0 16px 0;
 }
 .education-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 12px;
+  gap: 12px;
+  margin-top: 16px;
 }
-.education-lang,
-.education-gpa {
+.meta-item {
   color: #839cb5;
   font-size: 13px;
-  background: rgba(131, 156, 181, 0.1);
-  padding: 4px 8px;
-  border-radius: 8px;
-  border: 1px solid rgba(131, 156, 181, 0.2);
+  padding: 6px 12px;
+  background: rgba(131, 156, 181, 0.08);
+  border-radius: 6px;
+}
+/* Thesis Section */
+.thesis-section {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.thesis-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #acf0a6;
+  margin: 0 0 12px 0;
 }
 .thesis-topic {
-  color: var(--color-white-50, #d9ecff);
-  font-size: 13px;
-  background: rgba(4, 152, 189, 0.1);
-  padding: 4px 8px;
-  border-radius: 8px;
-  border: 1px solid rgba(4, 152, 189, 0.2);
-  font-weight: 600;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
 }
 .thesis-description {
   color: #839cb5;
-  font-size: 12px;
-  background: rgba(131, 156, 181, 0.05);
-  padding: 4px 8px;
-  border-radius: 8px;
-  border: 1px solid rgba(131, 156, 181, 0.1);
-  flex-basis: 100%;
-  line-height: 1.4;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+}
+.thesis-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
 }
 .thesis-grade {
   color: #acf0a6;
   font-size: 13px;
-  background: rgba(172, 240, 166, 0.1);
-  padding: 4px 8px;
-  border-radius: 8px;
-  border: 1px solid rgba(172, 240, 166, 0.2);
+  font-weight: 500;
 }
 .thesis-link {
   color: #0498bd;
   font-size: 13px;
+  font-weight: 500;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
   position: relative;
   z-index: 10;
-  cursor: pointer;
-  display: inline-block;
-  background: rgba(4, 152, 189, 0.1);
-  padding: 4px 8px;
-  border-radius: 8px;
-  border: 1px solid rgba(4, 152, 189, 0.2);
+}
+.thesis-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 6px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='6' viewBox='0 0 40 6'><line x1='0' y1='3' x2='40' y2='3' stroke='%230498bd' stroke-width='2' /></svg>");
+  background-repeat: repeat-x;
+  background-size: 40px 6px;
+  transition: background-image 0.4s ease, opacity 0.4s ease;
+}
+
+.thesis-link:hover::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='6' viewBox='0 0 40 6'><path d='M0 3 Q 5 0, 10 3 T 20 3 T 30 3 T 40 3' fill='none' stroke='%2306c2f0' stroke-width='2' /></svg>");
 }
 .thesis-link:hover {
   color: #06c2f0;
-  background: rgba(4, 152, 189, 0.2);
 }
 .certifications-section {
-  margin-top: 24px;
+  margin-top: 0;
   position: relative;
   z-index: 5;
 }
-.certifications-title {
-  color: var(--color-white-50, #d9ecff);
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 16px;
-}
 .certification-item {
-  margin-bottom: 16px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 .certification-item:last-child {
   border-bottom: none;
   margin-bottom: 0;
+  padding-bottom: 0;
 }
 .cert-title {
-  color: var(--color-white-50, #d9ecff);
+  color: #fff;
   font-size: 16px;
   font-weight: 600;
-  margin-bottom: 6px;
+  margin: 0 0 6px 0;
 }
 .cert-issuer {
-  color: #839cb5;
-  font-size: 15px;
-  margin-bottom: 4px;
-}
-.cert-date {
-  color: #839cb5;
+  color: #d9ecff;
   font-size: 14px;
-  margin-bottom: 4px;
+  margin: 0 0 4px 0;
 }
 .cert-id {
   color: #839cb5;
-  font-size: 14px;
-  margin-bottom: 8px;
-}
-.thesis-section {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-.thesis-label {
-  color: var(--color-white-50, #d9ecff);
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-.thesis-topic {
-  color: var(--color-white-50, #d9ecff);
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-.thesis-description {
-  color: #839cb5;
   font-size: 13px;
-  line-height: 1.5;
-  margin-bottom: 12px;
+  margin: 0 0 12px 0;
 }
-.thesis-details {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-}
-.thesis-grade {
-  color: #acf0a6;
-  font-size: 13px;
-  background: rgba(172, 240, 166, 0.1);
-  padding: 4px 8px;
-  border-radius: 8px;
-  border: 1px solid rgba(172, 240, 166, 0.2);
-}
-.thesis-link {
+.cert-link {
   color: #0498bd;
   font-size: 13px;
+  font-weight: 500;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
+  display: inline-block;
   position: relative;
   z-index: 10;
-  cursor: pointer;
-  display: inline-block;
 }
-.thesis-link:hover {
+.cert-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 6px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='6' viewBox='0 0 40 6'><line x1='0' y1='3' x2='40' y2='3' stroke='%230498bd' stroke-width='2' /></svg>");
+  background-repeat: repeat-x;
+  background-size: 40px 6px;
+  transition: background-image 0.4s ease, opacity 0.4s ease;
+}
+
+.cert-link:hover::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='6' viewBox='0 0 40 6'><path d='M0 3 Q 5 0, 10 3 T 20 3 T 30 3 T 40 3' fill='none' stroke='%2306c2f0' stroke-width='2' /></svg>");
+}
+
+.cert-link:hover {
   color: #06c2f0;
-  text-decoration: underline;
 }
