@@ -56,6 +56,8 @@ export type FireConfig = {
     scale: [number, number, number]
     offsets: [number, number, number][]
     color: string
+    spreadOut?: boolean
+    speed?: number
 }
 
 export type FireProps = {
@@ -66,6 +68,8 @@ export type FireProps = {
 export type MaterialProps = {
     size: number
     color: string
+    spreadOut?: boolean
+    speed?: number
 }
 
 export type FireShaderMaterial = ShaderMaterial & {

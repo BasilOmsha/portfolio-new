@@ -7,24 +7,25 @@ import sparksFragmentShader from '../../shaders/fire/fragment.glsl'
 import sparksVertexShader from '../../shaders/fire/vertex.glsl'
 import type { MaterialProps } from '../../types/types.ts'
 
-const SPEED = 6
+const DEFAULT_SPEED = 6
 
-function Material({ size, color }: MaterialProps) {
+function Material({ size, color, spreadOut = false, speed = DEFAULT_SPEED }: MaterialProps) {
     const BoneFireShader = useMemo(
         () =>
             shaderMaterial(
                 {
                     uTime: 0,
                     uSize: size,
-                    uSpeed: SPEED,
+                    uSpeed: speed,
                     uColor: new THREE.Color(color),
                     uResolution: new THREE.Vector2(),
-                    uIntensity: 1.3
+                    uIntensity: 1.3,
+                    uSpreadOut: spreadOut ? 1.0 : 0.0
                 },
                 sparksVertexShader,
                 sparksFragmentShader
             ),
-        [size, color]
+        [size, color, spreadOut, speed]
     )
 
     const materialRef = useRef<THREE.ShaderMaterial>(null)

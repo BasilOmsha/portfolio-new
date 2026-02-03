@@ -122,7 +122,12 @@ function Fire({ particlesCount, config }: FireProps) {
                     itemSize={3}
                 />
             </bufferGeometry>
-            <FireMaterial size={config.size} color={config.color} />
+            <FireMaterial
+                size={config.size}
+                color={config.color}
+                spreadOut={config.spreadOut}
+                speed={config.speed}
+            />
         </points>
     )
 }

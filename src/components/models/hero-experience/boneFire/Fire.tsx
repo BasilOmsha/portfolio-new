@@ -5,7 +5,7 @@ import BoneFire from './fire/Fire.tsx'
  *   Config
  */
 const PARTICLES_COUNT = 150
-const PARTICLES_COUNT2 = 25
+const PARTICLES_COUNT_EMBER = 25
 
 const FIRE_COLOR2 = '#ff5a00'
 const FIRE_COLOR1 = '#ff9a00'
@@ -27,10 +27,12 @@ const Fire_Top: FireConfig = {
 }
 
 const Ember: FireConfig = {
-    size: 0.09,
+    size: 0.06,
     scale: [3, 1.8, 1],
-    offsets: [[0, 0.8, 0.1]],
-    color: EMBER
+    offsets: [[0, 0.7, 0.1]],
+    color: EMBER,
+    spreadOut: true,
+    speed: 2.5 // Slower floating embers
 }
 
 const Smoke: FireConfig = {
@@ -45,7 +47,7 @@ function Fire() {
         <>
             <BoneFire particlesCount={PARTICLES_COUNT} config={Fire_Bottom} />
             <BoneFire particlesCount={PARTICLES_COUNT} config={Fire_Top} />
-            <BoneFire particlesCount={PARTICLES_COUNT2} config={Ember} />
+            <BoneFire particlesCount={PARTICLES_COUNT_EMBER} config={Ember} />
             <BoneFire particlesCount={PARTICLES_COUNT} config={Smoke} />
         </>
     )
