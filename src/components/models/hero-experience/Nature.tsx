@@ -252,4 +252,3 @@ function Nature({ orbitControl }: { orbitControl: boolean }) {
 }
 
 export default Nature
-useGLTF.preload('models/natureOptimizedComp3.glb')

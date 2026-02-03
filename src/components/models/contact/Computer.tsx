@@ -36,6 +36,4 @@ function Computer(props: GroupProps) {
     )
 }
 
-useGLTF.preload('/models/computer-optimized-transformed.glb')
-
 export default Computer
