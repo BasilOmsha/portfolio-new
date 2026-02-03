@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
@@ -6,45 +6,74 @@ import * as THREE from 'three'
 import type { FireProps, FireShaderMaterial } from '../../types/types.ts'
 import FireMaterial from '../material/Material.tsx'
 
+// Initialize worker
+let fireWorkerInstance: Worker | null = null
+const getFireWorker = () => {
+    if (!fireWorkerInstance) {
+        fireWorkerInstance = new Worker(
+            new URL('@/workers/fireParticle.worker.ts', import.meta.url),
+            { type: 'module' }
+        )
+    }
+    return fireWorkerInstance
+}
+
+// Generate unique ID for each Fire component instance
+let instanceCounter = 0
+const generateId = () => `fire-${++instanceCounter}-${Date.now()}`
+
 function Fire({ particlesCount, config }: FireProps) {
     const sparksRef = useRef<THREE.Points>(null)
+
+    const instanceIdRef = useRef<string>(generateId())
 
     const count = useMemo(
         () => particlesCount * config.offsets.length,
         [particlesCount, config.offsets]
     )
 
-    const bufferAttributes = useMemo(() => {
-        const positions = new Float32Array(count * 3)
-        const offsets = new Float32Array(count * 3)
-        const scales = new Float32Array(count)
-        const elevation = new Float32Array(count)
+    const [buffersReady, setBuffersReady] = useState(false)
+    const buffersRef = useRef<{
+        positions: Float32Array
+        offsets: Float32Array
+        scales: Float32Array
+        elevation: Float32Array
+    } | null>(null)
 
-        let currentSlot = 1
+    useEffect(() => {
+        const worker = getFireWorker()
+        const myId = instanceIdRef.current
+        setBuffersReady(false)
 
-        for (let i = 0; i < count; i++) {
-            // Default sparks positions
-            positions[i * 3 + 0] = (Math.random() - 0.5) * 0.2
-            positions[i * 3 + 1] = (Math.random() - 0.5) * 0.5
-            positions[i * 3 + 2] = (Math.random() - 0.5) * 0.5
-
-            // Randomized sparks scales
-            scales[i] = Math.random() * 0.5 + 0.5
-
-            // Randomized sparks Y axis elevation
-            elevation[i] = 5 + Math.random() * 25.0
-
-            // Place sparks to their correct position depending on each offset
-            if (i > (count / config.offsets.length) * currentSlot) {
-                currentSlot++
+        const handleMessage = (e: MessageEvent) => {
+            if (e.data.type === 'initialized' && e.data.id === myId) {
+                buffersRef.current = {
+                    positions: new Float32Array(e.data.positions),
+                    offsets: new Float32Array(e.data.offsets),
+                    scales: new Float32Array(e.data.scales),
+                    elevation: new Float32Array(e.data.elevation)
+                }
+                setBuffersReady(true)
             }
-            offsets[i * 3 + 0] = config.offsets[currentSlot - 1][0]
-            offsets[i * 3 + 1] = config.offsets[currentSlot - 1][1]
-            offsets[i * 3 + 2] = config.offsets[currentSlot - 1][2]
         }
 
-        return { positions, offsets, scales, elevation }
-    }, [count, config.offsets])
+        worker.addEventListener('message', handleMessage)
+
+        // Send work to worker with unique ID
+        worker.postMessage({
+            type: 'init',
+            id: myId,
+            data: {
+                particlesCount,
+                offsetsLength: config.offsets.length,
+                offsets: config.offsets
+            }
+        })
+
+        return () => {
+            worker.removeEventListener('message', handleMessage)
+        }
+    }, [particlesCount, config.offsets])
 
     const width = useThree((state) => state.size.width)
     const height = useThree((state) => state.size.height)
@@ -61,31 +90,35 @@ function Fire({ particlesCount, config }: FireProps) {
         }
     })
 
+    if (!buffersReady || !buffersRef.current) {
+        return null
+    }
+
     return (
         <points ref={sparksRef} scale={config.scale} frustumCulled={false} renderOrder={1}>
             <bufferGeometry>
                 <bufferAttribute
                     attach="attributes-position"
                     count={count}
-                    array={bufferAttributes.positions}
+                    array={buffersRef.current.positions}
                     itemSize={3}
                 />
                 <bufferAttribute
                     attach="attributes-aScale"
                     count={count}
-                    array={bufferAttributes.scales}
+                    array={buffersRef.current.scales}
                     itemSize={1}
                 />
                 <bufferAttribute
                     attach="attributes-aElevation"
                     count={count}
-                    array={bufferAttributes.elevation}
+                    array={buffersRef.current.elevation}
                     itemSize={1}
                 />
                 <bufferAttribute
                     attach="attributes-aOffset"
                     count={count}
-                    array={bufferAttributes.offsets}
+                    array={buffersRef.current.offsets}
                     itemSize={3}
                 />
             </bufferGeometry>
