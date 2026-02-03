@@ -78,7 +78,6 @@ function Experience() {
     return (
         <section id="experience" className="experience-section">
             <div className="experience-container">
-                {/* <TitleHeader title="My Work Experience" sub="💼 Career Overview" /> */}
                 <TitleHeader title="My Tech Journey" />
                 <div className="experience-content">
                     <div className="experience-cards-container">
@@ -112,21 +111,114 @@ function Experience() {
                                                 {card.date3 && (
                                                     <p className="exp-date">🗓️&nbsp;{card.date3}</p>
                                                 )}
+                                                {card.dates && card.dates.length > 0 && (
+                                                    <details className="dates-details">
+                                                        <summary className="dates-summary">
+                                                            📅 Dates ({card.dates.length} events)
+                                                        </summary>
+                                                        <ul className="dates-list">
+                                                            {card.dates.map((dateItem, index) => (
+                                                                <li
+                                                                    key={index}
+                                                                    className="date-item"
+                                                                >
+                                                                    {dateItem}
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </details>
+                                                )}
                                                 <p className="responsibilities-label">
                                                     Responsibilities
                                                 </p>
-                                                <ul className="responsibilities-list">
-                                                    {card.responsibilities.map(
-                                                        (responsibility, responsibilityIndex) => (
-                                                            <li
-                                                                key={responsibilityIndex}
-                                                                className="responsibility-item"
-                                                            >
-                                                                {responsibility}
-                                                            </li>
-                                                        )
-                                                    )}
-                                                </ul>
+                                                {card.responsibilities.length === 1 ? (
+                                                    <p className="responsibility-paragraph">
+                                                        {card.responsibilities[0]}
+                                                    </p>
+                                                ) : card.responsibilities.length <= 2 ? (
+                                                    <ul className="responsibilities-list">
+                                                        {card.responsibilities.map(
+                                                            (
+                                                                responsibility,
+                                                                responsibilityIndex
+                                                            ) => (
+                                                                <li
+                                                                    key={responsibilityIndex}
+                                                                    className="responsibility-item"
+                                                                >
+                                                                    {responsibility}
+                                                                </li>
+                                                            )
+                                                        )}
+                                                    </ul>
+                                                ) : (
+                                                    <>
+                                                        <ul className="responsibilities-list">
+                                                            {card.responsibilities
+                                                                .slice(0, 2)
+                                                                .map(
+                                                                    (
+                                                                        responsibility,
+                                                                        responsibilityIndex
+                                                                    ) => (
+                                                                        <li
+                                                                            key={
+                                                                                responsibilityIndex
+                                                                            }
+                                                                            className="responsibility-item"
+                                                                        >
+                                                                            {responsibility}
+                                                                        </li>
+                                                                    )
+                                                                )}
+                                                        </ul>
+                                                        <details className="responsibilities-details">
+                                                            <summary className="see-more-btn">
+                                                                <span className="see-more-text">
+                                                                    See more
+                                                                </span>
+                                                                <span className="collapse-text">
+                                                                    Collapse
+                                                                </span>
+                                                            </summary>
+                                                            <ul className="responsibilities-list responsibilities-list-expanded">
+                                                                {card.responsibilities
+                                                                    .slice(2)
+                                                                    .map(
+                                                                        (
+                                                                            responsibility,
+                                                                            responsibilityIndex
+                                                                        ) => (
+                                                                            <li
+                                                                                key={
+                                                                                    responsibilityIndex +
+                                                                                    2
+                                                                                }
+                                                                                className="responsibility-item"
+                                                                            >
+                                                                                {responsibility}
+                                                                            </li>
+                                                                        )
+                                                                    )}
+                                                            </ul>
+                                                        </details>
+                                                    </>
+                                                )}
+                                                {card.skills && card.skills.length > 0 && (
+                                                    <div className="skills-section">
+                                                        <p className="skills-label">Skills</p>
+                                                        <div className="skills-list">
+                                                            {card.skills.map((skill, index) => (
+                                                                <span
+                                                                    key={index}
+                                                                    className="skill-tag"
+                                                                >
+                                                                    {skill}
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
                                     </div>

@@ -139,7 +139,9 @@ type ExperienceCard = {
     date: string
     date2?: string
     date3?: string
+    dates?: string[]
     responsibilities: string[]
+    skills?: string[]
     showGlowCard?: boolean
     education?: Education
     certifications?: Certification[]
@@ -147,45 +149,43 @@ type ExperienceCard = {
 
 export const expCards: ExperienceCard[] = [
     {
-        review: 'Contract (part-time) at Calevala Interactive Oy, Remote, Finland. Optimized the codebase by identifying unnecessary use of “useEffect” across the project. Enhanced code readability by separating UI from business logic. Fixed bugs reported in QA, identified other bugs, and resolved them. Ensured responsive and accessible experience across the web app. Implemented lazy loading with skeleton loading effects on various components across the dashboard. Re-designed the authentication system using JWTs sent in HTTP-only cookies (access-token), with refresh token logic handled securely in the backend, which allows users to have uninterrupted sessions. Actively participated in team discussions, contributing ideas and technical improvements.',
-        company: 'Calevala Interactive Ltd',
-        imgPath: '/images/exp1.png',
-        logoPath: '/images/logos/calevalaLogo.webp',
+        review: 'Part-time at Vahvero Symbiosis, Remote, Hämeenlinna, Finland. Conducting meetings with stakeholders in both Finnish (public sector) and English to understand needs, clarify feedback, and ensure solutions support real business and user requirements. Implementing new features and improvements on the existing codebase. Helping validate and write technical documentation in accordance to Finnish and EU standards for medical software.',
+        company: 'Vahvero Symbiosis',
+        imgPath: '',
+        logoPath: '/images/logos/vahSymb.webp',
         imgWidth: '100%',
         imgHeight: 'auto',
-        title: 'Frontend Developer',
-        date: 'June 2025 - Present',
-        showGlowCard: true,
-        education: {
-            degree: 'Full Stack Development Bootcamp',
-            institution: 'Integrify Academy',
-            location: 'Helsinki, Finland',
-            languageOfInstruction: 'English',
-            gpa: '',
-            gradingScale: '',
-            period: 'October 2024 - January 2025'
-        },
+        title: 'Software Developer (Ohjelmistosuunnittelija)',
+        date: 'December 2025 - Present',
+        showGlowCard: false,
         responsibilities: [
-            'Optimized codebase by identifying unnecessary use of useEffect across the project.',
-            'Enhanced code readability by separating UI from business logic.',
-            'Fixed bugs reported in a QA report, identified other bugs and resolved them.',
-            'Ensured responsive and accessible experience across the web app.',
-            'Implemented lazy loading with skeleton loading effects on dashboard components.',
-            'Re-designed authentication system using JWTs in HTTP-only cookies and secure refresh token logic.',
-            'Actively participated in team discussions, contributing ideas and technical improvements.'
-        ]
+            'Conduct meetings with stakeholders in both Finnish (public sector) and English to understand needs, clarify feedback, and ensure solutions support real business and user requirements.',
+            'Implement new features and improvements on the existing codebase.',
+            'Help validate and write technical documentation in accordance to Finnish and EU standards for medical software.'
+        ],
+        skills: ['PHP', 'JavaScript', 'JQuery', 'MySQL', 'Technical Documentation']
     },
     {
-        review: 'Provided IT support for a PhD thesis defense event at Helsinki University, ensuring all technical aspects of the auditorium were prepared and functional.',
-        company: 'University of Helsinki',
+        review: 'IT Support gigs at HUS / Helsinki University. Offered gig work to prepare the auditorium equipment for PhD thesis defense presentations.',
+        company: 'Self-Employed · Freelance',
         imgPath: '',
         logoPath: '/images/logos/HY__LD01_LogoFP_EN_B3____BW.webp',
         imgWidth: '100%',
         imgHeight: 'auto',
-        title: 'IT Support Gig',
-        date3: 'September 5th 2025',
-        date2: 'August 15th 2025',
-        date: 'May 15th 2025',
+        title: 'IT Support Specialist (Gigs)',
+        date: 'May 2025 - Present',
+        dates: [
+            'May 15th 2025',
+            'August 15th 2025',
+            'September 5th 2025',
+            'October 31st 2025',
+            'November 7th 2025',
+            'November 28th 2025',
+            'December 8th 2025',
+            'December 9th 2025',
+            'December 10th 2025',
+            'December 12th 2025'
+        ],
         showGlowCard: true,
         certifications: [
             {
@@ -197,14 +197,54 @@ export const expCards: ExperienceCard[] = [
             }
         ],
         responsibilities: [
-            'Set up and tested Zoom conferencing for a PhD defense, including camera and microphone configuration.',
-            'Prepared the auditorium by connecting the laptop to the projector and ensuring all adapters and chargers were available.',
-            'Configured the MacBook, checked internet connectivity, and restarted the device if needed.',
-            'Connected camera and Jabra conference microphone via USB adapters and extension cables, and positioned equipment for optimal coverage.',
-            'Launched PowerPoint presentation and Zoom, selected correct camera (BCC950 Conferencecam) and microphone (Jabra) in Zoom.',
-            'Enabled "Record to Cloud" in Zoom, adjusted security settings, and renamed participant as required.',
-            'Shared full-screen PowerPoint presentation via Zoom, tested remote control for slide changes.',
-            'Verified Zoom stream visibility on mobile device using provided Meeting ID and Passcode.'
+            'Prepare auditoriums for doctoral thesis defenses: set up Zoom for online audiences, configure recording to cloud, connect laptops to projectors, and set up Jabra microphones, external cameras, and remote controls.',
+            'Developed a C# tool to organize large folder structures with duplicate filenames—scanning directories, detecting matches, and copying versions with path-based suffixes for comparison.',
+            'Operated medical simulation software, controlling mannequin scenarios and managing session flow during lectures.',
+            'Provide on-site technical support throughout the duration of events.'
+        ],
+        skills: ['C#', 'Zoom', 'IT Support', 'Medical Simulation Software']
+    },
+    {
+        review: 'Contract (part-time) at Calevala Interactive Oy, Remote, Finland. Optimized the codebase by identifying unnecessary use of “useEffect” across the project. Enhanced code readability by separating UI from business logic. Fixed bugs reported in QA, identified other bugs, and resolved them. Ensured responsive and accessible experience across the web app. Implemented lazy loading with skeleton loading effects on various components across the dashboard. Re-designed the authentication system using JWTs sent in HTTP-only cookies (access-token), with refresh token logic handled securely in the backend, which allows users to have uninterrupted sessions. Actively participated in team discussions, contributing ideas and technical improvements.',
+        company: 'Calevala Interactive Ltd',
+        imgPath: '/images/exp1.png',
+        logoPath: '/images/logos/calevalaLogo.webp',
+        imgWidth: '100%',
+        imgHeight: 'auto',
+        title: 'Frontend Developer',
+        date: 'June 2025 - December 2025',
+        showGlowCard: true,
+        education: {
+            degree: 'Full Stack Development Bootcamp',
+            institution: 'Integrify Academy',
+            location: 'Helsinki, Finland',
+            languageOfInstruction: 'English',
+            gpa: '',
+            gradingScale: '',
+            period: 'October 2024 - January 2025'
+        },
+        responsibilities: [
+            'Migrated CRA project to Vite, reducing initial server startup from over 2 minutes to 300ms.',
+            'Switched package manager from npm to yarn and cached dependencies in GitHub Actions to speed up deployments.',
+            'Refactored large pages (1000+ lines) into smaller, dedicated components for better readability and maintainability.',
+            'Centralized API calls with Axios interceptors for error handling.',
+            'Moved business logic to custom hooks with TanStack Query and created dedicated API services.',
+            'Reduced unnecessary useEffect usage and applied derived state patterns where applicable.',
+            'Re-designed authentication system using JWTs in HTTP-only cookies with secure refresh token logic.',
+            'Implemented lazy loading with skeleton effects on dashboard components.',
+            'Reviewed pull requests and fixed bugs reported in QA.',
+            'Documented endpoints with Swagger and created onboarding documentation for new developers.'
+        ],
+        skills: [
+            'React',
+            'JavaScript',
+            'CSS',
+            'Vite',
+            'TanStack Query',
+            'Axios',
+            'Python',
+            'Flask',
+            'PostgreSQL'
         ]
     },
     {
@@ -237,7 +277,8 @@ export const expCards: ExperienceCard[] = [
             'Researched and evaluated auditing tools for client use.',
             'Prototyped and developed APIs (WHOIS, Backlinks) for actionable insights.',
             'Designed and implemented responsive, accessible user interfaces (WCAG 2.1–2.2).'
-        ]
+        ],
+        skills: ['React', 'JavaScript', 'CSS', 'REST APIs', 'WCAG']
     },
     {
         review: 'Internship at Häme University of Applied Sciences, Hämeenlinna, Finland. Collaborated with the supervisor to define application requirements, translating them into detailed user stories. Created an initial UI concept for the desktop application using Figma, focusing on usability and clarity. Developed functionalities to read and display live data (location, signal strength, time) from a portable LoRa scanner prototype within the application.',
@@ -263,7 +304,8 @@ export const expCards: ExperienceCard[] = [
             'Defined application requirements and user stories with supervisor.',
             'Designed UI concepts in Figma for usability and clarity.',
             'Developed features to read and display live data from LoRa scanner prototype.'
-        ]
+        ],
+        skills: ['C#', '.NET', 'Figma', 'LoRa', 'Desktop Development']
     },
     {
         review: 'ICT Specialist at Welfare District of Forssa (FSHKY), Forssa, Finland. Provided support for Office 365, Lifecare patient information system, AD and Citrix tools, Helpdesk, and TeleQ in a demanding hospital environment.',
@@ -282,7 +324,8 @@ export const expCards: ExperienceCard[] = [
             'Provided phone support and documented technical solutions.',
             'Supported COVID-19 vaccination centers by recording patient information.',
             'Utilized TeleQ to respond to requests from different departments.'
-        ]
+        ],
+        skills: ['Office 365', 'Active Directory', 'Citrix', 'LifeCare', 'TeleQ', 'Helpdesk']
     },
     {
         review: 'Information Services Specialist at Welfare District of Forssa (FSHKY), Forssa, Finland. Installed and managed mobile devices, managed IDs, handled support requests, corrected COVID certificates, and set up Teams services.',
@@ -310,7 +353,8 @@ export const expCards: ExperienceCard[] = [
             'Handled support requests and provided assistance.',
             'Corrected COVID certificates as required.',
             'Set up Teams services for users.'
-        ]
+        ],
+        skills: ['Microsoft Teams', 'Mobile Device Management', 'Active Directory']
     },
     {
         review: 'Information Services Specialist at Welfare District of Forssa (FSHKY), Forssa, Finland. Installation and management of mobile devices, account management, support requests, correcting COVID certificates, digital skills instructor, intranet updates, COVID vaccination recording, and TeleQ usage.',
@@ -331,7 +375,8 @@ export const expCards: ExperienceCard[] = [
             'Updated intranet (Arabic language).',
             'Recorded COVID vaccinations during events.',
             'Utilized TeleQ to respond to requests from different departments.'
-        ]
+        ],
+        skills: ['Mobile Device Management', 'Active Directory', 'TeleQ', 'Digital Training']
     }
 ]
 

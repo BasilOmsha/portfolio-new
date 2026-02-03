@@ -195,3 +195,143 @@
   font-size: 18px;
   line-height: 1.5;
 }
+.responsibility-paragraph {
+  color: #d9ecff;
+  font-size: 18px;
+  line-height: 1.7;
+  margin-top: 20px;
+}
+.responsibilities-details {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+}
+.responsibilities-details summary {
+  list-style: none;
+  order: 2;
+}
+.responsibilities-details summary::-webkit-details-marker {
+  display: none;
+}
+.responsibilities-list-expanded {
+  order: 1;
+}
+.see-more-btn {
+  cursor: pointer;
+  font-weight: 500;
+  padding: 12px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+.see-more-text {
+  display: inline;
+}
+.collapse-text {
+  display: none;
+}
+.responsibilities-details[open] .see-more-text {
+  display: none;
+}
+.responsibilities-details[open] .collapse-text {
+  display: inline;
+}
+.see-more-btn::after {
+  content: '▼';
+  font-size: 10px;
+  transition: transform 0.2s ease;
+}
+
+.responsibilities-details[open] .see-more-btn::after {
+  transform: rotate(180deg);
+}
+
+.responsibilities-details[open] .see-more-btn {
+  color: #839cb5;
+}
+
+.see-more-btn:hover {
+  color: #d9ecff;
+}
+.skills-section {
+  margin-top: 24px;
+}
+.skills-label {
+  color: #839cb5;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.skill-tag {
+  background: linear-gradient(135deg, rgba(4, 152, 189, 0.2), rgba(4, 35, 211, 0.2));
+  border: 1px solid rgba(4, 152, 189, 0.4);
+  color: #acf0a6;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.skill-tag:hover {
+  background: linear-gradient(135deg, rgba(4, 152, 189, 0.3), rgba(4, 35, 211, 0.3));
+  border-color: rgba(4, 152, 189, 0.6);
+}
+.dates-details {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.dates-summary {
+  cursor: pointer;
+  font-weight: 500;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s ease;
+}
+.dates-summary::-webkit-details-marker {
+  display: none;
+}
+.dates-summary::after {
+  content: '▼';
+  font-size: 10px;
+  transition: transform 0.2s ease;
+}
+.dates-details[open] .dates-summary::after {
+  transform: rotate(180deg);
+}
+.dates-summary:hover {
+  color: #d9ecff;
+}
+.dates-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 20px;
+  margin-top: 10px;
+  padding-left: 20px;
+  list-style: none;
+}
+@media (min-width: 768px) {
+  .dates-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.date-item {
+  color: #839cb5;
+  font-size: 14px;
+  padding: 4px 0;
+  position: relative;
+  padding-left: 16px;
+}
+.date-item::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #0498bd;
+}
