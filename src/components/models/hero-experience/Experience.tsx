@@ -1,10 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 
 import { OrbitControls } from '@react-three/drei'
-import { Canvas } from '@react-three/fiber'
-import { Bloom, EffectComposer, ToneMapping } from '@react-three/postprocessing'
+import { Canvas, useThree } from '@react-three/fiber'
+import { Bloom, EffectComposer } from '@react-three/postprocessing'
 import { Leva } from 'leva'
-import { BlendFunction } from 'postprocessing'
 
 import { CameraAnimator } from '@/gsap/heroAnimation.ts'
 import Fire from './boneFire/Fire.tsx'
@@ -19,20 +18,32 @@ const CAMERA_SETTINGS: CameraSettingsType = {
 
 const BLOOM_CONFIG = {
     mipmapBlur: false,
-    luminanceThreshold: 0.8,
+    luminanceThreshold: 0.85,
     luminanceSmoothing: 0.5,
-    intensity: 0.5,
+    intensity: 0.4,
     width: 256,
     height: 256
 }
 
-function Experience() {
+function PostEffect() {
+    const { size } = useThree()
+
+    if (size.width > 1400) return null
+    return (
+        <EffectComposer multisampling={0}>
+            <Bloom {...BLOOM_CONFIG} />
+        </EffectComposer>
+    )
+}
+
+function Experience({ isModelInView }: { isModelInView: boolean }) {
     const [isOrbitEnabled, setIsOrbitEnabled] = useState<boolean>(false)
     const [isMouseDown, setIsMouseDown] = useState<boolean>(false)
     const [windowWidth, setWindowWidth] = useState<number>(
         typeof window !== 'undefined' ? window.innerWidth : 0
     )
-    const [frameloopMode, setFrameloopMode] = useState<'always' | 'demand' | 'never'>('demand')
+
+    const isActive = isModelInView && isOrbitEnabled
 
     const orbitControlsConfig = useMemo(
         () => ({
@@ -127,23 +138,10 @@ function Experience() {
         setIsOrbitEnabled(enabled)
     }
 
-    // Handle frameloop mode with delay when switching to demand
-    useEffect(() => {
-        if (isOrbitEnabled) {
-            setFrameloopMode('always')
-        } else {
-            const timer = setTimeout(() => {
-                setFrameloopMode('demand')
-            }, 300)
-
-            return () => clearTimeout(timer)
-        }
-    }, [isOrbitEnabled])
-
     return (
         <>
             <Leva
-                hidden={!isOrbitEnabled}
+                hidden={!isActive}
                 collapsed
                 theme={getLevaTheme()}
                 titleBar={{
@@ -152,23 +150,27 @@ function Experience() {
             />
             <Canvas
                 camera={CAMERA_SETTINGS}
+                frameloop="always"
                 style={{
                     pointerEvents: isOrbitEnabled ? 'auto' : 'none',
                     touchAction: isOrbitEnabled ? 'none' : 'pan-y'
                 }}
-                resize={{ scroll: false }}
-                frameloop={frameloopMode}
+                dpr={Math.min(window.devicePixelRatio, 1.5)}
+                gl={{
+                    antialias: true,
+                    powerPreference: 'high-performance',
+                    stencil: false,
+                    depth: true
+                }}
+                resize={{ scroll: false, debounce: 150 }}
             >
-                <CameraAnimator isOrbitEnabled={isOrbitEnabled} />
+                <CameraAnimator isOrbitEnabled={isActive} />
                 <OrbitControls {...orbitControlsConfig} />
 
                 {/*Scene*/}
-                {isOrbitEnabled && <Fire />}
-                <Nature orbitControl={isOrbitEnabled} />
-                <EffectComposer>
-                    <Bloom {...BLOOM_CONFIG} />
-                    <ToneMapping blendFunction={BlendFunction.DARKEN} />
-                </EffectComposer>
+                {isActive && <Fire />}
+                <Nature orbitControl={isActive} />
+                <PostEffect />
             </Canvas>
             <ExperienceButton onButtonToggle={handleButtonToggle} />
         </>

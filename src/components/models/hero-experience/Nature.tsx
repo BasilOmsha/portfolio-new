@@ -33,10 +33,10 @@ function Nature({ orbitControl }: { orbitControl: boolean }) {
     const [showPoleLight, setShowPoleLight] = useState<boolean>(false)
 
     useFrame((_, delta) => {
-        if (orbitControl) {
-            portalMaterial.current.uTime += delta * 2
-            poleLightMaterial.current.uTime += delta * 0.6
-        }
+        if (!orbitControl) return
+
+        portalMaterial.current.uTime += delta * 2
+        poleLightMaterial.current.uTime += delta * 0.6
     })
 
     useEffect(() => {
