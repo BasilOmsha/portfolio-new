@@ -156,13 +156,13 @@ function Projects() {
                         >
                             <span className="number">05</span>
                         </a>
-                        <a
+                        {/* <a
                             className={`item ${activeProject === 5 ? 'is-active' : ''} ${activeProject > 5 ? 'is-before' : ''} ${activeProject < 5 ? 'is-after' : ''}`}
                             href="#"
                             onClick={(i) => handleNavigation(5, i)}
                         >
                             <span className="number">06</span>
-                        </a>
+                        </a> */}
                     </div>
                 </nav>
                 <div className="projects-chapters">

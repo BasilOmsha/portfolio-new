@@ -160,8 +160,10 @@ export const expCards: ExperienceCard[] = [
         showGlowCard: false,
         responsibilities: [
             'Conduct meetings with stakeholders in both Finnish (public sector) and English to understand needs, clarify feedback, and ensure solutions support real business and user requirements.',
-            'Implement new features and improvements on the existing codebase.',
-            'Help validate and write technical documentation in accordance to Finnish and EU standards for medical software.'
+            'Set up Jira and translate tasks and requirements into tickets to enable more structured work, faster iterations, quicker delivery and  problem resolution (e.g., bugs).',
+            'Set up Docker (as a replacement for XAMPP) for local development and update the GitHub Wiki with clear instructions, helping other developers set up the local environment faster.',
+            'Work closely with clients during the implementation of new features and improvements.',
+            'Help validate and write technical documentation in accordance with Finnish and EU regulations for Software as a Medical Device (SaMD).'
         ],
         skills: ['PHP', 'JavaScript', 'JQuery', 'MySQL', 'Technical Documentation']
     },
@@ -184,7 +186,8 @@ export const expCards: ExperienceCard[] = [
             'December 8th 2025',
             'December 9th 2025',
             'December 10th 2025',
-            'December 12th 2025'
+            'December 12th 2025',
+            'March 6th 2026'
         ],
         showGlowCard: true,
         certifications: [
@@ -511,134 +514,134 @@ export const projectChapters: ProjectChapterProps[] = [
             }
         ]
     },
+    // {
+    //     index: '02',
+    //     title: 'Kalibro',
+    //     className: 'project-02',
+    //     imageSrc: '/images/undraw_app-dark-mode_6ji2.svg',
+    //     imageAlt: 'Website audit and optimization platform illustration',
+    //     techCount: '15+ technologies',
+    //     totalDuration: 'Late 2023 - Present (Ongoing)',
+    //     description:
+    //         '<p>A comprehensive website audit and optimization platform that empowers businesses to enhance their online presence through <strong>deep technical insights</strong> and <strong>actionable diagnostics</strong>.</p><p>Originally started as a <strong>school project in collaboration with Calevala Interactive</strong>, it evolved into a full-scale business platform featuring four core audit dimensions: <strong>Technical Analysis</strong> (WHOIS, DNS, SSL, IP geolocation, web stack detection), <strong>Web Diagnostics</strong> (performance metrics like LCP/CLS, WCAG accessibility compliance, SEO essentials, security audits), <strong>UI/UX Audits</strong> (color palette extraction, responsive screenshots, design system analysis), and <strong>Detailed Reports</strong> (Kalibro health scores, competitor comparisons, actionable insights).</p>',
+    //     links: [
+    //         {
+    //             type: 'deploy',
+    //             url: 'https://www.kalibro.io',
+    //             label: 'Under Development 🚧',
+    //             enabled: false
+    //         }
+    //     ],
+    //     technologies: [
+    //         {
+    //             number: '01',
+    //             title: 'JavaScript',
+    //             href: '#',
+    //             badges: [''],
+    //             component: 'Core Language'
+    //         },
+    //         {
+    //             number: '02',
+    //             title: 'Python',
+    //             href: '#',
+    //             badges: [''],
+    //             component: 'Backend Language'
+    //         },
+    //         {
+    //             number: '03',
+    //             title: 'Flask',
+    //             href: '#',
+    //             badges: [''],
+    //             component: 'Backend API'
+    //         },
+    //         {
+    //             number: '04',
+    //             title: 'React',
+    //             href: '#',
+    //             badges: [''],
+    //             component: 'Frontend Dashboard'
+    //         },
+    //         {
+    //             number: '05',
+    //             title: 'Redux',
+    //             href: '#',
+    //             badges: [''],
+    //             component: 'State Management'
+    //         },
+    //         {
+    //             number: '06',
+    //             title: 'AWS',
+    //             href: '#',
+    //             badges: [''],
+    //             component: 'Cloud Hosting'
+    //         },
+    //         {
+    //             number: '07',
+    //             title: 'OAuth & JWT',
+    //             href: '#',
+    //             badges: ['Core'],
+    //             component: 'Authentication'
+    //         },
+    //         {
+    //             number: '08',
+    //             title: 'Stripe',
+    //             href: '#',
+    //             badges: ['Core'],
+    //             component: 'Payment Integration'
+    //         },
+    //         {
+    //             number: '09',
+    //             title: 'WebSockets',
+    //             href: '#',
+    //             badges: ['Core'],
+    //             component: 'Real-time Updates'
+    //         },
+    //         {
+    //             number: '10',
+    //             title: 'Lighthouse API',
+    //             href: '#',
+    //             badges: ['Core'],
+    //             component: 'Performance Audits'
+    //         },
+    //         {
+    //             number: '11',
+    //             title: 'WHOIS/DNS APIs',
+    //             href: '#',
+    //             badges: ['Core'],
+    //             component: 'Domain Analysis'
+    //         },
+    //         {
+    //             number: '12',
+    //             title: 'SSL Certificate APIs',
+    //             href: '#',
+    //             badges: ['Core'],
+    //             component: 'Security Analysis'
+    //         },
+    //         {
+    //             number: '13',
+    //             title: 'Web Scraping',
+    //             href: '#',
+    //             badges: ['Core'],
+    //             component: 'Content Analysis'
+    //         },
+    //         {
+    //             number: '14',
+    //             title: 'Screenshot APIs',
+    //             href: '#',
+    //             badges: ['Core'],
+    //             component: 'Visual Testing'
+    //         },
+    //         {
+    //             number: '15',
+    //             title: 'Color Extraction',
+    //             href: '#',
+    //             badges: ['Core'],
+    //             component: 'Design Analysis'
+    //         }
+    //     ]
+    // },
     {
         index: '02',
-        title: 'Kalibro',
-        className: 'project-02',
-        imageSrc: '/images/undraw_app-dark-mode_6ji2.svg',
-        imageAlt: 'Website audit and optimization platform illustration',
-        techCount: '15+ technologies',
-        totalDuration: 'Late 2023 - Present (Ongoing)',
-        description:
-            '<p>A comprehensive website audit and optimization platform that empowers businesses to enhance their online presence through <strong>deep technical insights</strong> and <strong>actionable diagnostics</strong>.</p><p>Originally started as a <strong>school project in collaboration with Calevala Interactive</strong>, it evolved into a full-scale business platform featuring four core audit dimensions: <strong>Technical Analysis</strong> (WHOIS, DNS, SSL, IP geolocation, web stack detection), <strong>Web Diagnostics</strong> (performance metrics like LCP/CLS, WCAG accessibility compliance, SEO essentials, security audits), <strong>UI/UX Audits</strong> (color palette extraction, responsive screenshots, design system analysis), and <strong>Detailed Reports</strong> (Kalibro health scores, competitor comparisons, actionable insights).</p>',
-        links: [
-            {
-                type: 'deploy',
-                url: 'https://www.kalibro.io',
-                label: 'Under Development 🚧',
-                enabled: false
-            }
-        ],
-        technologies: [
-            {
-                number: '01',
-                title: 'JavaScript',
-                href: '#',
-                badges: [''],
-                component: 'Core Language'
-            },
-            {
-                number: '02',
-                title: 'Python',
-                href: '#',
-                badges: [''],
-                component: 'Backend Language'
-            },
-            {
-                number: '03',
-                title: 'Flask',
-                href: '#',
-                badges: [''],
-                component: 'Backend API'
-            },
-            {
-                number: '04',
-                title: 'React',
-                href: '#',
-                badges: [''],
-                component: 'Frontend Dashboard'
-            },
-            {
-                number: '05',
-                title: 'Redux',
-                href: '#',
-                badges: [''],
-                component: 'State Management'
-            },
-            {
-                number: '06',
-                title: 'AWS',
-                href: '#',
-                badges: [''],
-                component: 'Cloud Hosting'
-            },
-            {
-                number: '07',
-                title: 'OAuth & JWT',
-                href: '#',
-                badges: ['Core'],
-                component: 'Authentication'
-            },
-            {
-                number: '08',
-                title: 'Stripe',
-                href: '#',
-                badges: ['Core'],
-                component: 'Payment Integration'
-            },
-            {
-                number: '09',
-                title: 'WebSockets',
-                href: '#',
-                badges: ['Core'],
-                component: 'Real-time Updates'
-            },
-            {
-                number: '10',
-                title: 'Lighthouse API',
-                href: '#',
-                badges: ['Core'],
-                component: 'Performance Audits'
-            },
-            {
-                number: '11',
-                title: 'WHOIS/DNS APIs',
-                href: '#',
-                badges: ['Core'],
-                component: 'Domain Analysis'
-            },
-            {
-                number: '12',
-                title: 'SSL Certificate APIs',
-                href: '#',
-                badges: ['Core'],
-                component: 'Security Analysis'
-            },
-            {
-                number: '13',
-                title: 'Web Scraping',
-                href: '#',
-                badges: ['Core'],
-                component: 'Content Analysis'
-            },
-            {
-                number: '14',
-                title: 'Screenshot APIs',
-                href: '#',
-                badges: ['Core'],
-                component: 'Visual Testing'
-            },
-            {
-                number: '15',
-                title: 'Color Extraction',
-                href: '#',
-                badges: ['Core'],
-                component: 'Design Analysis'
-            }
-        ]
-    },
-    {
-        index: '03',
         title: 'Task Management System',
         className: 'project-03',
         imageSrc: '/images/undraw_scrum-board_uqku.svg',
@@ -726,7 +729,7 @@ export const projectChapters: ProjectChapterProps[] = [
         ]
     },
     {
-        index: '04',
+        index: '03',
         title: 'Galaxy Simulator',
         className: 'project-04',
         imageSrc: '/images/undraw_stars_5pgw.svg',
@@ -807,7 +810,7 @@ export const projectChapters: ProjectChapterProps[] = [
         ]
     },
     {
-        index: '05',
+        index: '04',
         title: 'Haunted House Scene',
         className: 'project-05',
         imageSrc: '/images/undraw_house-searching_g2b8.svg',
@@ -895,7 +898,7 @@ export const projectChapters: ProjectChapterProps[] = [
         ]
     },
     {
-        index: '06',
+        index: '05',
         title: '.NET MAUI vs Avalonia Cross-Platform Study',
         className: 'project-06',
         imageSrc: '/images/undraw_develop-app_yg6p.svg',
