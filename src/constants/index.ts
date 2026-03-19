@@ -447,7 +447,18 @@ export const projectChapters: ProjectChapterProps[] = [
         totalDuration: '~4 weeks time',
         description:
             '<p>An immersive portfolio website featuring <strong>3D experiences</strong>, <strong>interactive elements</strong>, and <strong>modern animations</strong>.</p><p>Built with <strong>React</strong>, <strong>TypeScript</strong>, <strong>Three.js</strong>, <strong>WebGL</strong>, <strong>Blender</strong> and <strong>GSAP</strong> for smooth animation.</p><p>Contact functionality is powered by <strong>ASP.NET Core backend</strong> built with <strong>Clean Architecture</strong> principles, with <strong>reCAPTCHA integration</strong> for enhanced security against spam and bot submissions.</p>',
-        links: [],
+        links: [
+            {
+                type: 'github',
+                url: 'https://github.com/BasilOmsha/portfolio-new',
+                label: 'Client'
+            },
+            {
+                type: 'github',
+                url: 'https://github.com/BasilOmsha/portfolioServer',
+                label: 'Server'
+            }
+        ],
         technologies: [
             {
                 number: '01',
@@ -511,6 +522,130 @@ export const projectChapters: ProjectChapterProps[] = [
                 href: '#',
                 badges: ['Core'],
                 component: 'Form Security'
+            }
+        ]
+    },
+    {
+        index: '02',
+        title: 'Finnish Open Data Dashboard',
+        className: 'project-03',
+        imageSrc: '/images/undraw_app-dark-mode_6ji2.svg',
+        imageAlt: 'Finnish open data dashboard illustration',
+        techCount: '13+ technologies',
+        totalDuration: 'October 2025 - Present (Ongoing)',
+        description:
+            '<p>A centralized dashboard for visualizing Finnish open-source data, aggregating multiple public APIs into a unified interface with <strong>real-time insights</strong> and <strong>interactive data visualization</strong>.</p><p>Built with a clean architecture .NET 10 backend and a React TypeScript frontend, the platform currently visualizes <strong>a selected set of Fingrid electricity datasets</strong> including consumption, emission factor, and shortage status, with dataset metadata browsing, time-series charting with a custom range slider, and <strong>PostgreSQL-backed caching</strong> to minimize external API calls. The system is designed for scalability with planned integrations for <strong>Statistics Finland</strong>, <strong>City of Helsinki</strong>, and other Finnish open data sources.</p>',
+        links: [
+            {
+                type: 'deploy',
+                url: 'https://api-integration-client.vercel.app',
+                label: 'Live Demo',
+                enabled: true
+            },
+            {
+                type: 'github',
+                url: 'https://github.com/BasilOmsha/api-integration-client',
+                label: 'Client',
+                enabled: true
+            },
+            {
+                type: 'github',
+                url: 'https://github.com/BasilOmsha/api-integration',
+                label: 'Server',
+                enabled: true
+            }
+        ],
+        technologies: [
+            {
+                number: '01',
+                title: 'C# / .NET 10',
+                href: '#',
+                badges: [''],
+                component: 'Backend Language'
+            },
+            {
+                number: '02',
+                title: 'ASP.NET Core',
+                href: '#',
+                badges: [''],
+                component: 'REST API'
+            },
+            {
+                number: '03',
+                title: 'Entity Framework Core',
+                href: '#',
+                badges: [''],
+                component: 'ORM'
+            },
+            {
+                number: '04',
+                title: 'PostgreSQL',
+                href: '#',
+                badges: ['Core'],
+                component: 'Database'
+            },
+            {
+                number: '05',
+                title: 'TypeScript',
+                href: '#',
+                badges: [''],
+                component: 'Frontend Language'
+            },
+            {
+                number: '06',
+                title: 'React',
+                href: '#',
+                badges: [''],
+                component: 'Frontend Framework'
+            },
+            {
+                number: '07',
+                title: 'TanStack Query',
+                href: '#',
+                badges: ['Core'],
+                component: 'Server State'
+            },
+            {
+                number: '08',
+                title: 'uPlot',
+                href: '#',
+                badges: ['Core'],
+                component: 'Data Visualization'
+            },
+            {
+                number: '09',
+                title: 'SignalR',
+                href: '#',
+                badges: ['Core'],
+                component: 'Real-time Updates'
+            },
+            {
+                number: '10',
+                title: 'Tailwind CSS v4',
+                href: '#',
+                badges: [''],
+                component: 'Styling'
+            },
+            {
+                number: '11',
+                title: 'Azure App Service',
+                href: '#',
+                badges: ['Core'],
+                component: 'Cloud Hosting'
+            },
+            {
+                number: '12',
+                title: 'Azure Key Vault',
+                href: '#',
+                badges: ['Core'],
+                component: 'Secrets Management'
+            },
+            {
+                number: '13',
+                title: 'xUnit',
+                href: '#',
+                badges: [''],
+                component: 'Backend Unit Testing'
             }
         ]
     },
@@ -641,7 +776,7 @@ export const projectChapters: ProjectChapterProps[] = [
     //     ]
     // },
     {
-        index: '02',
+        index: '03',
         title: 'Task Management System',
         className: 'project-03',
         imageSrc: '/images/undraw_scrum-board_uqku.svg',
@@ -729,7 +864,7 @@ export const projectChapters: ProjectChapterProps[] = [
         ]
     },
     {
-        index: '03',
+        index: '04',
         title: 'Galaxy Simulator',
         className: 'project-04',
         imageSrc: '/images/undraw_stars_5pgw.svg',
@@ -810,7 +945,7 @@ export const projectChapters: ProjectChapterProps[] = [
         ]
     },
     {
-        index: '04',
+        index: '05',
         title: 'Haunted House Scene',
         className: 'project-05',
         imageSrc: '/images/undraw_house-searching_g2b8.svg',
@@ -898,7 +1033,7 @@ export const projectChapters: ProjectChapterProps[] = [
         ]
     },
     {
-        index: '05',
+        index: '06',
         title: '.NET MAUI vs Avalonia Cross-Platform Study',
         className: 'project-06',
         imageSrc: '/images/undraw_develop-app_yg6p.svg',
