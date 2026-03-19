@@ -794,7 +794,7 @@ export const projectChapters: ProjectChapterProps[] = [
             {
                 type: 'deploy',
                 url: 'https://task-management-system-basel.vercel.app/login',
-                label: 'Live Site'
+                label: 'Live Demo'
             }
         ],
         technologies: [
@@ -882,7 +882,7 @@ export const projectChapters: ProjectChapterProps[] = [
             {
                 type: 'deploy',
                 url: 'https://galaxy-simulator-ten.vercel.app/',
-                label: 'Live Site'
+                label: 'Live Demo'
             }
         ],
         technologies: [
@@ -963,7 +963,7 @@ export const projectChapters: ProjectChapterProps[] = [
             {
                 type: 'deploy',
                 url: 'https://haunted-house-one-ashen.vercel.app/',
-                label: 'Live Site'
+                label: 'Live Demo'
             }
         ],
         technologies: [
