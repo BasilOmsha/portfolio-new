@@ -187,7 +187,8 @@ export const expCards: ExperienceCard[] = [
             'December 9th 2025',
             'December 10th 2025',
             'December 12th 2025',
-            'March 6th 2026'
+            'March 6th 2026',
+            'March 13th 2026'
         ],
         showGlowCard: true,
         certifications: [
