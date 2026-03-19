@@ -116,11 +116,11 @@ function ProjectChapter({
                             <div className="column project-title-badges">
                                 <div className="title">{project.title}</div>
                                 <div className="badges">
-                                    {project.badges.map((badge) => (
+                                    {/* {project.badges.map((badge) => (
                                         <span key={badge} className={`badge is-${badge}`}>
                                             {badge}
                                         </span>
-                                    ))}
+                                    ))} */}
                                 </div>
                             </div>
                             <div className="column project-duration">{project.component}</div>

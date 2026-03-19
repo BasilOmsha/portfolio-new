@@ -412,7 +412,7 @@ type Tech = {
     number: string
     title: string
     href: string
-    badges: string[]
+    // badges: string[]
     component: string
 }
 
@@ -464,63 +464,63 @@ export const projectChapters: ProjectChapterProps[] = [
                 number: '01',
                 title: 'TSX',
                 href: '',
-                badges: [''],
+                //badges: [''],
                 component: 'Sections'
             },
             {
                 number: '02',
                 title: 'CSS',
                 href: '',
-                badges: [''],
+                //badges: [''],
                 component: 'Styling'
             },
             {
                 number: '03',
                 title: 'Blender',
                 href: '',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Hero 3D Model'
             },
             {
                 number: '04',
                 title: 'R3F & WebGL',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Shader Materials'
             },
             {
                 number: '05',
                 title: 'TS',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Animation / Utilities'
             },
             {
                 number: '06',
                 title: 'GSAP',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Animation'
             },
             {
                 number: '07',
                 title: 'ASP.NET Core',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Backend API'
             },
             {
                 number: '08',
                 title: 'Clean Architecture',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Contact Service'
             },
             {
                 number: '09',
                 title: 'reCAPTCHA',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Form Security'
             }
         ]
@@ -560,91 +560,91 @@ export const projectChapters: ProjectChapterProps[] = [
                 number: '01',
                 title: 'C# / .NET 10',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Backend Language'
             },
             {
                 number: '02',
                 title: 'ASP.NET Core',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'REST API'
             },
             {
                 number: '03',
                 title: 'Entity Framework Core',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'ORM'
             },
             {
                 number: '04',
                 title: 'PostgreSQL',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Database'
             },
             {
                 number: '05',
                 title: 'TypeScript',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Frontend Language'
             },
             {
                 number: '06',
                 title: 'React',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Frontend Framework'
             },
             {
                 number: '07',
                 title: 'TanStack Query',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Server State'
             },
             {
                 number: '08',
                 title: 'uPlot',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Data Visualization'
             },
             {
                 number: '09',
                 title: 'SignalR',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Real-time Updates'
             },
             {
                 number: '10',
                 title: 'Tailwind CSS v4',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Styling'
             },
             {
                 number: '11',
                 title: 'Azure App Service',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Cloud Hosting'
             },
             {
                 number: '12',
                 title: 'Azure Key Vault',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Secrets Management'
             },
             {
                 number: '13',
                 title: 'xUnit',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Backend Unit Testing'
             }
         ]
@@ -672,105 +672,105 @@ export const projectChapters: ProjectChapterProps[] = [
     //             number: '01',
     //             title: 'JavaScript',
     //             href: '#',
-    //             badges: [''],
+    //             //badges: [''],
     //             component: 'Core Language'
     //         },
     //         {
     //             number: '02',
     //             title: 'Python',
     //             href: '#',
-    //             badges: [''],
+    //             //badges: [''],
     //             component: 'Backend Language'
     //         },
     //         {
     //             number: '03',
     //             title: 'Flask',
     //             href: '#',
-    //             badges: [''],
+    //             //badges: [''],
     //             component: 'Backend API'
     //         },
     //         {
     //             number: '04',
     //             title: 'React',
     //             href: '#',
-    //             badges: [''],
+    //             //badges: [''],
     //             component: 'Frontend Dashboard'
     //         },
     //         {
     //             number: '05',
     //             title: 'Redux',
     //             href: '#',
-    //             badges: [''],
+    //             //badges: [''],
     //             component: 'State Management'
     //         },
     //         {
     //             number: '06',
     //             title: 'AWS',
     //             href: '#',
-    //             badges: [''],
+    //             //badges: [''],
     //             component: 'Cloud Hosting'
     //         },
     //         {
     //             number: '07',
     //             title: 'OAuth & JWT',
     //             href: '#',
-    //             badges: ['Core'],
+    //             //badges: ['Core'],
     //             component: 'Authentication'
     //         },
     //         {
     //             number: '08',
     //             title: 'Stripe',
     //             href: '#',
-    //             badges: ['Core'],
+    //             //badges: ['Core'],
     //             component: 'Payment Integration'
     //         },
     //         {
     //             number: '09',
     //             title: 'WebSockets',
     //             href: '#',
-    //             badges: ['Core'],
+    //             //badges: ['Core'],
     //             component: 'Real-time Updates'
     //         },
     //         {
     //             number: '10',
     //             title: 'Lighthouse API',
     //             href: '#',
-    //             badges: ['Core'],
+    //             //badges: ['Core'],
     //             component: 'Performance Audits'
     //         },
     //         {
     //             number: '11',
     //             title: 'WHOIS/DNS APIs',
     //             href: '#',
-    //             badges: ['Core'],
+    //             //badges: ['Core'],
     //             component: 'Domain Analysis'
     //         },
     //         {
     //             number: '12',
     //             title: 'SSL Certificate APIs',
     //             href: '#',
-    //             badges: ['Core'],
+    //             //badges: ['Core'],
     //             component: 'Security Analysis'
     //         },
     //         {
     //             number: '13',
     //             title: 'Web Scraping',
     //             href: '#',
-    //             badges: ['Core'],
+    //             //badges: ['Core'],
     //             component: 'Content Analysis'
     //         },
     //         {
     //             number: '14',
     //             title: 'Screenshot APIs',
     //             href: '#',
-    //             badges: ['Core'],
+    //             //badges: ['Core'],
     //             component: 'Visual Testing'
     //         },
     //         {
     //             number: '15',
     //             title: 'Color Extraction',
     //             href: '#',
-    //             badges: ['Core'],
+    //             //badges: ['Core'],
     //             component: 'Design Analysis'
     //         }
     //     ]
@@ -802,63 +802,63 @@ export const projectChapters: ProjectChapterProps[] = [
                 number: '01',
                 title: 'ASP.NET Core',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Backend API'
             },
             {
                 number: '02',
                 title: 'PostgreSQL',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Database'
             },
             {
                 number: '03',
                 title: 'Entity Framework',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'ORM'
             },
             {
                 number: '04',
                 title: 'JWT Authentication',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Security'
             },
             {
                 number: '05',
                 title: 'React/TypeScript',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Frontend'
             },
             {
                 number: '06',
                 title: 'TanStack Query',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Data Fetching'
             },
             {
                 number: '07',
                 title: 'DND-kit',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Drag & Drop'
             },
             {
                 number: '08',
                 title: 'Azure',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Hosting'
             },
             {
                 number: '09',
                 title: 'GitHub Actions',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'CI/CD'
             }
         ]
@@ -890,56 +890,56 @@ export const projectChapters: ProjectChapterProps[] = [
                 number: '01',
                 title: 'Three.js',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: '3D Rendering'
             },
             {
                 number: '02',
                 title: 'WebGL Shaders',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'GLSL Rendering'
             },
             {
                 number: '03',
                 title: 'JavaScript ES6+',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Core Logic'
             },
             {
                 number: '04',
                 title: 'BufferGeometry',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Particle Systems'
             },
             {
                 number: '05',
                 title: 'lil-gui',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Debug Controls'
             },
             {
                 number: '06',
                 title: 'Vite',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Build Tool'
             },
             {
                 number: '07',
                 title: 'Mathematical Utils',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Astrophysics'
             },
             {
                 number: '08',
                 title: 'Factory Pattern',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Architecture'
             }
         ]
@@ -971,63 +971,63 @@ export const projectChapters: ProjectChapterProps[] = [
                 number: '01',
                 title: 'Three.js',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: '3D Rendering'
             },
             {
                 number: '02',
                 title: 'Buffer Geometry',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Custom Geometry'
             },
             {
                 number: '03',
                 title: 'Texture Mapping',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Material System'
             },
             {
                 number: '04',
                 title: 'Shadow Mapping',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Lighting Effects'
             },
             {
                 number: '05',
                 title: 'Sky Shader',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Atmospheric Effects'
             },
             {
                 number: '06',
                 title: 'lil-gui',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Debug Interface'
             },
             {
                 number: '07',
                 title: 'Vite',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Build Tool'
             },
             {
                 number: '08',
                 title: 'Timer Animation',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Ghost Movement'
             },
             {
                 number: '09',
                 title: 'Poly Haven Assets',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Texture Library'
             }
         ]
@@ -1064,70 +1064,70 @@ export const projectChapters: ProjectChapterProps[] = [
                 number: '01',
                 title: '.NET MAUI',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Framework'
             },
             {
                 number: '02',
                 title: 'Avalonia UI',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Framework'
             },
             {
                 number: '03',
                 title: 'C#',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Language'
             },
             {
                 number: '04',
                 title: 'XAML',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'UI Markup'
             },
             {
                 number: '05',
                 title: 'SQLite',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'Local Database'
             },
             {
                 number: '06',
                 title: 'MVVM Pattern',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Architecture'
             },
             {
                 number: '07',
                 title: 'Data Binding',
                 href: '#',
-                badges: [''],
+                //badges: [''],
                 component: 'UI Logic'
             },
             {
                 number: '08',
                 title: 'Maps Integration',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Location Services'
             },
             {
                 number: '09',
                 title: 'Mapsui',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Map Components'
             },
             {
                 number: '10',
                 title: 'Research Methodology',
                 href: '#',
-                badges: ['Core'],
+                //badges: ['Core'],
                 component: 'Academic Analysis'
             }
         ]
