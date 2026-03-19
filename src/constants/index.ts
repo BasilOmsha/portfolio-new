@@ -537,12 +537,6 @@ export const projectChapters: ProjectChapterProps[] = [
             '<p>A centralized dashboard for visualizing Finnish open-source data, aggregating multiple public APIs into a unified interface with <strong>real-time insights</strong> and <strong>interactive data visualization</strong>.</p><p>Built with a clean architecture .NET 10 backend and a React TypeScript frontend, the platform currently visualizes <strong>a selected set of Fingrid electricity datasets</strong> including consumption, emission factor, and shortage status, with dataset metadata browsing, time-series charting with a custom range slider, and <strong>PostgreSQL-backed caching</strong> to minimize external API calls. The system is designed for scalability with planned integrations for <strong>Statistics Finland</strong>, <strong>City of Helsinki</strong>, and other Finnish open data sources.</p>',
         links: [
             {
-                type: 'deploy',
-                url: 'https://api-integration-client.vercel.app',
-                label: 'Live Demo',
-                enabled: true
-            },
-            {
                 type: 'github',
                 url: 'https://github.com/BasilOmsha/api-integration-client',
                 label: 'Client',
@@ -552,6 +546,12 @@ export const projectChapters: ProjectChapterProps[] = [
                 type: 'github',
                 url: 'https://github.com/BasilOmsha/api-integration',
                 label: 'Server',
+                enabled: true
+            },
+            {
+                type: 'deploy',
+                url: 'https://api-integration-client.vercel.app',
+                label: 'Live Demo',
                 enabled: true
             }
         ],
