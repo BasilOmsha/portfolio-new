@@ -157,15 +157,26 @@ export const expCards: ExperienceCard[] = [
         imgHeight: 'auto',
         title: 'Software Developer (Ohjelmistosuunnittelija)',
         date: 'December 2025 - Present',
-        showGlowCard: false,
+        showGlowCard: true,
+        education: {
+            degree: 'MSc in Computer Science (Master of Science in Technology)',
+            institution: 'Tampere University (TAU)',
+            location: 'Tampere, Finland',
+            languageOfInstruction: 'Finnish / English',
+            gpa: '',
+            gradingScale: '',
+            period: 'August 2026 - Present'
+        },
         responsibilities: [
-            'Conduct meetings with stakeholders in both Finnish (public sector) and English to understand needs, clarify feedback, and ensure solutions support real business and user requirements.',
-            'Set up Jira and translate tasks and requirements into tickets to enable more structured work, faster iterations, quicker delivery and  problem resolution (e.g., bugs).',
-            'Set up Docker (as a replacement for XAMPP) for local development and update the GitHub Wiki with clear instructions, helping other developers set up the local environment faster.',
-            'Work closely with clients during the implementation of new features and improvements.',
-            'Help validate and write technical documentation in accordance with Finnish and EU regulations for Software as a Medical Device (SaMD).'
+            'Develop and maintain medical software used in the Finnish public sector for patientcare management, including patient records, questionnaires, and treatment tracking.',
+            'Work closely with stakeholders in Finnish and English to gather requirements, clarifyfeedback, and support implementation of new features and improvements.',
+            'Translate requirements into structured Jira tasks to support more organized development work and faster issue resolution.',
+            'Contribute to technical documentation required for CE marking under Finnish and EU Software as a Medical Device (SaMD) regulations.',
+            'Improve developer workflow by replacing XAMPP with Docker for local developmentand updating internal setup documentation.',
+            'Migrate a nationwide colorectal cancer studies app from legacy ASP.NET Forms to ASP.NET Core (Strangler Fig pattern), maintaining the live system throughout.',
+            'Set up production infrastructure on UpCloud using Windows and Linux Servers.'
         ],
-        skills: ['PHP', 'JavaScript', 'JQuery', 'MySQL', 'Technical Documentation']
+        skills: ['PHP', 'JavaScript', 'JQuery', 'MySQL', 'Technical Documentation, C#', 'ASP.NET Core', 'Docker', 'UpCloud, MSSQL']
     },
     {
         review: 'IT Support gigs at HUS / Helsinki University. Offered gig work to prepare the auditorium equipment for PhD thesis defense presentations.',
